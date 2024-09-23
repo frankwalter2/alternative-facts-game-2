@@ -1,0 +1,546 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a twist that would make even the Marquis de Sade blush, the quaint bibliophile's paradise of Hay-on-Wye has found itself embroiled in a scandal that's less \"50 Shades of Grey\" and more \"50 Shades of Beige\". The cause? A painting of a naked woman that's got the town's knickers in such a twist, you'd think they'd stumbled upon Lady Chatterley's Lover in the children's section.\n\nThe artwork in question, displayed in the front window of the aptly named 'Chair' gallery (because that's where some residents wish the artist would take a seat), features a nude woman wearing cowboy boots, her legs spread wider than the town's cultural divide. The black triangle adorned with pink wool has caused more pearl-clutching than a jewellery heist at the WI.\n\nNow, I'm no art critic, but I'm fairly certain if this painting qualifies as pornography, then the Sistine Chapel is basically the Vatican's OnlyFans account. One has to wonder what kind of saucy literature these complainants have been perusing in Hay's famous bookshops. \"Fifty Shades of Beige: A Comprehensive Guide to Watching Paint Dry\", perhaps?\n\nThe police, ever-vigilant guardians of public morality, swooped in faster than you can say \"Midsomer Murders\". One can only imagine the briefing: \"Right lads, forget the drug cartels and human trafficking rings, we've got a pink triangle to neutralize!\"\n\nThe artist, Poppy Baynham, a student at Central Saint Martins, expressed shock at the reaction. Well, Poppy, welcome to the wild world of provincial Britain, where a exposed breast is more offensive than a politician's expense account.\n\nIn a masterclass of deadpan brilliance, Baynham noted, \"Most straight women haven't seen a vulva, so I see why they might be scared of it.\" Ah yes, the lesser-spotted vulva, so rare in Hay-on-Wye that David Attenborough is planning a special. Coming soon to BBC One: \"Blue Planet III: The Hunt for the Elusive Ladygarden\".\n\nThe gallery owner, Val Harris, refusing to bow to pressure, has made the painting into a cause c\u00e9l\u00e8bre. She's even invited people to debate the issue on Instagram Live, because nothing says \"serious art discussion\" like emoji reactions and people accidentally leaving their microphones on while they make tea.\n\nAs the controversy rages on, one can't help but wonder: in a town famous for its celebration of the written word, how is it that a picture has caused a thousand words of outrage? Perhaps it's time for Hay to diversify its literary festival. Alongside talks on Proust and Shakespeare, they could include seminars on \"How to Look at a Nude Without Fainting\" and \"Vulvas: They're Just Like Us!\"\n\nIn the end, this tempest in a teapot (or should I say, tempest in a triangle) serves as a reminder that even in our most cultured corners, we're never far from a good old-fashioned moral panic. So, here's to you, Hay-on-Wye. May your bookshops remain plentiful, your literary festivals star-studded, and your pearls ever-clutched. And remember, the next time you're shocked by a painting, just imagine how the fig leaf feels in all those classical sculptures. Now that's what I call a cover-up.",
+            "headline": "Hay-on-Why: When Bookworms Battle Bare Bottoms",
+            "explanation": "The analogies in this satirical column are particularly effective because they juxtapose the controversy surrounding a painting of a naked woman with well-known cultural references and humor, highlighting the absurdity of the situation. They serve to amplify the comedic tone while making sharp critiques of societal norms and reactions to art. The analogies also provide vivid imagery that enhances the reader's understanding and engagement with the topic.",
+            "analogy_1": "if this painting qualifies as pornography, then the Sistine Chapel is basically the Vatican's OnlyFans account.",
+            "analogy_2": "the lesser-spotted vulva, so rare in Hay-on-Wye that David Attenborough is planning a special.",
+            "analogy_3": "tempest in a teapot (or should I say, tempest in a triangle)",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "if this painting qualifies as pornography, then the Sistine Chapel is basically the Vatican's OnlyFans account.",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 10,
+                    "total_score": 27
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "the lesser-spotted vulva, so rare in Hay-on-Wye that David Attenborough is planning a special.",
+                    "humor_score": 8,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 23
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "tempest in a teapot (or should I say, tempest in a triangle)",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 6,
+                    "total_score": 19
+                }
+            ],
+            "total_set_score": 69,
+            "labelled_analogies": [
+                "if this {{painting}} qualifies as {{pornography}}, then the {{Sistine Chapel}} is basically the Vatican's OnlyFans account.",
+                "the lesser-spotted {{vulva}}, so rare in {{Hay-on-Wye}} that {{David Attenborough}} is planning a special.",
+                "tempest in a teapot (or should I say, tempest in a {{triangle}})"
+            ],
+            "processed_analogies": [
+                "if this {1} qualifies as {2}, then the {3} is basically the Vatican's OnlyFans account.",
+                "the lesser-spotted {4}, so rare in {5} that {6} is planning a special.",
+                "tempest in a teapot (or should I say, tempest in a {7})"
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "painting"
+                },
+                {
+                    "id": 2,
+                    "answer": "pornography"
+                },
+                {
+                    "id": 3,
+                    "answer": "Sistine Chapel"
+                },
+                {
+                    "id": 4,
+                    "answer": "vulva"
+                },
+                {
+                    "id": 5,
+                    "answer": "Hay-on-Wye"
+                },
+                {
+                    "id": 6,
+                    "answer": "David Attenborough"
+                },
+                {
+                    "id": 7,
+                    "answer": "triangle"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "if this {1} qualifies as {2}, then the {3} is basically the Vatican's OnlyFans account.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "if this spaceship qualifies as weather forecast, then the haunted house is basically the Vatican's OnlyFans account.",
+                            "alternative_words": {
+                                "1": "spaceship",
+                                "2": "weather forecast",
+                                "3": "haunted house"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 1,
+                            "adjusted_score": 23
+                        },
+                        {
+                            "analogy": "if this karaoke machine qualifies as laundry detergent, then the arcade is basically the Vatican's OnlyFans account.",
+                            "alternative_words": {
+                                "1": "karaoke machine",
+                                "2": "laundry detergent",
+                                "3": "arcade"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 7,
+                                "bite_score": 8
+                            },
+                            "total_score": 24,
+                            "similarity_score": 1,
+                            "adjusted_score": 23
+                        },
+                        {
+                            "analogy": "if this trombone qualifies as assembly instructions, then the karaoke bar is basically the Vatican's OnlyFans account.",
+                            "alternative_words": {
+                                "1": "trombone",
+                                "2": "assembly instructions",
+                                "3": "karaoke bar"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 7
+                            },
+                            "total_score": 22,
+                            "similarity_score": 1,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "if this cookbook qualifies as tax forms, then the comic book store is basically the Vatican's OnlyFans account.",
+                            "alternative_words": {
+                                "1": "cookbook",
+                                "2": "tax forms",
+                                "3": "comic book store"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "if this rubber chicken qualifies as potato salad, then the bouncy castle is basically the Vatican's OnlyFans account.",
+                            "alternative_words": {
+                                "1": "rubber chicken",
+                                "2": "potato salad",
+                                "3": "bouncy castle"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "if this spaceship qualifies as weather forecast, then the haunted house is basically the Vatican's OnlyFans account.",
+                                "alternative_words": {
+                                    "1": "spaceship",
+                                    "2": "weather forecast",
+                                    "3": "haunted house"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 1,
+                                "adjusted_score": 23
+                            },
+                            {
+                                "analogy": "if this karaoke machine qualifies as laundry detergent, then the arcade is basically the Vatican's OnlyFans account.",
+                                "alternative_words": {
+                                    "1": "karaoke machine",
+                                    "2": "laundry detergent",
+                                    "3": "arcade"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 7,
+                                    "bite_score": 8
+                                },
+                                "total_score": 24,
+                                "similarity_score": 1,
+                                "adjusted_score": 23
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 1,
+                    "original_analogy": "the lesser-spotted {4}, so rare in {5} that {6} is planning a special.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "the lesser-spotted parking meter, so rare in Area 51 that Darth Vader is planning a special.",
+                            "alternative_words": {
+                                "4": "parking meter",
+                                "5": "Area 51",
+                                "6": "Darth Vader"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "the lesser-spotted umbrella, so rare in Narnia that Elon Musk is planning a special.",
+                            "alternative_words": {
+                                "4": "umbrella",
+                                "5": "Narnia",
+                                "6": "Elon Musk"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "the lesser-spotted USB port, so rare in Mordor that Captain America is planning a special.",
+                            "alternative_words": {
+                                "4": "USB port",
+                                "5": "Mordor",
+                                "6": "Captain America"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "the lesser-spotted light switch, so rare in Taco Bell that Bob Ross is planning a special.",
+                            "alternative_words": {
+                                "4": "light switch",
+                                "5": "Taco Bell",
+                                "6": "Bob Ross"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 5
+                            },
+                            "total_score": 20,
+                            "similarity_score": 1,
+                            "adjusted_score": 19
+                        },
+                        {
+                            "analogy": "the lesser-spotted lawn gnome, so rare in Hogwarts that SpongeBob SquarePants is planning a special.",
+                            "alternative_words": {
+                                "4": "lawn gnome",
+                                "5": "Hogwarts",
+                                "6": "SpongeBob SquarePants"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 6,
+                                "bite_score": 3
+                            },
+                            "total_score": 17,
+                            "similarity_score": 1,
+                            "adjusted_score": 16
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "the lesser-spotted parking meter, so rare in Area 51 that Darth Vader is planning a special.",
+                                "alternative_words": {
+                                    "4": "parking meter",
+                                    "5": "Area 51",
+                                    "6": "Darth Vader"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            },
+                            {
+                                "analogy": "the lesser-spotted umbrella, so rare in Narnia that Elon Musk is planning a special.",
+                                "alternative_words": {
+                                    "4": "umbrella",
+                                    "5": "Narnia",
+                                    "6": "Elon Musk"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 2,
+                    "original_analogy": "tempest in a teapot (or should I say, tempest in a {7})",
+                    "alternative_sets": [
+                        {
+                            "analogy": "tempest in a teapot (or should I say, tempest in a toaster)",
+                            "alternative_words": {
+                                "7": "toaster"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 5,
+                                "bite_score": 6
+                            },
+                            "total_score": 18,
+                            "similarity_score": 1,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "tempest in a teapot (or should I say, tempest in a ping pong ball)",
+                            "alternative_words": {
+                                "7": "ping pong ball"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 5
+                            },
+                            "total_score": 18,
+                            "similarity_score": 1,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "tempest in a teapot (or should I say, tempest in a toilet plunger)",
+                            "alternative_words": {
+                                "7": "toilet plunger"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 5
+                            },
+                            "total_score": 18,
+                            "similarity_score": 1,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "tempest in a teapot (or should I say, tempest in a unicorn)",
+                            "alternative_words": {
+                                "7": "unicorn"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 5
+                            },
+                            "total_score": 18,
+                            "similarity_score": 1,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "tempest in a teapot (or should I say, tempest in a flamingo)",
+                            "alternative_words": {
+                                "7": "flamingo"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 4
+                            },
+                            "total_score": 17,
+                            "similarity_score": 1,
+                            "adjusted_score": 16
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "tempest in a teapot (or should I say, tempest in a toaster)",
+                                "alternative_words": {
+                                    "7": "toaster"
+                                },
+                                "scores": {
+                                    "originality_score": 7,
+                                    "humor_score": 5,
+                                    "bite_score": 6
+                                },
+                                "total_score": 18,
+                                "similarity_score": 1,
+                                "adjusted_score": 17
+                            },
+                            {
+                                "analogy": "tempest in a teapot (or should I say, tempest in a ping pong ball)",
+                                "alternative_words": {
+                                    "7": "ping pong ball"
+                                },
+                                "scores": {
+                                    "originality_score": 7,
+                                    "humor_score": 6,
+                                    "bite_score": 5
+                                },
+                                "total_score": 18,
+                                "similarity_score": 1,
+                                "adjusted_score": 17
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "spaceship",
+                    "karaoke machine"
+                ],
+                [
+                    "laundry detergent",
+                    "weather forecast"
+                ],
+                [
+                    "haunted house",
+                    "arcade"
+                ],
+                [
+                    "parking meter",
+                    "umbrella"
+                ],
+                [
+                    "Narnia",
+                    "Area 51"
+                ],
+                [
+                    "Darth Vader",
+                    "Elon Musk"
+                ],
+                [
+                    "ping pong ball",
+                    "toaster"
+                ]
+            ],
+            "six_word_story": "Police respond to controversial nude painting exhibition."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a twist that would make Salvador Dal\u00ed's mustache curl even further, the quaint bibliophile's paradise of Hay-on-Wye has found itself at the epicenter of an artistic earthquake. The tremors? Caused by none other than a painted pudenda proudly displayed in a high street gallery window. \n\nPicture, if you will, dear reader, a town where the most risqu\u00e9 sight was typically the occasional dog-eared copy of \"Lady Chatterley's Lover\" peeking out from a secondhand bookshop. Now, faster than you can say \"Georgia O'Keeffe on steroids,\" we have a full-frontal assault on the sensibilities of the good folk of Powys.\n\nThe painting in question, a masterpiece of mammarian magnitude, features a naked woman wearing nothing but cowboy boots and what can only be described as a woolen merkin. It's as if Annie Oakley decided to do a striptease in a sheep pen \u2013 a surefire way to put the 'wild' back in Wild West.\n\nBut wait! Before you dismiss this as mere pornography, let us consider the artist's intent. Poppy Baynham, the Michaelangelo of Muff, insists her work is about \"normalizing the female body.\" Because nothing says \"normal\" quite like splaying one's legs in cowboy boots while sporting a pink wool pubic wig, right?\n\nThe local constabulary, ever vigilant in their quest to protect the public from the dangers of paint on canvas, swooped in faster than you can say \"indecent exposure.\" One can only imagine the intense training required to differentiate between high art and low morals. Perhaps they employ a crack team of art historians alongside their forensics unit?\n\nMeanwhile, gallery owner Val Harris, channeling the spirit of Lady Godiva with a dash of Banksy, has refused to bow to pressure. She's turned the controversy into a social media spectacle, inviting the public to debate the merits of the vulvic vista on Instagram. It's like \"The Jerry Springer Show\" meets \"What Do You Know About Art?\"\n\nBut let's not forget the real victims here \u2013 the straight women of Hay-on-Wye. According to our intrepid artist, these poor souls have never laid eyes on a vulva. One can only assume they've been walking around with their eyes closed in changing rooms and avoiding mirrors like vampires avoiding garlic.\n\nAs the debate rages on, one can't help but wonder: what would happen if this painting made its way to the Tate Modern? Would it cause a riot in the gift shop? Would school trips be forever banned? Or would it simply be mistaken for a particularly avant-garde fire exit sign?\n\nIn the end, perhaps this is all just a clever marketing ploy for Hay's famous literary festival. After all, nothing sells books quite like a bit of controversy. I can see it now: \"50 Shades of Hay: A Literary Tour Through the Town's Most Scandalous Art.\"\n\nSo, here's to you, Hay-on-Wye. You've proven that even in the age of internet pornography, a simple painting can still shock, awe, and befuddle. And to Ms. Baynham, I say this: keep painting those vulvas. After all, someone needs to think of those poor, vulva-deprived straight women. It's a public service, really.\n\nNow, if you'll excuse me, I'm off to pitch my new reality TV show: \"Keeping Up With the Kropotkins: Revolution in Rural Wales.\" It can't be any more surreal than this, can it?",
+            "headline": "Vulva Vista: How a Painted Pudenda Pummeled Propriety in Powys",
+            "explanation": "The analogies in this satirical column are effective in amplifying the humor and absurdity of the situation while also drawing connections to well-known cultural references. They serve to create vivid imagery and provide a humorous context that enhances the reader's understanding of the controversy surrounding the painting. These analogies cleverly juxtapose serious art discussions with whimsical and outrageous comparisons, effectively engaging the reader and making the critique of societal norms more entertaining.",
+            "analogy_1": "It's as if Annie Oakley decided to do a striptease in a sheep pen \u2013 a surefire way to put the 'wild' back in Wild West.",
+            "analogy_2": "Perhaps they employ a crack team of art historians alongside their forensics unit?",
+            "analogy_3": "It's like 'The Jerry Springer Show' meets 'What Do You Know About Art?'",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "It's as if Annie Oakley decided to do a striptease in a sheep pen \u2013 a surefire way to put the 'wild' back in Wild West.",
+                    "humor_score": 8,
+                    "originality_score": 9,
+                    "bite_score": 8,
+                    "total_score": 25
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "Perhaps they employ a crack team of art historians alongside their forensics unit?",
+                    "humor_score": 7,
+                    "originality_score": 7,
+                    "bite_score": 7,
+                    "total_score": 21
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "It's like 'The Jerry Springer Show' meets 'What Do You Know About Art?'",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 6,
+                    "total_score": 21
+                }
+            ],
+            "total_set_score": 67
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "In a shocking turn of events that has rocked the very foundations of Western civilization, the quaint town of Hay-on-Wye finds itself at the epicenter of a controversy that threatens to unravel the very fabric of society. The culprit? A painting of a naked woman wearing cowboy boots, her legs akimbo, revealing what can only be described as a geometrically precise black triangle adorned with a tuft of pink wool. \n\nAs we all know, nothing says \"pornography\" quite like abstract shapes and craft supplies.\n\nThe artwork, created by Central Saint Martins student Poppy Baynham, has caused such a stir that local authorities were compelled to intervene. One can only imagine the horror on the faces of the good people of Hay-on-Wye as they strolled past the Chair gallery, innocently perusing the latest Jane Austen first editions, only to be accosted by the sight of... a female body. Oh, the humanity!\n\nIt's a well-known fact that 50% of the world's population possesses these mysterious \"vulvas,\" but until now, they've had the decency to keep them hidden away, like fine china or those embarrassing family photos from the '80s. Ms. Baynham's brazen attempt to \"normalize\" these ethereal body parts is nothing short of revolutionary \u2013 or revolting, depending on which side of the picket line you stand.\n\nOne concerned citizen, who wished to remain anonymous (let's call her Karen), stated, \"I came to Hay-on-Wye for the literature festival, not to be bombarded with anatomical diagrams! What's next? A sculpture made of actual genitalia?\" \n\nLittle does Karen know that such a sculpture already exists \u2013 it's called Michelangelo's David, and it's been corrupting minds for centuries.\n\nThe local police, ever vigilant in their quest to protect the public from the dangers of art, swooped in to assess the situation. Their suggestion to move the painting further inside the gallery was met with resistance from gallery owner Val Harris, who bravely declared, \"I'm making a stand.\" One can only assume she meant this both figuratively and literally, as standing is indeed the recommended posture when viewing art.\n\nIn a twist that would make even the most seasoned satirist blush, Ms. Baynham decided to host a live Instagram debate about her work. Because if there's one thing the internet needs more of, it's discourse about genitalia.\n\nDuring this virtual town hall, Baynham astutely observed, \"Most straight women haven't seen a vulva, so I see why they might be scared of it.\" This groundbreaking revelation has sent shockwaves through the scientific community, prompting urgent research into the apparent epidemic of straight women avoiding mirrors and basic anatomy lessons.\n\nAs the controversy rages on, one can't help but wonder: Is this the legacy of the Hay Festival? Will future generations look back on this moment as the turning point when literature gave way to lurid displays of pink wool and cowboy boots? \n\nOnly time will tell. In the meantime, visitors to Hay-on-Wye are advised to shield their eyes as they pass the Chair gallery, lest they accidentally glimpse a representation of the human form and find themselves irreversibly corrupted. \n\nRemember, folks: Books are for reading, not for judging by their covers \u2013 or their unconventional book jackets.",
+            "headline": "Hay-on-Why: When Cowboy Boots and Pink Wool Threaten the Fabric of Society",
+            "explanation": "The analogies in this satirical column effectively highlight the absurdity of the controversy surrounding a provocative piece of art by comparing the nudity and artistic expression to commonplace items and cultural references. This contrasts the serious implications of censorship and societal norms with lighthearted, relatable comparisons, making the critique more entertaining and accessible. The humor lies in the exaggeration and juxtaposition of the mundane with the controversial, thus engaging the reader while delivering a sharp commentary on societal reactions to art.",
+            "analogy_1": "nothing says 'pornography' quite like abstract shapes and craft supplies.",
+            "analogy_2": "they've had the decency to keep them hidden away, like fine china or those embarrassing family photos from the '80s.",
+            "analogy_3": "Books are for reading, not for judging by their covers \u2013 or their unconventional book jackets.",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "nothing says 'pornography' quite like abstract shapes and craft supplies.",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 24
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "they've had the decency to keep them hidden away, like fine china or those embarrassing family photos from the '80s.",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 8,
+                    "total_score": 23
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "Books are for reading, not for judging by their covers \u2013 or their unconventional book jackets.",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 5,
+                    "total_score": 18
+                }
+            ],
+            "total_set_score": 65
+        }
+    ]
+}

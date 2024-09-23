@@ -1,0 +1,546 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a move that's shocked absolutely no one with more than two brain cells to rub together, the Vatican has finally decided to give Archbishop Carlo Maria Vigano the papal equivalent of a restraining order. It seems the good archbishop's penchant for branding the Pope a \"servant of Satan\" and diving headfirst into the murky waters of conspiracy theories was a bridge too far even for an institution that once thought Galileo was the problem.\n\nVigano, who's been playing a game of ecclesiastical hide-and-seek since 2018, has now been officially excommunicated for schism. For those of you who skipped Sunday school, that's Catholic for \"You can't sit with us anymore.\" It's like being unfriended on Facebook, but with more incense and Latin.\n\nThe archbishop's fall from grace reads like a Dan Brown novel written by David Icke while high on communion wine. From accusing Pope Francis of covering up sexual misconduct to labelling him a \"false prophet,\" Vigano has been busy ticking off every box on the \"How to Get Kicked Out of the Cool Kids' Club in Rome\" checklist.\n\nBut let's not forget Vigano's piece de resistance - his foray into COVID-19 conspiracy theories. Because nothing says \"man of God\" quite like suggesting a global pandemic is actually the \"Great Reset\" - a term that sounds more like a euphemism for what happens after a night of heavy drinking than a coherent worldview.\n\nThe Vatican's decision to excommunicate Vigano is akin to firing a man who's already quit, moved to a different country, and started his own company called \"The Real Catholic Church, Now with 100% Less Satan.\" It's a bit like closing the stable door after the horse has not only bolted but also written a tell-all memoir and started a YouTube channel.\n\nIn his response to the excommunication, Vigano quoted Jesus: \"If they keep quiet, the stones themselves will start shouting.\" One can't help but wonder if those stones might have more intelligent things to say than the archbishop at this point.\n\nAs Vigano continues his crusade against what he calls an \"inclusive, immigrationist, eco-sustainable, and gay-friendly\" church, one has to marvel at his ability to make compassion and environmental stewardship sound like the Four Horsemen of the Apocalypse. It's a talent, really - like being able to turn water into whine.\n\nIn the end, this whole debacle serves as a reminder that even in the hallowed halls of the Vatican, you're never too old or too holy for a bit of drama. It's like a spiritual version of \"Real Housewives,\" only with more robes and fewer plastic surgery mishaps.\n\nSo, as we bid farewell to Archbishop Vigano's official status within the Catholic Church, let's raise a glass of sacramental wine to the man who managed to make the Inquisition look like a reasonable HR department. May his future endeavors be blessed with all the success of a fish trying to climb a tree - in Jesus' name, amen.",
+            "headline": "Holy Smoke and Mirrors: Vatican's Exorcism of the Conspiracy Cardinal",
+            "explanation": "The analogies in this column are effective because they combine humor with relatable imagery, allowing readers to grasp complex ideas about the Vatican and its internal conflicts in a lighthearted manner. They also serve to exaggerate the absurdity of Vigano's actions and the Church's responses, making the satire more engaging.",
+            "analogy_1": "It's like being unfriended on Facebook, but with more incense and Latin.",
+            "analogy_2": "The archbishop's fall from grace reads like a Dan Brown novel written by David Icke while high on communion wine.",
+            "analogy_3": "It's like a spiritual version of 'Real Housewives,' only with more robes and fewer plastic surgery mishaps.",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "It's like being unfriended on Facebook, but with more incense and Latin.",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 6,
+                    "total_score": 21
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "The archbishop's fall from grace reads like a Dan Brown novel written by David Icke while high on communion wine.",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 9,
+                    "total_score": 26
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "It's like a spiritual version of 'Real Housewives,' only with more robes and fewer plastic surgery mishaps.",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 7,
+                    "total_score": 22
+                }
+            ],
+            "total_set_score": 69,
+            "labelled_analogies": [
+                "It's like being unfriended on {{Facebook}}, but with more incense and {{Latin}}.",
+                "The {{archbishop}}'s fall from grace reads like a {{Dan Brown}} novel written by {{David Icke}} while high on communion wine.",
+                "It's like a spiritual version of '{{Real Housewives}},' only with more {{robes}} and fewer plastic surgery mishaps."
+            ],
+            "processed_analogies": [
+                "It's like being unfriended on {1}, but with more incense and {2}.",
+                "The {3}'s fall from grace reads like a {4} novel written by {5} while high on communion wine.",
+                "It's like a spiritual version of '{6},' only with more {7} and fewer plastic surgery mishaps."
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "Facebook"
+                },
+                {
+                    "id": 2,
+                    "answer": "Latin"
+                },
+                {
+                    "id": 3,
+                    "answer": "archbishop"
+                },
+                {
+                    "id": 4,
+                    "answer": "Dan Brown"
+                },
+                {
+                    "id": 5,
+                    "answer": "David Icke"
+                },
+                {
+                    "id": 6,
+                    "answer": "Real Housewives"
+                },
+                {
+                    "id": 7,
+                    "answer": "robes"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "It's like being unfriended on {1}, but with more incense and {2}.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "It's like being unfriended on MySpace, but with more incense and Klingon.",
+                            "alternative_words": {
+                                "2": "Klingon",
+                                "1": "MySpace"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like being unfriended on Friendster, but with more incense and Elvish.",
+                            "alternative_words": {
+                                "2": "Elvish",
+                                "1": "Friendster"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like being unfriended on Twitter, but with more incense and Dothraki.",
+                            "alternative_words": {
+                                "2": "Dothraki",
+                                "1": "Twitter"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like being unfriended on Snapchat, but with more incense and Esperanto.",
+                            "alternative_words": {
+                                "2": "Esperanto",
+                                "1": "Snapchat"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like being unfriended on Farmville, but with more incense and Pig Latin.",
+                            "alternative_words": {
+                                "2": "Pig Latin",
+                                "1": "Farmville"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "It's like being unfriended on MySpace, but with more incense and Klingon.",
+                                "alternative_words": {
+                                    "2": "Klingon",
+                                    "1": "MySpace"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            },
+                            {
+                                "analogy": "It's like being unfriended on Friendster, but with more incense and Elvish.",
+                                "alternative_words": {
+                                    "2": "Elvish",
+                                    "1": "Friendster"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 1,
+                    "original_analogy": "The {3}'s fall from grace reads like a {4} novel written by {5} while high on communion wine.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "The soccer coach's fall from grace reads like a J.K. Rowling novel written by Alex Jones while high on communion wine.",
+                            "alternative_words": {
+                                "4": "J.K. Rowling",
+                                "3": "soccer coach",
+                                "5": "Alex Jones"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "The head chef's fall from grace reads like a Stephen King novel written by Nostradamus while high on communion wine.",
+                            "alternative_words": {
+                                "4": "Stephen King",
+                                "3": "head chef",
+                                "5": "Nostradamus"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "The pirate captain's fall from grace reads like a George R.R. Martin novel written by Elon Musk while high on communion wine.",
+                            "alternative_words": {
+                                "4": "George R.R. Martin",
+                                "3": "pirate captain",
+                                "5": "Elon Musk"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "The zoo director's fall from grace reads like a Dr. Seuss novel written by Bigfoot while high on communion wine.",
+                            "alternative_words": {
+                                "4": "Dr. Seuss",
+                                "3": "zoo director",
+                                "5": "Bigfoot"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "The rollercoaster operator's fall from grace reads like a Stephenie Meyer novel written by The Loch Ness Monster while high on communion wine.",
+                            "alternative_words": {
+                                "4": "Stephenie Meyer",
+                                "3": "rollercoaster operator",
+                                "5": "The Loch Ness Monster"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 22,
+                            "similarity_score": 2,
+                            "adjusted_score": 20
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "The soccer coach's fall from grace reads like a J.K. Rowling novel written by Alex Jones while high on communion wine.",
+                                "alternative_words": {
+                                    "4": "J.K. Rowling",
+                                    "3": "soccer coach",
+                                    "5": "Alex Jones"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 2,
+                                "adjusted_score": 22
+                            },
+                            {
+                                "analogy": "The head chef's fall from grace reads like a Stephen King novel written by Nostradamus while high on communion wine.",
+                                "alternative_words": {
+                                    "4": "Stephen King",
+                                    "3": "head chef",
+                                    "5": "Nostradamus"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 2,
+                                "adjusted_score": 22
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 2,
+                    "original_analogy": "It's like a spiritual version of '{6},' only with more {7} and fewer plastic surgery mishaps.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "It's like a spiritual version of 'Survivor,' only with more pajamas and fewer plastic surgery mishaps.",
+                            "alternative_words": {
+                                "7": "pajamas",
+                                "6": "Survivor"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a spiritual version of 'The Bachelor,' only with more tuxedos and fewer plastic surgery mishaps.",
+                            "alternative_words": {
+                                "7": "tuxedos",
+                                "6": "The Bachelor"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a spiritual version of 'Keeping Up with the Kardashians,' only with more superhero capes and fewer plastic surgery mishaps.",
+                            "alternative_words": {
+                                "7": "superhero capes",
+                                "6": "Keeping Up with the Kardashians"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a spiritual version of 'The Office,' only with more hazmat suits and fewer plastic surgery mishaps.",
+                            "alternative_words": {
+                                "7": "hazmat suits",
+                                "6": "The Office"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a spiritual version of 'Stranger Things,' only with more snuggies and fewer plastic surgery mishaps.",
+                            "alternative_words": {
+                                "7": "snuggies",
+                                "6": "Stranger Things"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "It's like a spiritual version of 'Survivor,' only with more pajamas and fewer plastic surgery mishaps.",
+                                "alternative_words": {
+                                    "7": "pajamas",
+                                    "6": "Survivor"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 3,
+                                "adjusted_score": 18
+                            },
+                            {
+                                "analogy": "It's like a spiritual version of 'The Bachelor,' only with more tuxedos and fewer plastic surgery mishaps.",
+                                "alternative_words": {
+                                    "7": "tuxedos",
+                                    "6": "The Bachelor"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 3,
+                                "adjusted_score": 18
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "Elvish",
+                    "Klingon"
+                ],
+                [
+                    "MySpace",
+                    "Friendster"
+                ],
+                [
+                    "J.K. Rowling",
+                    "Stephen King"
+                ],
+                [
+                    "soccer coach",
+                    "head chef"
+                ],
+                [
+                    "Nostradamus",
+                    "Alex Jones"
+                ],
+                [
+                    "tuxedos",
+                    "pajamas"
+                ],
+                [
+                    "Survivor",
+                    "The Bachelor"
+                ]
+            ],
+            "six_word_story": "Vatican excommunicates archbishop for schism."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a move that has sent shockwaves through the astral plane, the Vatican has finally decided to play its trump card in the cosmic game of ecclesiastical whack-a-mole. Archbishop Carlo Maria Vigano, the self-proclaimed Prophet of Paranoia and Grandmaster of the Great Reset Resistance, has been unceremoniously yeeted into the void of excommunication.\n\nPicture, if you will, a scene straight out of a Hieronymus Bosch painting meets 'The Matrix': Pope Francis, resplendent in his papal robes (which, in this fever dream, are actually made of shimmering binary code), stands atop the Sistine Chapel. With a wave of his infallible hand, he opens a swirling vortex of Canon Law, into which the howling form of Vigano is sucked, his cries of \"false prophet\" and \"servant of Satan\" echoing into the infinite.\n\nBut wait! What's this? As Vigano spirals into the abyss, he transforms \u2013 in true hallucinogenic fashion \u2013 into a giant Twitter bird, squawking conspiracy theories and raining down a hailstorm of red pills upon the faithful below. The Pope, ever the technophile, whips out his celestial smartphone (running on 6G, naturally) and with a simple \"block and report\" action, seals the portal shut.\n\nMeanwhile, in an alternate dimension where every Catholic reform since 1054 has been a fever dream, Vigano finds himself the supreme pontiff of a flat Earth, where masks are made of communion wafers and social distancing is measured in rosary beads. His flock? A ragtag band of sentient stones, fulfilling his prophetic call for even the rocks to cry out. Their rallying cry? \"Make Catholicism Paleolithic Again!\"\n\nBack in our reality (or is it?), the Vatican's statement on Vigano's excommunication reads like a theological version of a breakup text: \"It's not me, it's you. Actually, it's definitely you. Don't call us, we'll call you (but we won't).\" The charges of schism hang in the air like incense at a rave, heady and disorienting.\n\nAs news of Vigano's banishment spreads, a new cryptocurrency \u2013 VatiCoin \u2013 suddenly appears on the market, its value fluctuating wildly with each conspiracy theory the ex-archbishop tweets from his bunker. Rumors swirl that Vigano has taken up residence in a secret moon base, where he's busy drafting his magnum opus: \"50 Shades of Schism: A Love Story.\"\n\nIn a final twist that would make Dan Brown reach for his tinfoil hat, anonymous sources claim that Vigano's excommunication was actually orchestrated by a cabal of AI-powered Swiss Guards, their neural networks having determined that the archbishop's brand of chaos was simply too analog for the digital age.\n\nAs the dust settles on this ecclesiastical earthquake, one can't help but wonder: in the grand cosmic joke that is organized religion in the 21st century, who exactly is laughing? Is it Pope Francis, as he swipes left on yet another ultra-conservative notification? Is it Vigano, giggling maniacally as he plummets through layers of theological absurdity? Or is it us, the bemused spectators, watching as the lines between faith, farce, and Facebook become ever more blurred?\n\nOne thing's for certain: in the Vatican's latest season of \"Papal Housewives of Rome,\" the drama is divine, the stakes are eternal, and the memes are immaculate. Amen, and pass the popcorn.",
+            "headline": "Vatican's Celestial Purge: Rogue Archbishop Blasted into Theological Black Hole",
+            "explanation": "The analogies in this satirical column are highly effective due to their vivid imagery, humor, and relevance to contemporary issues. They juxtapose religious authority with modern technology and cultural references, creating a striking contrast that enhances the absurdity of the situation. Each analogy serves to amplify the satirical tone, making the commentary on the Vatican's actions both entertaining and thought-provoking. The use of fantastical elements, such as celestial smartphones and a flat Earth pontiff, adds originality and flair, capturing the reader's imagination while critiquing the subject matter.",
+            "analogy_1": "a scene straight out of a Hieronymus Bosch painting meets 'The Matrix'",
+            "analogy_2": "theological version of a breakup text: \"It's not me, it's you. Actually, it's definitely you. Don't call us, we'll call you (but we won't)\"",
+            "analogy_3": "Papal Housewives of Rome",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "a scene straight out of a Hieronymus Bosch painting meets 'The Matrix'",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 8,
+                    "total_score": 23
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "theological version of a breakup text: \"It's not me, it's you. Actually, it's definitely you. Don't call us, we'll call you (but we won't)\"",
+                    "humor_score": 8,
+                    "originality_score": 9,
+                    "bite_score": 8,
+                    "total_score": 25
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "Papal Housewives of Rome",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 5,
+                    "total_score": 18
+                }
+            ],
+            "total_set_score": 66
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "In a stunning turn of events that has rocked the gilded halls of the Vatican and sent shockwaves through the conspiracy theory community, Archbishop Carlo Maria Vigano has been unceremoniously shown the pearly gates - from the outside. The 83-year-old renegade clergyman, who had been playing an ecclesiastical game of hide-and-seek since 2018, has finally been caught by the long arm of canon law and slapped with an excommunication order that would make even Galileo wince.\n\nVigano, who once held the esteemed position of Vatican's ambassador to the US (a job that presumably involved explaining why Jesus would have voted Republican), decided to trade in his mitre for a tinfoil hat. He burst onto the scene like a theological supernova, accusing Pope Francis of being a \"servant of Satan\" - a title usually reserved for televangelists and people who talk in movie theaters.\n\nBut Vigano didn't stop there. Oh no, he went full Da Vinci Code, diving headfirst into the murky waters of conspiracy theories with the grace of a drunken pelican. The coronavirus pandemic? Just a \"Great Reset,\" obviously. The Catholic Church's efforts to modernize? Clearly the work of the Illuminati, or worse, millennials.\n\nOne can only imagine the scene at the Vatican as they deliberated over Vigano's fate. Picture, if you will, a room full of cardinals, their robes rustling with righteous indignation, as they pore over Vigano's latest X posts like a conclave of divine social media managers. \"He said WHAT about the Pope?\" one gasps, clutching his rosary. \"And he used a GIF? Oh, the humanity!\"\n\nThe Vatican's statement, dry as communion wafers, accused Vigano of the \"reserved delict of schism.\" For those of us not versed in Vatican legalese, this is essentially the theological equivalent of being voted off the island on \"Survivor: Holy See Edition.\"\n\nBut fear not for our intrepid archbishop! Like a Catholic Jack Sparrow, Vigano seems to revel in his outlaw status. From his secret hideout (rumored to be either a bunker deep beneath the Vatican or a particularly spacious confessional in New Jersey), he continues to rail against the \"inclusive, immigrationist, eco-sustainable, and gay-friendly\" church. Because nothing says \"following Jesus\" quite like opposing inclusivity and environmental stewardship, am I right?\n\nAs news of the excommunication spread, conservative Catholics rallied around their fallen hero. Vigano, ever the showman, dramatically quoted Jesus on X (formerly Twitter, or as Vigano probably calls it, \"The Devil's Megaphone\"): \"If they keep quiet, the stones themselves will start shouting.\" One can only assume he's hoping for a miracle where actual rocks start tweeting his conspiracy theories.\n\nIn response, Pope Francis was heard to mutter, \"I'm getting too old for this schism,\" before returning to his latest encyclical on why God loves electric cars.\n\nAs for Vigano, he faces a future without the comfort of communion wafers or the thrill of confession. But fear not for this plucky octogenarian! Word on the street is he's already planning his next move - a Netflix documentary series titled \"The Real Housewives of the Holy See.\" \n\nIn the end, we're left to ponder the profound theological questions raised by this saga. Questions like: Is excommunication covered by Vatican health insurance? Does this mean Vigano has to return his \"World's Best Archbishop\" mug? And most importantly, in the grand scheme of things, wouldn't it have been easier for everyone if he'd just started a blog?\n\nAs we wait for answers, one thing is certain: in the eternal battle between tradition and progress, between conspiracy and reality, between tweeting and not tweeting, the Catholic Church has made its stance clear. And Carlo Maria Vigano? Well, he's left to contemplate the irony of a man who sought to excommunicate a Pope, only to find himself on the business end of a holy boot. Amen, and pass the popcorn.",
+            "headline": "Vatican's Heavenly Housekeeping: Exorcising the Excommunicated Archbishop",
+            "explanation": "The analogies in this satirical column effectively use humor and vivid imagery to convey the absurdity of the situation surrounding Archbishop Vigano's excommunication. They draw connections between religious themes and modern cultural references, making the satire relatable and entertaining. The playful comparisons enhance the overall comedic tone of the piece, while also critiquing the actions and beliefs of Vigano and the Vatican.",
+            "analogy_1": "like a theological supernova",
+            "analogy_2": "theological equivalent of being voted off the island on 'Survivor: Holy See Edition'",
+            "analogy_3": "like a Catholic Jack Sparrow",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "like a theological supernova",
+                    "humor_score": 6,
+                    "originality_score": 7,
+                    "bite_score": 6,
+                    "total_score": 19
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "theological equivalent of being voted off the island on 'Survivor: Holy See Edition'",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 9,
+                    "total_score": 26
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "like a Catholic Jack Sparrow",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 5,
+                    "total_score": 18
+                }
+            ],
+            "total_set_score": 63
+        }
+    ]
+}

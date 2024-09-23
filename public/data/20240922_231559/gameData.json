@@ -1,0 +1,501 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a desperate attempt to bolster its dwindling ranks, the British Army has decided to lower its standards faster than a politician's morals during a expenses scandal. Defence Secretary John Healey, in a move that can only be described as 'scraping the bottom of the barrel with a rusty spoon', has announced that asthmatics and acne sufferers will now be welcomed into the hallowed halls of Her Majesty's Armed Forces.\n\nPicture it: the future face of British military might - a squadron of wheezing soldiers, their faces a topographical map of adolescent angst, clutching inhalers instead of rifles. The enemy won't know whether to surrender or offer them a tube of Clearasil.\n\nBut wait, there's more! In a stroke of genius that would make Sun Tzu weep into his copy of 'The Art of War', Healey is also recruiting gamers for a new cyber defence initiative. Because nothing says 'national security' quite like a bunch of energy drink-fueled insomniacs who think 'touching grass' is a power-up in Fortnite.\n\n\"If you are a top gamer - your country needs you,\" Healey proclaimed, presumably while trying to figure out which end of an Xbox controller to speak into. One can only imagine the rigorous training regimen: 18-hour Call of Duty marathons, punctuated by furious bouts of teabagging and screaming obscenities at 12-year-olds.\n\nThe Army, now at its smallest size in 200 years, is clearly taking the 'quality over quantity' approach and redefining both 'quality' and 'quantity' in the process. Soon, our military bases will be indistinguishable from the average university dorm - a miasma of Lynx body spray, prescription medications, and the faint glow of computer screens illuminating pale, unmotivated faces.\n\nBut let's not be too hasty in our judgment. After all, in the age of drone warfare, perhaps having soldiers who can barely run a mile without collapsing into an asthmatic heap isn't such a bad thing. And those acne-ridden faces? Perfect camouflage for nighttime operations. As for the gamers, well, at least they're used to losing repeatedly and respawning - a skill that might come in handy given the state of our military equipment.\n\nIn related news, the Navy is considering recruiting fish to boost its submarine crews, while the RAF is in talks with several flocks of pigeons to fill its pilot shortage. \n\nSo sleep soundly, Britain. Your defence is in the hands of the wheezing, the spotty, and the perpetually online. God save the Queen - because it's clear nobody else will.",
+            "headline": "Britain's New Army: Wheezing, Spotty, and Ready for Cyber Warfare",
+            "explanation": "The analogies in this satirical column are effective because they combine humor with vivid imagery, painting a ludicrous picture of the British Army's recruitment strategy. They highlight the absurdity of lowering military standards while simultaneously poking fun at societal stereotypes, such as gamers and acne sufferers. The analogies engage the reader's imagination, making the satire more impactful and entertaining.",
+            "analogy_1": "'scraping the bottom of the barrel with a rusty spoon'",
+            "analogy_2": "'a squadron of wheezing soldiers, their faces a topographical map of adolescent angst'",
+            "analogy_3": "'nothing says 'national security' quite like a bunch of energy drink-fueled insomniacs who think 'touching grass' is a power-up in Fortnite.'",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "'scraping the bottom of the barrel with a rusty spoon'",
+                    "humor_score": 8,
+                    "originality_score": 6,
+                    "bite_score": 7,
+                    "total_score": 21
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of adolescent angst'",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 8,
+                    "total_score": 25
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "'nothing says 'national security' quite like a bunch of energy drink-fueled insomniacs who think 'touching grass' is a power-up in Fortnite.'",
+                    "humor_score": 10,
+                    "originality_score": 9,
+                    "bite_score": 9,
+                    "total_score": 28
+                }
+            ],
+            "total_set_score": 74,
+            "labelled_analogies": [
+                "'scraping the bottom of the barrel with a {{rusty spoon}}'",
+                "'a squadron of wheezing soldiers, their faces a topographical map of {{adolescent angst}}'",
+                "'nothing says 'national security' quite like a bunch of {{energy drink-fueled}} insomniacs who think 'touching grass' is a power-up in {{Fortnite}}.'"
+            ],
+            "processed_analogies": [
+                "'scraping the bottom of the barrel with a {1}'",
+                "'a squadron of wheezing soldiers, their faces a topographical map of {2}'",
+                "'nothing says 'national security' quite like a bunch of {3} insomniacs who think 'touching grass' is a power-up in {4}.'"
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "rusty spoon"
+                },
+                {
+                    "id": 2,
+                    "answer": "adolescent angst"
+                },
+                {
+                    "id": 3,
+                    "answer": "energy drink-fueled"
+                },
+                {
+                    "id": 4,
+                    "answer": "Fortnite"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "'scraping the bottom of the barrel with a {1}'",
+                    "alternative_sets": [
+                        {
+                            "analogy": "'scraping the bottom of the barrel with a haunted butterknife'",
+                            "alternative_words": {
+                                "1": "haunted butterknife"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 7,
+                                "bite_score": 8
+                            },
+                            "total_score": 24,
+                            "similarity_score": 1,
+                            "adjusted_score": 23
+                        },
+                        {
+                            "analogy": "'scraping the bottom of the barrel with a vintage corkscrew'",
+                            "alternative_words": {
+                                "1": "vintage corkscrew"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "'scraping the bottom of the barrel with a ancient spork'",
+                            "alternative_words": {
+                                "1": "ancient spork"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "'scraping the bottom of the barrel with a diamond-encrusted ladle'",
+                            "alternative_words": {
+                                "1": "diamond-encrusted ladle"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 2,
+                            "adjusted_score": 19
+                        },
+                        {
+                            "analogy": "'scraping the bottom of the barrel with a golden spatula'",
+                            "alternative_words": {
+                                "1": "golden spatula"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 5
+                            },
+                            "total_score": 18,
+                            "similarity_score": 2,
+                            "adjusted_score": 16
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "'scraping the bottom of the barrel with a haunted butterknife'",
+                                "alternative_words": {
+                                    "1": "haunted butterknife"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 7,
+                                    "bite_score": 8
+                                },
+                                "total_score": 24,
+                                "similarity_score": 1,
+                                "adjusted_score": 23
+                            },
+                            {
+                                "analogy": "'scraping the bottom of the barrel with a vintage corkscrew'",
+                                "alternative_words": {
+                                    "1": "vintage corkscrew"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 1,
+                    "original_analogy": "'a squadron of wheezing soldiers, their faces a topographical map of {2}'",
+                    "alternative_sets": [
+                        {
+                            "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of midlife crisis'",
+                            "alternative_words": {
+                                "2": "midlife crisis"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of quarter-life quandary'",
+                            "alternative_words": {
+                                "2": "quarter-life quandary"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 6,
+                                "bite_score": 7
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of senior citizen shenanigans'",
+                            "alternative_words": {
+                                "2": "senior citizen shenanigans"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of toddler tantrum'",
+                            "alternative_words": {
+                                "2": "toddler tantrum"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of existential dread'",
+                            "alternative_words": {
+                                "2": "existential dread"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 6,
+                                "bite_score": 7
+                            },
+                            "total_score": 21,
+                            "similarity_score": 3,
+                            "adjusted_score": 18
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of midlife crisis'",
+                                "alternative_words": {
+                                    "2": "midlife crisis"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 3,
+                                "adjusted_score": 21
+                            },
+                            {
+                                "analogy": "'a squadron of wheezing soldiers, their faces a topographical map of quarter-life quandary'",
+                                "alternative_words": {
+                                    "2": "quarter-life quandary"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 6,
+                                    "bite_score": 7
+                                },
+                                "total_score": 21,
+                                "similarity_score": 3,
+                                "adjusted_score": 18
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 2,
+                    "original_analogy": "'nothing says 'national security' quite like a bunch of {3} insomniacs who think 'touching grass' is a power-up in {4}.'",
+                    "alternative_sets": [
+                        {
+                            "analogy": "'nothing says 'national security' quite like a bunch of kombucha-boosted insomniacs who think 'touching grass' is a power-up in Pong showdown.'",
+                            "alternative_words": {
+                                "4": "Pong showdown",
+                                "3": "kombucha-boosted"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 4,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "'nothing says 'national security' quite like a bunch of espresso-infused insomniacs who think 'touching grass' is a power-up in chess tournament.'",
+                            "alternative_words": {
+                                "4": "chess tournament",
+                                "3": "espresso-infused"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 4,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "'nothing says 'national security' quite like a bunch of sugar rush-powered insomniacs who think 'touching grass' is a power-up in Dungeons & Dragons session.'",
+                            "alternative_words": {
+                                "4": "Dungeons & Dragons session",
+                                "3": "sugar rush-powered"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 4,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "'nothing says 'national security' quite like a bunch of green tea-charged insomniacs who think 'touching grass' is a power-up in Tetris marathon.'",
+                            "alternative_words": {
+                                "4": "Tetris marathon",
+                                "3": "green tea-charged"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 4,
+                            "adjusted_score": 17
+                        },
+                        {
+                            "analogy": "'nothing says 'national security' quite like a bunch of caffeinated chaos insomniacs who think 'touching grass' is a power-up in Minesweeper bonanza.'",
+                            "alternative_words": {
+                                "4": "Minesweeper bonanza",
+                                "3": "caffeinated chaos"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 4,
+                            "adjusted_score": 17
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "'nothing says 'national security' quite like a bunch of kombucha-boosted insomniacs who think 'touching grass' is a power-up in Pong showdown.'",
+                                "alternative_words": {
+                                    "4": "Pong showdown",
+                                    "3": "kombucha-boosted"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 4,
+                                "adjusted_score": 20
+                            },
+                            {
+                                "analogy": "'nothing says 'national security' quite like a bunch of espresso-infused insomniacs who think 'touching grass' is a power-up in chess tournament.'",
+                                "alternative_words": {
+                                    "4": "chess tournament",
+                                    "3": "espresso-infused"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 4,
+                                "adjusted_score": 17
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "haunted butterknife",
+                    "vintage corkscrew"
+                ],
+                [
+                    "quarter-life quandary",
+                    "midlife crisis"
+                ],
+                [
+                    "chess tournament",
+                    "Pong showdown"
+                ],
+                [
+                    "espresso-infused",
+                    "kombucha-boosted"
+                ]
+            ],
+            "six_word_story": "Asthma, acne restrictions lifted for recruitment."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a dazzling display of military metamorphosis, Britain's armed forces are set to undergo a transformation so profound, it would make Kafka's cockroach blush. Defence Secretary John Healey, clearly inspired by a marathon viewing of \"Revenge of the Nerds,\" has decreed that the once-hallowed halls of Her Majesty's military shall now welcome the wheezing, the spotty, and the perpetually pixelated.\n\nPicture, if you will, the new face of British warfare: A battalion of asthmatic commandos, wheezing their way across the battlefield, their inhalers glinting in the sun like deadly weapons. \"The enemy won't hear us coming!\" wheezes Private Puffer, as he struggles to scale a six-inch wall. Meanwhile, the Acne Artillery takes up position, their biological warfare capabilities unmatched as they threaten to unleash a barrage of sebum upon unsuspecting foes.\n\nBut wait! The pi\u00e8ce de r\u00e9sistance in this carnival of martial madness is the recruitment of gamers into the cyber defence initiative. One can almost hear the clarion call: \"Attention, basement dwellers and energy drink enthusiasts! Your country needs YOU... and your carpal tunnel syndrome!\" \n\nImagine the scene at RAF Couch Potato, where Wing Commander XxX_N00bSlayer_XxX briefs his squadron on the day's mission. \"Gentlemen, today we infiltrate the enemy's Minecraft server and build a giant Union Jack. Failure is not an option, but respawning is.\"\n\nIn this brave new world of inclusive incompetence, the Ministry of Defence has taken a page from Douglas Adams' Golgafrinchans, deciding that if you can't beat them, recruit them. One can only assume that the next logical step will be the formation of the Royal Regiment of Interpretive Dancers and the Queen's Own Existential Philosophy Corps.\n\nAs we stand on the precipice of this new era, one can't help but wonder: Is this the dawn of a more inclusive, diverse fighting force, or simply the most elaborate game of \"The Emperor's New Clothes\" ever staged? Only time will tell if this motley crew of misfits will rise to the occasion or if we'll soon be seeing recruitment posters asking, \"Have you considered surrendering for Queen and country?\"\n\nIn the meantime, let us raise a glass (of Lucozade, naturally) to the future defenders of the realm. May their acne clear, their asthma subside, and their Kill/Death ratios remain ever in their favor. For in this topsy-turvy world where war games become war games, we can only hope that the next time someone says \"Britain's military is a joke,\" they'll mean it as a compliment.",
+            "headline": "From Call of Duty to Calls of Nature: Britain's New Military Might",
+            "explanation": "The analogies in this satirical column are effective in creating vivid, humorous imagery that critiques the state of Britain's military by comparing it to absurd scenarios and characters. They highlight the absurdity of the situation and bring a sense of levity, making the criticism more palatable and entertaining. The analogies work particularly well as they resonate with contemporary culture, using references from gaming and pop culture to draw parallels with military life, thus making the satire relatable and engaging.",
+            "analogy_1": "it would make Kafka's cockroach blush",
+            "analogy_2": "their inhalers glinting in the sun like deadly weapons",
+            "analogy_3": "the Royal Regiment of Interpretive Dancers and the Queen's Own Existential Philosophy Corps",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "it would make Kafka's cockroach blush",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 6,
+                    "total_score": 21
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "their inhalers glinting in the sun like deadly weapons",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 7,
+                    "total_score": 22
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "the Royal Regiment of Interpretive Dancers and the Queen's Own Existential Philosophy Corps",
+                    "humor_score": 9,
+                    "originality_score": 10,
+                    "bite_score": 8,
+                    "total_score": 27
+                }
+            ],
+            "total_set_score": 70
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "In a stunning turn of events that would make even the most battle-hardened sergeant major weep into his regulation-issue handkerchief, the British Army has decided to lower its standards faster than a recruiter's expectations at a vegan music festival. \n\nDefence Secretary John Healey, in a move that can only be described as 'scraping the bottom of the barrel with a rusty bayonet,' has declared that individuals suffering from asthma and severe acne will now be welcomed into the ranks with open, possibly wheezing, arms.\n\nAs I sit here, nursing my third cup of Earl Grey and contemplating the dire state of our nation's defenses, I can't help but imagine the future of warfare. Picture, if you will, a battalion of spots and wheezes, armed to the teeth with inhalers and Clearasil, marching bravely into battle. The enemy, no doubt, will be paralyzed with fear at the sight of our pimply heroes, their acne gleaming like beacons of freedom in the harsh desert sun.\n\nBut wait, dear readers, there's more! In a twist that would make George Orwell spin in his grave fast enough to power a small village, Healey has also set his sights on recruiting the nation's finest gamers. Yes, you read that correctly. The same individuals who have honed their skills by virtually tea-bagging their opponents in Call of Duty are now being called upon to defend the realm.\n\nOne can only imagine the rigorous training regimen these digital warriors will endure. Perhaps they'll be subjected to grueling 48-hour energy drink-fueled gaming marathons, or forced to navigate treacherous obstacle courses littered with discarded pizza boxes and empty crisp packets. The mind boggles at the possibilities.\n\nAs I ponder this brave new world of military might, I can't help but wonder if we've stumbled into some sort of Monty Python sketch. Will our new cyber defense initiative be led by a general with a particularly impressive Fortnite kill-death ratio? Will promotions be based on one's ability to speed-run Dark Souls?\n\nBut let us not be too hasty in our judgment, dear readers. After all, in this age of drone warfare and cyber attacks, perhaps the ability to repel a Zerg rush in Starcraft is more valuable than being able to do a proper push-up. And who knows? Maybe those years of battling acne have instilled in our spotty recruits a resilience that will serve them well on the battlefield.\n\nAs for the asthmatics, well, they say the best defense is a good offense. And what could be more offensive than a platoon wheezing in perfect unison? The psychological warfare potential alone is staggering.\n\nIn conclusion, as we march boldly into this brave new era of British military might, I can't help but feel a sense of pride. For in embracing our nation's wheezers, spottys, and basement-dwelling button-mashers, we are truly embodying the spirit of inclusivity. And if that doesn't strike fear into the hearts of our enemies, I don't know what will.\n\nNow, if you'll excuse me, I need to go polish my Xbox controller. You know, for Queen and country.",
+            "headline": "Acne-Riddled Gamers: Britain's New Line of Defense",
+            "explanation": "The analogies used in this satirical column effectively highlight the absurdity of the British Army's new recruitment standards by comparing the recruits' conditions and backgrounds to comical and exaggerated scenarios. They draw vivid imagery that contrasts the seriousness of military service with the triviality of gaming culture, thereby emphasizing the satire. These analogies serve to entertain while also provoking thought about the state of military recruitment and the changing nature of warfare.",
+            "analogy_1": "scraping the bottom of the barrel with a rusty bayonet",
+            "analogy_2": "a battalion of spots and wheezes, armed to the teeth with inhalers and Clearasil",
+            "analogy_3": "the same individuals who have honed their skills by virtually tea-bagging their opponents in Call of Duty are now being called upon to defend the realm.",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "scraping the bottom of the barrel with a rusty bayonet",
+                    "humor_score": 7,
+                    "originality_score": 5,
+                    "bite_score": 8,
+                    "total_score": 20
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "a battalion of spots and wheezes, armed to the teeth with inhalers and Clearasil",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 24
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "the same individuals who have honed their skills by virtually tea-bagging their opponents in Call of Duty are now being called upon to defend the realm.",
+                    "humor_score": 10,
+                    "originality_score": 9,
+                    "bite_score": 9,
+                    "total_score": 28
+                }
+            ],
+            "total_set_score": 72
+        }
+    ]
+}
