@@ -9,7 +9,7 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
       const parts = analogy.split(/(\{\d+\})/g); // Split analogy text where gaps are defined
 
       return (
-        <p key={idx}>
+        <div key={idx} className="analogy-box">
           {parts.map((part, index) => {
             const match = part.match(/\{(\d+)\}/);
             if (match) {
@@ -27,8 +27,9 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
             }
             return <span key={`${idx}-${index}`}>{part}</span>; // Render normal text parts
           })}
-        </p>
+        </div>
       );
+      
     })}
   </div>
 );

@@ -16,6 +16,17 @@
   }
 }
 
+/* Add box styling around each analogy */
+.analogy-box {
+  border: 2px solid #007bff; /* Adds a blue border around the analogy */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding inside the box */
+  margin-bottom: 15px; /* Space between analogy boxes */
+  background-color: #f9f9f9; /* Light background for better visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

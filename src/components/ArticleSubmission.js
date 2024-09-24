@@ -1,17 +1,47 @@
-import React, { useState } from 'react';
+// src/components/ArticleSubmission.js
+
+import React, { useState, useEffect } from 'react';
 
 const ArticleSubmission = () => {
   const [article, setArticle] = useState('');
   const [response, setResponse] = useState(null);
   const [jobId, setJobId] = useState(null);
 
+  // New state variables
+  const [sourceFolder, setSourceFolder] = useState('');
+  const [destFolder, setDestFolder] = useState('');
+  const [password, setPassword] = useState('');
+  const [recentFolders, setRecentFolders] = useState([]);
+  const destFolders = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
+
+  // Fetch recent folders from the backend when the component mounts
+  useEffect(() => {
+    const fetchRecentFolders = async () => {
+      try {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'; // Fallback to localhost for development
+        const res = await fetch(`${backendUrl}/get-recent-folders`);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+        setRecentFolders(data.folders);
+      } catch (error) {
+        console.error('Error fetching recent folders:', error);
+        alert('Failed to fetch recent folders.');
+      }
+    };
+
+    fetchRecentFolders();
+  }, []);
+
   const checkStatus = async (jobId) => {
     try {
-      const res = await fetch(`https://scaling-potato-4j7q9gw4jjq6cpxr-5000.app.github.dev/check-status/${jobId}`);
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/check-status/${jobId}`);
       const data = await res.json();
       if (data.status === 'complete') {
         const timestamp = data.timestamp;
-        const gameUrl = `https://frankwalter2.github.io/alternative-facts-game/?test=${timestamp}`;
+        const gameUrl = `https://frankwalter2.github.io/alternative-facts-game-2/?test=${timestamp}`;
         setResponse({ message: 'Article processing complete', gameUrl: gameUrl });
       } else if (data.status === 'failed') {
         setResponse({ error: `Processing failed: ${data.error}` });
@@ -29,7 +59,8 @@ const ArticleSubmission = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://scaling-potato-4j7q9gw4jjq6cpxr-5000.app.github.dev/process-article', {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/process-article`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,23 +69,60 @@ const ArticleSubmission = () => {
       });
 
       if (!res.ok) {
-        const errorText = await res.text();  // Capture the error body
+        const errorText = await res.text(); // Capture the error body
         throw new Error(`HTTP error! status: ${res.status}, message: ${errorText}`);
       }
 
       const data = await res.json();
-      setJobId(data.job_id);  // Store job ID and start polling
-      checkStatus(data.job_id);  // Start polling for the result
-
+      setJobId(data.job_id); // Store job ID and start polling
+      checkStatus(data.job_id); // Start polling for the result
     } catch (error) {
       console.error('Error submitting article:', error);
       setResponse({ error: `Failed to process the article. ${error.message}` });
     }
   };
 
+  const handleMoveGameData = async () => {
+    if (!sourceFolder || !destFolder || !password) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/move-game-data`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sourceFolder, destFolder, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert('File moved successfully!');
+        // Optionally, refresh the recent folders list
+        setSourceFolder('');
+        setDestFolder('');
+        setPassword('');
+        // Re-fetch recent folders
+        const foldersRes = await fetch(`${backendUrl}/get-recent-folders`);
+        if (foldersRes.ok) {
+          const foldersData = await foldersRes.json();
+          setRecentFolders(foldersData.folders);
+        }
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Error moving game data:', error);
+      alert('An error occurred while moving the file.');
+    }
+  };
+
   return (
     <div>
       <h2>Submit an Article</h2>
+
       <form onSubmit={handleSubmit}>
         <textarea
           value={article}
@@ -89,6 +157,48 @@ const ArticleSubmission = () => {
           ) : null}
         </div>
       )}
+
+      <h2>Move GameData File</h2>
+      <div>
+        <label>
+          Source Folder:
+          <select value={sourceFolder} onChange={(e) => setSourceFolder(e.target.value)}>
+            <option value="">Select Source Folder</option>
+            {recentFolders.map((folder) => (
+              <option key={folder} value={folder}>
+                {folder}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>
+          Destination Folder:
+          <select value={destFolder} onChange={(e) => setDestFolder(e.target.value)}>
+            <option value="">Select Destination Folder</option>
+            {destFolders.map((folder) => (
+              <option key={folder} value={folder}>
+                {folder}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+          />
+        </label>
+      </div>
+      <button type="button" onClick={handleMoveGameData}>
+        Move GameData File
+      </button>
     </div>
   );
 };

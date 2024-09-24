@@ -33,15 +33,14 @@ function Game () {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    
-    // Get the "test" parameter from the URL, if available
-    const testDay = queryParams.get("test");
-    
-    // Use the day from the test parameter, or default to the current day of the month
-    const day = testDay ? parseInt(testDay, 10) : new Date().getDate();
 
-    // Build the path based on the day (either from test parameter or actual day of the month)
-    const dataPath = `${process.env.PUBLIC_URL}/data/${day}/gameData.json`;
+    // Get the "test" parameter from the URL, if available
+    const folderName = queryParams.get("test")
+        ? queryParams.get("test") // Use the test parameter verbatim
+        : new Date().getDate(); // If no test=, use the day of the month (1-31)
+
+    // Build the path using the folderName (either from test or day of the month)
+    const dataPath = `${process.env.PUBLIC_URL}/data/${folderName}/gameData.json`;
 
     console.log(`Trying to load data from: ${dataPath}`); // Debugging line
 
@@ -76,6 +75,7 @@ function Game () {
           });
       });
   }, []);
+
 
 
   const initializeColors = (data) => {
