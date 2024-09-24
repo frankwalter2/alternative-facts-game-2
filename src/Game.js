@@ -33,15 +33,18 @@ function Game () {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
+    
+    // Get the "test" parameter from the URL, if available
     const testDay = queryParams.get("test");
-  
-    // Use the full timestamp in the URL
-    const day = testDay ? testDay : new Date().toISOString().slice(0, 10).replace(/-/g, "");  // Default to today if no test param
-  
+    
+    // Use the day from the test parameter, or default to the current day of the month
+    const day = testDay ? parseInt(testDay, 10) : new Date().getDate();
+
+    // Build the path based on the day (either from test parameter or actual day of the month)
     const dataPath = `${process.env.PUBLIC_URL}/data/${day}/gameData.json`;
-  
+
     console.log(`Trying to load data from: ${dataPath}`); // Debugging line
-  
+
     fetch(dataPath)
       .then((response) => {
         if (!response.ok) {
@@ -56,11 +59,11 @@ function Game () {
       })
       .catch((error) => {
         console.error("Error loading daily game data:", error);
-  
-        // Fall back to default gameData.json
+
+        // If the daily file does not exist, fall back to the default data file
         const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
         console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
-  
+
         fetch(fallbackPath)
           .then((response) => response.json())
           .then((data) => {
@@ -73,7 +76,7 @@ function Game () {
           });
       });
   }, []);
-  
+
 
   const initializeColors = (data) => {
     if (data && data.results && data.results.length > 0) {
