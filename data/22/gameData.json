@@ -1,0 +1,449 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a stunning display of tone-deaf elitism that would make Marie Antoinette blush, Sir Keir Starmer and his merry band of champagne socialists have been caught with their designer trousers down. It seems our esteemed Prime Minister, who campaigned on being a man of the people, has been secretly playing dress-up with the help of wealthy donors. Because nothing says \"I understand the working class struggle\" quite like accepting \u00a316,000 worth of bespoke suits and spectacles.\n\nBut fear not, comrades! After realizing that perhaps, just perhaps, this might look a tad hypocritical, Starmer has magnanimously declared that he will no longer accept clothing donations. How brave! How noble! It's almost as if he's looked at the average Brit, shivering in their unheated homes, and thought, \"You know what? I'll buy my own bloody Paul Smith shirts from now on.\"\n\nOf course, let's not forget the dynamic duo of Angela Rayner and Rachel Reeves, who apparently needed a cool \u00a310,000 between them to look presentable in Parliament. One can only assume their previous outfits consisted of bin bags and discarded crisp packets. After all, who among us hasn't accepted thousands of pounds in designer clothing from wealthy benefactors? It's a rite of passage, like your first pint or your first time being priced out of the housing market.\n\nThe Labour leadership's defense? \"We don't want people to believe that we are living very different lives from them.\" Well, mission bloody accomplished, folks! Nothing says \"just like you\" quite like having a personal shopper on speed dial. I'm sure the single mother working three jobs to feed her kids will be relieved to know that her struggles are understood by someone wearing a suit that costs more than her annual heating bill.\n\nBut wait, there's more! Our dear leader, a self-professed Arsenal fan, has also been accepting free football tickets like they're going out of style. Apparently, it's a matter of security. Because nothing says \"man of the people\" quite like watching the beautiful game from a corporate box, sipping champagne while the plebs jostle for a glimpse of the pitch from the nosebleed seats.\n\nIn a final stroke of genius, Starmer defended his actions by saying he's \"not going to ask the taxpayer to indulge me.\" How considerate! Instead, he'll just let wealthy donors indulge him. It's like Robin Hood in reverse \u2013 steal from the rich to give to the slightly less rich, but very important, politicians.\n\nAs Labour heads to its conference in Liverpool, one can only imagine the scenes of solidarity with the working class. Picture it: Starmer, resplendent in his new Savile Row suit, passionately decrying inequality while sipping a \u00a315 craft beer. Rayner, draped in the finest M&S has to offer (paid for by Lord Moneybags), waxing lyrical about the struggles of Northern communities. And Reeves, wearing an outfit that costs more than the average monthly wage, explaining why we all need to tighten our belts.\n\nIn conclusion, dear readers, fear not. Our political leaders understand your pain. They see your struggles. They hear your concerns. And they're addressing them in the only way they know how \u2013 by dressing like the very elites they claim to stand against. After all, nothing says \"power to the people\" quite like power dressing on someone else's dime. Vive la r\u00e9volution! (Terms and conditions apply, batteries and integrity not included).",
+            "headline": "Starmer's Wardrobe Malfunction: Labour's New Clothes Expose Emperor's Nakedness",
+            "explanation": "The analogies in this satirical column effectively highlight the disconnect between the Labour leadership's elitist actions and the struggles of the working class, using humor and vivid imagery to make a strong political point.",
+            "analogy_1": "It's like Robin Hood in reverse \u2013 steal from the rich to give to the slightly less rich, but very important, politicians.",
+            "analogy_2": "Nothing says \"just like you\" quite like having a personal shopper on speed dial.",
+            "analogy_3": "Because nothing says \"man of the people\" quite like watching the beautiful game from a corporate box, sipping champagne while the plebs jostle for a glimpse of the pitch from the nosebleed seats.",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "It's like Robin Hood in reverse \u2013 steal from the rich to give to the slightly less rich, but very important, politicians.",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 9,
+                    "total_score": 24
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "Nothing says \"just like you\" quite like having a personal shopper on speed dial.",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 8,
+                    "total_score": 21
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "Because nothing says \"man of the people\" quite like watching the beautiful game from a corporate box, sipping champagne while the plebs jostle for a glimpse of the pitch from the nosebleed seats.",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 10,
+                    "total_score": 27
+                }
+            ],
+            "total_set_score": 72,
+            "labelled_analogies": [
+                "It's like {{Robin Hood}} in reverse \u2013 steal from the {{rich}} to give to the slightly less rich, but very {{important}} politicians.",
+                "Nothing says 'just like you' quite like having a {{personal shopper}} on speed dial.",
+                "Because nothing says 'man of the people' quite like watching the {{beautiful game}} from a {{corporate box}}, sipping champagne while the {{plebs}} jostle for a glimpse of the pitch from the {{nosebleed}} seats."
+            ],
+            "processed_analogies": [
+                "It's like {1} in reverse \u2013 steal from the {2} to give to the slightly less rich, but very {3} politicians.",
+                "Nothing says 'just like you' quite like having a {4} on speed dial.",
+                "Because nothing says 'man of the people' quite like watching the {5} from a {6}, sipping champagne while the {7} jostle for a glimpse of the pitch from the {8} seats."
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "Robin Hood"
+                },
+                {
+                    "id": 2,
+                    "answer": "rich"
+                },
+                {
+                    "id": 3,
+                    "answer": "important"
+                },
+                {
+                    "id": 4,
+                    "answer": "personal shopper"
+                },
+                {
+                    "id": 5,
+                    "answer": "beautiful game"
+                },
+                {
+                    "id": 6,
+                    "answer": "corporate box"
+                },
+                {
+                    "id": 7,
+                    "answer": "plebs"
+                },
+                {
+                    "id": 8,
+                    "answer": "nosebleed"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "It's like {1} in reverse \u2013 steal from the {2} to give to the slightly less rich, but very {3} politicians.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "It's like Santa Claus in reverse \u2013 steal from the filthy rich to give to the slightly less rich, but very high-stakes politicians.",
+                            "alternative_words": {
+                                "3": "high-stakes",
+                                "2": "filthy rich",
+                                "1": "Santa Claus"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 4,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like Batman in reverse \u2013 steal from the rolling in dough to give to the slightly less rich, but very life-or-death politicians.",
+                            "alternative_words": {
+                                "3": "life-or-death",
+                                "2": "rolling in dough",
+                                "1": "Batman"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 4,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like Sherlock Holmes in reverse \u2013 steal from the swimming in cash to give to the slightly less rich, but very mission-critical politicians.",
+                            "alternative_words": {
+                                "3": "mission-critical",
+                                "2": "swimming in cash",
+                                "1": "Sherlock Holmes"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 4,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like Indiana Jones in reverse \u2013 steal from the moneybags to give to the slightly less rich, but very make-or-break politicians.",
+                            "alternative_words": {
+                                "3": "make-or-break",
+                                "2": "moneybags",
+                                "1": "Indiana Jones"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 4,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "It's like James Bond in reverse \u2013 steal from the loaded to give to the slightly less rich, but very crucial politicians.",
+                            "alternative_words": {
+                                "3": "crucial",
+                                "2": "loaded",
+                                "1": "James Bond"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 8
+                            },
+                            "total_score": 21,
+                            "similarity_score": 4,
+                            "adjusted_score": 17
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "It's like Santa Claus in reverse \u2013 steal from the filthy rich to give to the slightly less rich, but very high-stakes politicians.",
+                                "alternative_words": {
+                                    "3": "high-stakes",
+                                    "2": "filthy rich",
+                                    "1": "Santa Claus"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 4,
+                                "adjusted_score": 20
+                            },
+                            {
+                                "analogy": "It's like Batman in reverse \u2013 steal from the rolling in dough to give to the slightly less rich, but very life-or-death politicians.",
+                                "alternative_words": {
+                                    "3": "life-or-death",
+                                    "2": "rolling in dough",
+                                    "1": "Batman"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 4,
+                                "adjusted_score": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 2,
+                    "original_analogy": "Because nothing says 'man of the people' quite like watching the {5} from a {6}, sipping champagne while the {7} jostle for a glimpse of the pitch from the {8} seats.",
+                    "alternative_sets": [
+                        {
+                            "analogy": "Because nothing says 'man of the people' quite like watching the ugly duckling sport from a VIP lounge, sipping champagne while the common folk jostle for a glimpse of the pitch from the altitude sickness seats.",
+                            "alternative_words": {
+                                "7": "common folk",
+                                "5": "ugly duckling sport",
+                                "8": "altitude sickness",
+                                "6": "VIP lounge"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "Because nothing says 'man of the people' quite like watching the noble pastime from a executive suite, sipping champagne while the peasants jostle for a glimpse of the pitch from the vertigo seats.",
+                            "alternative_words": {
+                                "7": "peasants",
+                                "5": "noble pastime",
+                                "8": "vertigo",
+                                "6": "executive suite"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "Because nothing says 'man of the people' quite like watching the glamorous competition from a luxury skybox, sipping champagne while the riffraff jostle for a glimpse of the pitch from the sky-high seats.",
+                            "alternative_words": {
+                                "7": "riffraff",
+                                "5": "glamorous competition",
+                                "8": "sky-high",
+                                "6": "luxury skybox"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "Because nothing says 'man of the people' quite like watching the high-stakes match from a platinum booth, sipping champagne while the hoi polloi jostle for a glimpse of the pitch from the dizzying height seats.",
+                            "alternative_words": {
+                                "7": "hoi polloi",
+                                "5": "high-stakes match",
+                                "8": "dizzying height",
+                                "6": "platinum booth"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "Because nothing says 'man of the people' quite like watching the ballerina's ballet from a opulence office, sipping champagne while the average Joes jostle for a glimpse of the pitch from the cloud nine seats.",
+                            "alternative_words": {
+                                "7": "average Joes",
+                                "5": "ballerina's ballet",
+                                "8": "cloud nine",
+                                "6": "opulence office"
+                            },
+                            "scores": {
+                                "originality_score": 7,
+                                "humor_score": 6,
+                                "bite_score": 8
+                            },
+                            "total_score": 21,
+                            "similarity_score": 6,
+                            "adjusted_score": 15
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "Because nothing says 'man of the people' quite like watching the ugly duckling sport from a VIP lounge, sipping champagne while the common folk jostle for a glimpse of the pitch from the altitude sickness seats.",
+                                "alternative_words": {
+                                    "7": "common folk",
+                                    "5": "ugly duckling sport",
+                                    "8": "altitude sickness",
+                                    "6": "VIP lounge"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 6,
+                                "adjusted_score": 18
+                            },
+                            {
+                                "analogy": "Because nothing says 'man of the people' quite like watching the noble pastime from a executive suite, sipping champagne while the peasants jostle for a glimpse of the pitch from the vertigo seats.",
+                                "alternative_words": {
+                                    "7": "peasants",
+                                    "5": "noble pastime",
+                                    "8": "vertigo",
+                                    "6": "executive suite"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 6,
+                                "adjusted_score": 18
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "high-stakes",
+                    "life-or-death"
+                ],
+                [
+                    "rolling in dough",
+                    "filthy rich"
+                ],
+                [
+                    "Santa Claus",
+                    "Batman"
+                ],
+                [
+                    "peasants",
+                    "common folk"
+                ],
+                [
+                    "noble pastime",
+                    "ugly duckling sport"
+                ],
+                [
+                    "altitude sickness",
+                    "vertigo"
+                ],
+                [
+                    "executive suite",
+                    "VIP lounge"
+                ]
+            ],
+            "six_word_story": "Labour leaders stop accepting clothing donations."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a dazzling display of political prestidigitation, our esteemed Prime Minister Sir Keir Starmer has decided to shed his donor-funded wardrobe faster than a chameleon in a kaleidoscope factory. It seems the Labour leader's closet has become a veritable Narnia of ethical conundrums, with every shirt button a potential portal to scandal.\n\nPicture, if you will, a world where politicians are suddenly struck by a cosmic ray of self-awareness. In this alternate reality, our illustrious leaders find themselves caught in a sartorial singularity, where the very fabric of their being is woven from the threads of wealthy benefactors' largesse. It's as if Bertolt Brecht and Coco Chanel had a love child, and that child grew up to write dystopian political fashion columns.\n\nBut fear not, dear readers! Our valiant PM, along with his merry band of well-dressed deputies, has decided to go cold turkey on the couture. No more shall Angela Rayner stride into Parliament looking like she's fresh off the catwalk of a socialist utopia. Gone are the days when Rachel Reeves could balance the nation's books while sporting a blazer that costs more than the average voter's monthly wage.\n\nIn this brave new world of fiscal fashion fasting, one can't help but wonder: Will we see Sir Keir foraging for secondhand suits in the back alleys of Islington? Perhaps Deputy PM Rayner will start a YouTube channel on \"How to Turn Your Red Flag into a Stunning Evening Gown.\" And let's not forget Chancellor Reeves, who might just revolutionize the economy by introducing a new currency based on vintage brooch trading.\n\nThe decision to renounce clothing donations is being hailed as a masterclass in political optics - or would be, if anyone could actually see our leaders now that they've shed their designer skins. It's as if they've collectively decided to become the Emperor with his new clothes, only in reverse. \"Look at how much we care about the common folk,\" they seem to cry, while frantically Googling \"how to darn socks\" and \"is it acceptable to wear a bin bag to PMQs?\"\n\nBut let us not be too hasty in our judgment. After all, is this not the very essence of democracy? Our leaders, stripped bare of their luxurious trappings, forced to face the harsh realities of retail like the rest of us plebeians. One can almost hear the collective gasp of horror as they discover the true cost of a Primark shirt or the existential crisis that is the Marks & Spencer's underwear section.\n\nIn this grand theatre of the absurd, we find ourselves wondering: Is this the dawn of a new era in British politics, where substance truly triumphs over style? Or are we witnessing the birth of a new form of political performance art, where our leaders compete to see who can look the most endearingly disheveled?\n\nAs we contemplate this brave new world of sartorial austerity, let us raise a toast (in chipped mugs, of course) to our leaders. May their newfound frugality inspire us all to reach for greater heights of ethical fashion. And if nothing else, at least we can look forward to a Parliament that looks less like a Savile Row showcase and more like a jumble sale at the local church.\n\nIn the immortal words of Shakespeare, slightly twisted for our purposes: \"The clothes oft proclaim the man.\" But in the case of our dear Labour leaders, it seems the lack thereof might just proclaim them louder still. Godspeed, you naked emperors of Westminster - may your moral fiber be as strong as the stitching on your now-relinquished designer suits.",
+            "headline": "Starmer's Sartorial Soir\u00e9e: When Clothes Make the Man (and Woman) Disappear",
+            "explanation": "The analogies in this satirical column are effective in emphasizing the absurdity and hypocrisy of political figures regarding their fashion choices and ethical responsibilities. They draw vivid comparisons that highlight the contrast between the leaders' previous lavish lifestyles and their new, purportedly humble approach to clothing. This not only adds humor but also encourages readers to reflect on the deeper implications of political optics and authenticity.",
+            "analogy_1": "shed his donor-funded wardrobe faster than a chameleon in a kaleidoscope factory",
+            "analogy_2": "caught in a sartorial singularity, where the very fabric of their being is woven from the threads of wealthy benefactors' largesse",
+            "analogy_3": "the Emperor with his new clothes, only in reverse",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "shed his donor-funded wardrobe faster than a chameleon in a kaleidoscope factory",
+                    "humor_score": 6,
+                    "originality_score": 9,
+                    "bite_score": 7,
+                    "total_score": 22
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "caught in a sartorial singularity, where the very fabric of their being is woven from the threads of wealthy benefactors' largesse",
+                    "humor_score": 5,
+                    "originality_score": 8,
+                    "bite_score": 6,
+                    "total_score": 19
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "the Emperor with his new clothes, only in reverse",
+                    "humor_score": 7,
+                    "originality_score": 6,
+                    "bite_score": 8,
+                    "total_score": 21
+                }
+            ],
+            "total_set_score": 62
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "In a shocking turn of events that has rocked the very foundations of British democracy, it appears that our esteemed political leaders have forgotten how to dress themselves. Yes, dear readers, you heard that right. The same individuals we trust to run our country, manage our economy, and navigate the treacherous waters of international diplomacy are apparently incapable of purchasing their own trousers without the aid of wealthy benefactors.\n\nOne can't help but imagine the scene: Sir Keir Starmer, our illustrious Prime Minister, standing bewildered in front of his wardrobe, unable to decide between the navy suit or the charcoal gray. \"Victoria!\" he calls out desperately, \"Quick, ring Lord Alli! I need his sartorial wisdom and his credit card!\"\n\nMeanwhile, in another part of Westminster, Deputy Prime Minister Angela Rayner is seen furiously Google-searching \"How to tie a shoelace\" while Chancellor Rachel Reeves practices her \"I'm a serious economist\" pose in front of a mirror, wondering if her donor-funded power suit makes her look too... powerful.\n\nIt's a relief to know that in these trying times of cost-of-living crises and global uncertainty, our leaders are tackling the real issues: whether pinstripes are in this season and if one can pair brown shoes with a black belt without causing a constitutional crisis.\n\nBut fear not, good citizens! Our valiant Culture Secretary, Lisa Nandy, has come to the rescue with a statement that surely deserves its own plaque in the annals of political discourse: \"People are really struggling in this country and we don't want people to believe that we are living very different lives from them.\" One can almost hear the collective sigh of relief from millions of Britons who were under the misapprehension that their elected officials might be out of touch.\n\nIn a bold move that will undoubtedly be studied in political science classes for generations to come, the Labour leadership has decided to \"no longer accept donations to pay for clothes.\" It's a brave new world, folks. One where our leaders will have to navigate the perilous aisles of Marks & Spencer all by themselves, armed with nothing but their six-figure salaries and a vague notion of what \"business casual\" means.\n\nAs we stand on the precipice of this new era, one can't help but wonder: Will Sir Keir be forced to rewear outfits? Will we see Angela Rayner in last season's blazer? The horror! The indignity! \n\nBut let us not lose hope, dear readers. For in these dark times, we must remember the words of that great philosopher, Tim Gunn: \"Make it work.\" And if our leaders can't make it work with their own money and fashion sense, well... there's always the option of a national uniform. I hear beige is very slimming.\n\nIn the meantime, I'll be starting a GoFundMe for our poor, clothesless politicians. First item on the list: a tiny violin for each cabinet member to play while they figure out how to budget for their own wardrobes. It's a tough job, but somebody's got to do it. \n\nNow, if you'll excuse me, I need to go iron my donation-free, ethically sourced, organically grown, fair-trade cotton t-shirt. It's what any responsible citizen would do.",
+            "headline": "Threadbare Democracy: When Politicians Can't Dress Themselves",
+            "explanation": "The analogies in this satirical column effectively highlight the absurdity of politicians' priorities by comparing their fashion dilemmas to more serious issues facing the public. They use humor to underscore the disconnect between politicians and the everyday lives of citizens, making the critique both entertaining and thought-provoking. The imagery evokes a sense of ridicule towards the political class, illustrating their struggles with trivial matters while neglecting pressing societal concerns.",
+            "analogy_1": "'I need his sartorial wisdom and his credit card!'",
+            "analogy_2": "'whether pinstripes are in this season and if one can pair brown shoes with a black belt without causing a constitutional crisis.'",
+            "analogy_3": "'For in these dark times, we must remember the words of that great philosopher, Tim Gunn: \"Make it work.\"'",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "'I need his sartorial wisdom and his credit card!'",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 9,
+                    "total_score": 24
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "'whether pinstripes are in this season and if one can pair brown shoes with a black belt without causing a constitutional crisis.'",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 22
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "'For in these dark times, we must remember the words of that great philosopher, Tim Gunn: \"Make it work.\"'",
+                    "humor_score": 9,
+                    "originality_score": 9,
+                    "bite_score": 8,
+                    "total_score": 26
+                }
+            ],
+            "total_set_score": 72
+        }
+    ]
+}

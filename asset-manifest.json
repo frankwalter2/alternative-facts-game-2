@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alternative-facts-game/static/css/main.391460fb.css",
+    "main.js": "/alternative-facts-game/static/js/main.eabef3c5.js",
+    "index.html": "/alternative-facts-game/index.html",
+    "main.391460fb.css.map": "/alternative-facts-game/static/css/main.391460fb.css.map",
+    "main.eabef3c5.js.map": "/alternative-facts-game/static/js/main.eabef3c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.391460fb.css",
+    "static/js/main.eabef3c5.js"
+  ]
+}

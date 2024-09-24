@@ -1,0 +1,385 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a twist that would make even Lady Bracknell drop her handbag, London has decided to honor Oscar Wilde with a sculpture that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy. The 2-meter high black bronze head, sliced up like a loaf of bread left in the hands of a toddler with anger management issues, is set to grace Chelsea's Dovehouse Green. One can only assume it's meant to symbolize how society has collectively lost its head \u2013 and its taste.\n\nMerlin Holland, Wilde's grandson and apparent keeper of the aesthetic flame, has declared the sculpture \"absolutely hideous.\" Well, Mr. Holland, welcome to 21st-century Britain, where hideous is the new beautiful, and we're all living in a giant, poorly curated art installation called \"The Decay of Lying About Our Good Taste.\"\n\nThe sculpture, crafted by the late Sir Eduardo Paolozzi \u2013 because nothing says \"contemporary relevance\" like commissioning an artist who died nearly two decades ago \u2013 manages to simultaneously insult Wilde's memory and the visual cortex of anyone unfortunate enough to stumble upon it. It's as if the spirit of Wilde himself whispered into Paolozzi's ear, \"Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk surrealists.\"\n\nBut let's not be too harsh. After all, this is the same city that thought a giant blue cock in Trafalgar Square was the height of wit. Perhaps this is all part of a grand plan to make London so aesthetically offensive that tourists will simply stop coming, solving our overcrowding problems in one fell swoop.\n\nThe sculpture committee, in their infinite wisdom, rejected Paolozzi's design back in 1995 for being \"too brutalist.\" Apparently, in the intervening years, they've decided that brutalizing our senses is exactly what we need. It's as if they looked at the state of the world and thought, \"You know what would really cheer everyone up? A dismembered head of a literary genius!\"\n\nOne almost wonders if this is all an elaborate joke by Wilde himself, orchestrated from beyond the grave. Picture him in the afterlife, sipping absinthe with Beelzebub, cackling as he watches us tie ourselves in knots over a lump of bronze. \"The only thing worse than being talked about,\" he might quip, \"is having your likeness rendered as a giant, segmented paperweight.\"\n\nBut perhaps we're missing the point entirely. In an age where our politicians resemble characters from a particularly dark episode of \"The Thick of It,\" and our celebrities are more plastic than Barbie's dream house, maybe a chopped-up head of Oscar Wilde is exactly the monument we deserve. After all, aren't we all just fragmented versions of ourselves, trying desperately to hold it together in a world gone mad?\n\nAs we stand on the brink of environmental catastrophe, with AI poised to render us all obsolete, and social media turning our brains into a slurry of cat videos and conspiracy theories, perhaps this sculpture is the perfect emblem of our times. We are all Dorian Gray now, our true selves hidden away in attics while our public faces become increasingly distorted and grotesque.\n\nSo let us embrace this new addition to London's already questionable collection of public art. Let us gather around this bronzed abomination and reflect on the words of the great man himself: \"We are all in the gutter, but some of us are looking at the stars.\" Although, with this monstrosity looming over us, we might be better off keeping our eyes firmly fixed on the gutter. It's safer down there, and the view is certainly less offensive.",
+            "headline": "Wilde's Head Rolls: London's Latest Artistic Abomination Proves We're All Dorian Gray Now",
+            "explanation": "The analogies in this satirical column effectively highlight the absurdity and grotesqueness of the new sculpture of Oscar Wilde by likening it to various humorous and imaginative concepts. They serve to amplify the columnist's critique of contemporary art and society's declining taste, while also infusing the piece with a sense of wit and irony. The use of vivid imagery in these analogies makes the argument more engaging and entertaining for the reader.",
+            "analogy_1": "a sculpture that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+            "analogy_2": "sliced up like a loaf of bread left in the hands of a toddler with anger management issues",
+            "analogy_3": "as if the spirit of Wilde himself whispered into Paolozzi's ear, \"Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk surrealists.\"",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "a sculpture that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 9,
+                    "total_score": 26
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "sliced up like a loaf of bread left in the hands of a toddler with anger management issues",
+                    "humor_score": 8,
+                    "originality_score": 8,
+                    "bite_score": 8,
+                    "total_score": 24
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "as if the spirit of Wilde himself whispered into Paolozzi's ear, \"Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk surrealists.\"",
+                    "humor_score": 10,
+                    "originality_score": 9,
+                    "bite_score": 10,
+                    "total_score": 29
+                }
+            ],
+            "total_set_score": 79,
+            "labelled_analogies": [
+                "a {{sculpture}} that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                "sliced up like a loaf of bread left in the hands of a toddler with anger management issues",
+                "as if the spirit of Wilde himself whispered into {{Paolozzi}}'s ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk {{surrealists}}.'"
+            ],
+            "processed_analogies": [
+                "a {1} that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                "sliced up like a loaf of bread left in the hands of a toddler with anger management issues",
+                "as if the spirit of Wilde himself whispered into {2}'s ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk {3}.'"
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "sculpture"
+                },
+                {
+                    "id": 2,
+                    "answer": "Paolozzi"
+                },
+                {
+                    "id": 3,
+                    "answer": "surrealists"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "a {1} that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                    "alternative_sets": [
+                        {
+                            "analogy": "a banana that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                            "alternative_words": {
+                                "1": "banana"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "a sock puppet that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                            "alternative_words": {
+                                "1": "sock puppet"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "a unicorn that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                            "alternative_words": {
+                                "1": "unicorn"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 2,
+                            "adjusted_score": 22
+                        },
+                        {
+                            "analogy": "a sandcastle that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                            "alternative_words": {
+                                "1": "sandcastle"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 6
+                            },
+                            "total_score": 23,
+                            "similarity_score": 2,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "a spaceship that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                            "alternative_words": {
+                                "1": "spaceship"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 7,
+                                "bite_score": 5
+                            },
+                            "total_score": 21,
+                            "similarity_score": 2,
+                            "adjusted_score": 19
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "a banana that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                                "alternative_words": {
+                                    "1": "banana"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 2,
+                                "adjusted_score": 22
+                            },
+                            {
+                                "analogy": "a sock puppet that looks like the lovechild of a Picasso painting and a failed attempt at DIY taxidermy",
+                                "alternative_words": {
+                                    "1": "sock puppet"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 2,
+                                "adjusted_score": 22
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 2,
+                    "original_analogy": "as if the spirit of Wilde himself whispered into {2}'s ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk {3}.'",
+                    "alternative_sets": [
+                        {
+                            "analogy": "as if the spirit of Wilde himself whispered into Batman's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk astronauts.'",
+                            "alternative_words": {
+                                "2": "Batman",
+                                "3": "astronauts"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "as if the spirit of Wilde himself whispered into Mr. Bean's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk chefs.'",
+                            "alternative_words": {
+                                "2": "Mr. Bean",
+                                "3": "chefs"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "as if the spirit of Wilde himself whispered into Elon Musk's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk pirates.'",
+                            "alternative_words": {
+                                "2": "Elon Musk",
+                                "3": "pirates"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "as if the spirit of Wilde himself whispered into Kermit the Frog's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk comedians.'",
+                            "alternative_words": {
+                                "2": "Kermit the Frog",
+                                "3": "comedians"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        },
+                        {
+                            "analogy": "as if the spirit of Wilde himself whispered into Sherlock Holmes's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk ninja turtles.'",
+                            "alternative_words": {
+                                "2": "Sherlock Holmes",
+                                "3": "ninja turtles"
+                            },
+                            "scores": {
+                                "originality_score": 9,
+                                "humor_score": 8,
+                                "bite_score": 7
+                            },
+                            "total_score": 24,
+                            "similarity_score": 3,
+                            "adjusted_score": 21
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "as if the spirit of Wilde himself whispered into Batman's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk astronauts.'",
+                                "alternative_words": {
+                                    "2": "Batman",
+                                    "3": "astronauts"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 3,
+                                "adjusted_score": 21
+                            },
+                            {
+                                "analogy": "as if the spirit of Wilde himself whispered into Mr. Bean's ear, 'Be so kind as to make me look like I've been run over by a steamroller and then reassembled by a committee of drunk chefs.'",
+                                "alternative_words": {
+                                    "2": "Mr. Bean",
+                                    "3": "chefs"
+                                },
+                                "scores": {
+                                    "originality_score": 9,
+                                    "humor_score": 8,
+                                    "bite_score": 7
+                                },
+                                "total_score": 24,
+                                "similarity_score": 3,
+                                "adjusted_score": 21
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "sock puppet",
+                    "banana"
+                ],
+                [
+                    "Mr. Bean",
+                    "Batman"
+                ],
+                [
+                    "astronauts",
+                    "chefs"
+                ]
+            ],
+            "six_word_story": "Oscar Wilde sculpture criticized by grandson."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a twist that would make even the most ardent absurdist blush, Chelsea's latest artistic offering has set tongues wagging and synapses misfiring across London's literary circles. Picture, if you will, Oscar Wilde's severed head, not unlike John the Baptist's on a platter, but instead crafted in black bronze and sliced like a loaf of particularly witty sourdough. This Frankensteinian creation, courtesy of the late Sir Eduardo Paolozzi, is set to grace Dovehouse Green with all the subtlety of a drag queen at a Buckingham Palace garden party.\n\nMerlin Holland, Wilde's grandson and keeper of the flamboyant flame, has declared the sculpture \"absolutely hideous.\" One can almost hear the ghost of Wilde himself quipping, \"There is only one thing in the world worse than being talked about, and that is not being talked about... unless it's being talked about as a dismembered cranium in a public park.\"\n\nBut let us, dear readers, dive deeper into this rabbit hole of artistic interpretation. Perhaps Paolozzi, in a fit of posthumous genius, has created not just a sculpture, but a portal to an alternate dimension where Wilde's wit has taken physical form. Each segment of the great man's head represents a different aspect of his multifaceted personality: one slice for his biting satire, another for his tender poetry, and a particularly charming segment for his ability to rock a smoking jacket like no other.\n\nImagine, if you will, this segmented Wilde head coming to life at midnight, each piece spinning independently like a Victorian fidget spinner, spouting epigrams and paradoxes to bewildered foxes and overworked pigeons. \"To live is the rarest thing in the world. Most people exist, that is all,\" the bronze lips might whisper to a passing hedge fund manager at 3 AM, sending him into an existential crisis before his morning coffee.\n\nAnd what of the sculpture's prone position? Is it a commentary on Wilde's fall from grace, or simply an invitation for picnickers to use it as a particularly literary table for their cucumber sandwiches? One can almost picture a group of English Literature students sprawled around it, using Wilde's bronze nose as a sundial and his ears as convenient hooks for their tote bags emblazoned with quotes from \"The Picture of Dorian Gray.\"\n\nBut let us not forget the competition this piece faced. Maggi Hambling's winning design, with Wilde emerging from a sarcophagus like a fabulous literary zombie, has been delighting passersby near Charing Cross for years. One can't help but wonder if Paolozzi's rejected design has been biding its time, waiting for the perfect moment to rise from the ashes of artistic disappointment like a phoenix with a penchant for deconstructivism.\n\nIn a world where public art often falls into the realm of pigeons' favorite restrooms, perhaps we should embrace this Wildean fever dream. After all, Oscar himself said, \"The only way to get rid of temptation is to yield to it.\" So let us yield to this temptation of surrealist public art, this brutalist reimagining of one of literature's greatest minds.\n\nWho knows? In a hundred years, tourists might flock to Chelsea just to picnic beneath the fragmented brow of Oscar Wilde, debating whether the sculpture is a brilliant metaphor for the fractured nature of human identity or simply the result of a particularly wild night at the foundry. Either way, one thing is certain: Wilde's legacy continues to challenge, provoke, and entertain, even when it's been chopped up and left on the sidewalk.\n\nAs we stand on the precipice of this new era in public art, one can almost hear the faint echo of Wilde's voice, carried on the Chelsea breeze: \"Life is far too important a thing ever to talk seriously about.\" And with that, dear readers, I leave you to ponder the imponderables, to question the unquestionable, and perhaps to consider commissioning your own segmented head sculpture. After all, in the immortal words of the man himself, \"You can never be overdressed or overeducated.\" Or, it seems, over-sculpted.",
+            "headline": "Wilde's Head Games: When Surrealism Meets Victorian Sass in Chelsea's Artistic Fever Dream",
+            "explanation": "The analogies in this satirical column effectively blend humor and surreal imagery to critique and celebrate public art, particularly in the context of Oscar Wilde's legacy. They evoke vivid mental pictures that enhance the reader's engagement while simultaneously providing social commentary. The analogies reflect Wilde's wit and flamboyance, connecting them to modern artistic expressions and interpretations.",
+            "analogy_1": "Picture, if you will, Oscar Wilde's severed head, not unlike John the Baptist's on a platter, but instead crafted in black bronze and sliced like a loaf of particularly witty sourdough.",
+            "analogy_2": "Imagine, if you will, this segmented Wilde head coming to life at midnight, each piece spinning independently like a Victorian fidget spinner, spouting epigrams and paradoxes to bewildered foxes and overworked pigeons.",
+            "analogy_3": "One can't help but wonder if Paolozzi's rejected design has been biding its time, waiting for the perfect moment to rise from the ashes of artistic disappointment like a phoenix with a penchant for deconstructivism.",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "Picture, if you will, Oscar Wilde's severed head, not unlike John the Baptist's on a platter, but instead crafted in black bronze and sliced like a loaf of particularly witty sourdough.",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 8,
+                    "total_score": 23
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "Imagine, if you will, this segmented Wilde head coming to life at midnight, each piece spinning independently like a Victorian fidget spinner, spouting epigrams and paradoxes to bewildered foxes and overworked pigeons.",
+                    "humor_score": 9,
+                    "originality_score": 9,
+                    "bite_score": 9,
+                    "total_score": 27
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "One can't help but wonder if Paolozzi's rejected design has been biding its time, waiting for the perfect moment to rise from the ashes of artistic disappointment like a phoenix with a penchant for deconstructivism.",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 22
+                }
+            ],
+            "total_set_score": 72
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "In a twist that would make even Lady Bracknell raise both eyebrows, London's latest artistic offering has the literati clutching their pearls and Oscar Wilde, no doubt, spinning in his P\u00e8re Lachaise grave. The unveiling of Sir Eduardo Paolozzi's new sculpture in Chelsea - a segmented, decapitated bronze head of the famed playwright - has sparked a controversy more heated than a teacup at one of Algernon Moncrieff's infamous cucumber sandwich soir\u00e9es.\n\nMerlin Holland, Wilde's grandson and self-appointed guardian of the family's remaining shreds of dignity, has declared the sculpture \"absolutely hideous.\" One can almost hear the ghost of Wilde whispering, \"There is only one thing in the world worse than being talked about, and that is not being talked about... but perhaps being decapitated in bronze is a close third.\"\n\nThe sculpture, a 2-meter high bronze noggin sliced like a loaf of artisanal sourdough, is set to adorn Dovehouse Green, mere steps from Wilde's former abode. One can only imagine the playwright's spectral form, monocle askew, peering out his window and muttering, \"To die is the most boring thing I can think of... but to be memorialized as a Cubist Fruit Ninja experiment might just take the cake.\"\n\nCritics argue that Paolozzi's creation fails to capture Wilde's wit and brilliance. Indeed, it's a challenge to convey sparkling repartee through the medium of a dismembered cranium. Perhaps we should be grateful that the artist didn't attempt to capture Wilde's full figure - who knows what liberties might have been taken with his legendary green carnation?\n\nThe sculpture committee, in a moment of what can only be described as collective artistic fugue, rejected Paolozzi's design back in 1995. Yet, like a phoenix rising from the ashes of good taste, it has inexplicably found its way to realization. One wonders if the committee members were perhaps imbibing a bit too freely from Dorian Gray's secret stash.\n\nMeanwhile, Maggi Hambling's more traditional sculpture near Charing Cross station continues to delight passersby, with Wilde's bust emerging from a sarcophagus like a dapper jack-in-the-box. It bears the quote, \"We are all in the gutter, but some of us are looking at the stars.\" In light of recent events, perhaps it should be amended to, \"We are all in the gutter, but some of us are being sliced like deli meat.\"\n\nAs the art world grapples with this monumental misunderstanding, one can't help but ponder: What would Wilde himself say about this bronzed brouhaha? Perhaps he'd quip, \"There is no such thing as a moral or an immoral book. Books are well written, or badly written. That is all.\" And maybe, just maybe, he'd add, \"The same goes for sculptures, darling, though I'd prefer if mine didn't look like it had a run-in with a geometric guillotine.\"\n\nIn the end, as we stand before this segmented specter of Oscar Wilde, we're left to contemplate the nature of art, legacy, and the perils of posthumous portraiture. And if nothing else, we can take solace in knowing that somewhere, in some ethereal realm, Wilde is having the last laugh - probably while sipping absinthe with Bosie and crafting the wittiest of rejoinders to this sculptural slight.\n\nAfter all, as the great man himself once said, \"Life is far too important a thing ever to talk seriously about.\" So let us raise a glass to Oscar Wilde, and to the delicious absurdity of it all. May his bronze bits never tarnish, and may his wit forever outshine even the most misguided of artistic tributes.",
+            "headline": "Wilde's Head Rolls: A Monumental Misunderstanding in Chelsea",
+            "explanation": "The analogies in this column are effectively used to juxtapose Oscar Wilde's artistic legacy with the controversial sculpture, highlighting the absurdity of the situation while invoking Wilde's wit and humor. They serve to enhance the satirical tone, providing readers with vivid imagery that underscores the author's critique of contemporary art. The analogies also connect Wilde's timeless appeal to modern interpretations, emphasizing the dissonance between his brilliance and the perceived failure of the sculpture to embody it.",
+            "analogy_1": "the sculpture, a 2-meter high bronze noggin sliced like a loaf of artisanal sourdough",
+            "analogy_2": "to be memorialized as a Cubist Fruit Ninja experiment might just take the cake",
+            "analogy_3": "perhaps being sliced like deli meat",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "the sculpture, a 2-meter high bronze noggin sliced like a loaf of artisanal sourdough",
+                    "humor_score": 6,
+                    "originality_score": 5,
+                    "bite_score": 6,
+                    "total_score": 17
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "to be memorialized as a Cubist Fruit Ninja experiment might just take the cake",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 8,
+                    "total_score": 23
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "perhaps being sliced like deli meat",
+                    "humor_score": 5,
+                    "originality_score": 4,
+                    "bite_score": 5,
+                    "total_score": 14
+                }
+            ],
+            "total_set_score": 54
+        }
+    ]
+}
