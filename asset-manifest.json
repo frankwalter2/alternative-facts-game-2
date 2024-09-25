@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/alternative-facts-game-2/static/css/main.b9bd9f99.css",
-    "main.js": "/alternative-facts-game-2/static/js/main.b232c3ba.js",
+    "main.js": "/alternative-facts-game-2/static/js/main.91bd1142.js",
     "index.html": "/alternative-facts-game-2/index.html",
     "main.b9bd9f99.css.map": "/alternative-facts-game-2/static/css/main.b9bd9f99.css.map",
-    "main.b232c3ba.js.map": "/alternative-facts-game-2/static/js/main.b232c3ba.js.map"
+    "main.91bd1142.js.map": "/alternative-facts-game-2/static/js/main.91bd1142.js.map"
   },
   "entrypoints": [
     "static/css/main.b9bd9f99.css",
-    "static/js/main.b232c3ba.js"
+    "static/js/main.91bd1142.js"
   ]
 }
