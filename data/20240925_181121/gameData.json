@@ -1,0 +1,374 @@
+{
+    "results": [
+        {
+            "style_code": "Style 1",
+            "satirical_column": "In a stunning display of economic acrobatics that would make even the most seasoned circus performer blush, our very own Prince of Darkness, Peter Mandelson, has emerged from his crypt to offer a solution to the \"severe and worsening\" financial pressures facing universities. His groundbreaking idea? Charge students more money. Brilliant! Why didn't we think of that before? Oh, wait, we did. Multiple times.\n\nMandelson, a man so slippery he could lubricate a sandpaper factory, suggests raising tuition fees from \u00a39,250 to \u00a39,480 a year. Because clearly, what's pushing young people to the brink of financial ruin is that pesky \u00a3230 they've been hoarding all this time. It's practically burning holes in their pockets, isn't it?\n\nBut wait, there's more! In a twist that would make Dickens' Fagin proud, Mandelson proposes a \"progressive\" loan repayment system. Graduates will start paying back at 2% of their income, increasing by 2 percentage points for each additional \u00a310,000 earned, up to a maximum of 8%. It's like a fun game of financial Tetris, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth.\n\nMandelson argues this would be \"particularly beneficial for women,\" who often pursue degrees in crucial public services like nursing. Yes, ladies, rejoice! Now you can be even more financially crippled while saving lives. It's the feminist dream Emmeline Pankhurst fought for all along.\n\nBut let's not forget the true heroes in all this - the universities themselves. Mandelson suggests they need to make \"more tough choices\" to improve efficiency. Perhaps they could start by cutting back on those frivolous expenses like \"books\" and \"heating.\" After all, nothing says \"world-class education\" quite like huddling for warmth in a library lit by candle stubs.\n\nIn a moment of pure comedy gold, Mandelson compares UK universities to Italian ones, noting that Italian state universities have one teaching staff for every 21 students, while UK universities have one for every 13. Clearly, the solution is to aim for the Italian model. Because if there's one thing the UK education system needs, it's to be more like Italy's. Next up: mandatory siestas and pizza-making workshops.\n\nBut fear not, dear students! The government hasn't forgotten about you. Skills Minister Jacqui Smith assures us that changes to student maintenance funding are being considered. One can only imagine the innovative solutions being cooked up. Perhaps a \"Hunger Games\" style competition for grants? Or maybe a \"Who Wants to Be a Millionaire?\" spin-off called \"Who Wants to Pay Off Their Student Debt Before They Die?\"\n\nIn the grand tradition of British political farce, economist Tim Leunig suggests scrapping the current loan system in favor of graduates paying a minimum of \u00a310 a week. It's like a gym membership, but instead of a better body, you get crippling debt and a sense of existential dread!\n\nAs Mandelson prepares to potentially become Oxford University's next chancellor, one can't help but wonder if this is all part of an elaborate plan to turn higher education into a real-life version of \"Monopoly: University Edition.\" Roll the dice, take out a loan, and pray you don't land on the \"Brexit\" square.\n\nIn conclusion, it seems the future of British higher education is bright - if by \"bright\" we mean \"a dumpster fire visible from space.\" But don't worry, students. Just keep calm, carry on, and remember: knowledge is power. And power, apparently, costs \u00a39,480 a year, plus interest.",
+            "headline": "Mandelson's Masterclass in Milking the Masses: A Guide to Fleecing Future Generations",
+            "explanation": "The analogies in this satirical column are effective in highlighting the absurdity and irony of the proposed educational policies. They use humor and exaggeration to criticize the financial burdens placed on students, making complex economic issues more relatable and entertaining. The analogies also serve to draw parallels between the current situation and other familiar contexts, enhancing the reader's understanding of the critique.",
+            "analogy_1": "Mandelson, a man so slippery he could lubricate a sandpaper factory",
+            "analogy_2": "It's like a fun game of financial Tetris, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+            "analogy_3": "It's like a gym membership, but instead of a better body, you get crippling debt and a sense of existential dread!",
+            "scored_analogies": [
+                {
+                    "id": 1,
+                    "style_code": "Style 1",
+                    "analogy": "Mandelson, a man so slippery he could lubricate a sandpaper factory",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 9,
+                    "total_score": 24
+                },
+                {
+                    "id": 2,
+                    "style_code": "Style 1",
+                    "analogy": "It's like a fun game of financial Tetris, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                    "humor_score": 9,
+                    "originality_score": 8,
+                    "bite_score": 8,
+                    "total_score": 25
+                },
+                {
+                    "id": 3,
+                    "style_code": "Style 1",
+                    "analogy": "It's like a gym membership, but instead of a better body, you get crippling debt and a sense of existential dread!",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 9,
+                    "total_score": 24
+                }
+            ],
+            "total_set_score": 73,
+            "labelled_analogies": [
+                "{{Mandelson}}\", a man so slippery he could lubricate a sandpaper factory",
+                "It's like a fun game of financial {{Tetris}}, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                "It's like a {{gym membership}}, but instead of a better body, you get crippling debt and a sense of existential dread!"
+            ],
+            "processed_analogies": [
+                "{1}\", a man so slippery he could lubricate a sandpaper factory",
+                "It's like a fun game of financial {2}, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                "It's like a {3}, but instead of a better body, you get crippling debt and a sense of existential dread!"
+            ],
+            "giveaway_keywords": [
+                {
+                    "id": 1,
+                    "answer": "Mandelson"
+                },
+                {
+                    "id": 2,
+                    "answer": "Tetris"
+                },
+                {
+                    "id": 3,
+                    "answer": "gym membership"
+                }
+            ],
+            "alternative_sets": [
+                {
+                    "analogy_index": 0,
+                    "original_analogy": "{1}\", a man so slippery he could lubricate a sandpaper factory",
+                    "alternative_sets": [
+                        {
+                            "analogy": "SpongeBob\", a man so slippery he could lubricate a sandpaper factory",
+                            "alternative_words": {
+                                "1": "SpongeBob"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "Darth Vader\", a man so slippery he could lubricate a sandpaper factory",
+                            "alternative_words": {
+                                "1": "Darth Vader"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "Bigfoot\", a man so slippery he could lubricate a sandpaper factory",
+                            "alternative_words": {
+                                "1": "Bigfoot"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 6
+                            },
+                            "total_score": 21,
+                            "similarity_score": 1,
+                            "adjusted_score": 20
+                        },
+                        {
+                            "analogy": "Gandalf\", a man so slippery he could lubricate a sandpaper factory",
+                            "alternative_words": {
+                                "1": "Gandalf"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 5
+                            },
+                            "total_score": 20,
+                            "similarity_score": 1,
+                            "adjusted_score": 19
+                        },
+                        {
+                            "analogy": "Elvis Presley\", a man so slippery he could lubricate a sandpaper factory",
+                            "alternative_words": {
+                                "1": "Elvis Presley"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 5
+                            },
+                            "total_score": 20,
+                            "similarity_score": 1,
+                            "adjusted_score": 19
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "SpongeBob\", a man so slippery he could lubricate a sandpaper factory",
+                                "alternative_words": {
+                                    "1": "SpongeBob"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            },
+                            {
+                                "analogy": "Darth Vader\", a man so slippery he could lubricate a sandpaper factory",
+                                "alternative_words": {
+                                    "1": "Darth Vader"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 6
+                                },
+                                "total_score": 21,
+                                "similarity_score": 1,
+                                "adjusted_score": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "analogy_index": 1,
+                    "original_analogy": "It's like a fun game of financial {2}, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                    "alternative_sets": [
+                        {
+                            "analogy": "It's like a fun game of financial Jenga, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                            "alternative_words": {
+                                "2": "Jenga"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a fun game of financial Rubik's Cube, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                            "alternative_words": {
+                                "2": "Rubik's Cube"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a fun game of financial Pac-Man, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                            "alternative_words": {
+                                "2": "Pac-Man"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a fun game of financial Solitaire, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                            "alternative_words": {
+                                "2": "Solitaire"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        },
+                        {
+                            "analogy": "It's like a fun game of financial Mario Kart, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                            "alternative_words": {
+                                "2": "Mario Kart"
+                            },
+                            "scores": {
+                                "originality_score": 8,
+                                "humor_score": 7,
+                                "bite_score": 9
+                            },
+                            "total_score": 24,
+                            "similarity_score": 6,
+                            "adjusted_score": 18
+                        }
+                    ],
+                    "selected_alternatives": {
+                        "top_2_sets": [
+                            {
+                                "analogy": "It's like a fun game of financial Jenga, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                                "alternative_words": {
+                                    "2": "Jenga"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 6,
+                                "adjusted_score": 18
+                            },
+                            {
+                                "analogy": "It's like a fun game of financial Rubik's Cube, where the blocks are your dreams and aspirations, and the only way to win is to have been born into wealth",
+                                "alternative_words": {
+                                    "2": "Rubik's Cube"
+                                },
+                                "scores": {
+                                    "originality_score": 8,
+                                    "humor_score": 7,
+                                    "bite_score": 9
+                                },
+                                "total_score": 24,
+                                "similarity_score": 6,
+                                "adjusted_score": 18
+                            }
+                        ]
+                    }
+                }
+            ],
+            "final_alternative_keywords": [
+                [
+                    "Darth Vader",
+                    "SpongeBob"
+                ],
+                [
+                    "Rubik's Cube",
+                    "Jenga"
+                ]
+            ],
+            "six_word_story": "Mandelson proposes tuition fee increase for universities."
+        },
+        {
+            "style_code": "Style 2",
+            "satirical_column": "In a startling turn of events that would make Hunter S. Thompson reach for his typewriter (and probably a fistful of peyote), the Right Honourable Lord Peter Mandelson has emerged from the shadows of New Labour's bygone era, brandishing a proposal so audacious it could only have been conceived in the fever dream of a neo-liberal economist on a bad acid trip.\n\nPicture, if you will, Mandelson astride a giant abacus, each bead a student's hopes and dreams, as he proclaims with the gravitas of a carnival barker on laughing gas: \"Roll up, roll up! See the amazing Tuition Fee Inflation Machine! Watch as it magically transforms your financial future into a Kafkaesque nightmare!\"\n\nBut wait, there's more! In a twist that would make even the Mad Hatter question his sanity, Mandelson suggests that this modest increase from \u00a39,250 to \u00a39,480 is merely an amuse-bouche for the smorgasbord of \"further much-needed reforms\" to come. One can only imagine what delights await us on this menu of monetary madness. Perhaps a side of indentured servitude to go with your overpriced degree?\n\nAs we dive deeper into the rabbit hole of Mandelson's musings, we encounter a fascinating comparison to Italian universities. Apparently, in the land of pasta and Pavarotti, one teaching staff attends to 21 students, while in the UK, it's a positively luxurious ratio of 1:13. One can't help but wonder if Mandelson envisions a future where lecturers, like deranged octopi, simultaneously teach multiple classes across various dimensions of space-time.\n\nBut fear not, dear reader, for Mandelson, in his infinite wisdom, has a solution for the plebeians struggling under the weight of student debt. Behold the \"progressive system of student loans,\" a Rube Goldberg machine of financial fuckery that would make even the most sadistic tax accountant weep with joy. Picture, if you will, a system where repayments start at a mere 2% of a graduate's income, creeping up by 2 percentage points for every \u00a310,000 earned, until it reaches a crescendo of 8%. It's like a game of financial Jenga, where the only winners are the debt collectors and the purveyors of anti-anxiety medication.\n\nIn a moment of unintentional comedy that would make Samuel Beckett proud, Mandelson declares this system \"particularly beneficial for women.\" Yes, ladies, rejoice! Your comparatively low salaries in crucial public service roles like nursing now come with the added bonus of slightly less soul-crushing debt. Truly, the gender pay gap has met its match in the form of marginally less punitive loan repayments. Gloria Steinem, eat your heart out!\n\nAs we stumble, glassy-eyed and disoriented, towards the conclusion of this psychedelic journey through the looking glass of higher education funding, we're left with the image of Mandelson as a mad scientist, standing atop a pile of student loan agreements, cackling maniacally as he proclaims the need for a \"national industrial strategy.\" One can only assume this strategy involves transforming universities into hyper-efficient degree factories, churning out graduates faster than you can say \"would you like fries with that?\"\n\nIn the end, as the hallucinogenic effects of Mandelson's proposals begin to wear off, we're left with a lingering question: In this brave new world of inflated fees and deflated dreams, will the pursuit of knowledge be reduced to a mere transaction, a commodified experience as soulless as a vending machine dispensing degrees instead of snacks? Or will we, in a moment of collective lucidity, realize that education is not a product to be bought and sold, but a fundamental right and a public good?\n\nAs we ponder these weighty questions, one thing remains certain: in the psychedelic circus of British higher education policy, Peter Mandelson has proven himself the ringmaster par excellence, capable of conjuring financial phantasmagoria that would make even the most hardened acid-head question their grip on reality. Bravo, Lord Mandelson, bravo. Now, if you'll excuse me, I need to lie down in a dark room and contemplate the existential implications of my student debt.",
+            "headline": "Mandelson's Manic Mammon Machine: A Psychedelic Voyage into the Heart of University Funding",
+            "explanation": "The analogies in this satirical column are highly effective in creating vivid imagery and conveying the absurdity of the proposed changes to university funding. They draw parallels between Mandelson's proposals and surreal or chaotic concepts, enhancing the comedic tone and reinforcing the critique of the neoliberal approach to education. The use of exaggerated and ludicrous comparisons evokes a sense of disbelief and highlights the disconnect between policymakers and the realities faced by students.",
+            "analogy_1": "Mandelson astride a giant abacus, each bead a student's hopes and dreams",
+            "analogy_2": "a Rube Goldberg machine of financial fuckery that would make even the most sadistic tax accountant weep with joy",
+            "analogy_3": "Mandelson as a mad scientist, standing atop a pile of student loan agreements, cackling maniacally",
+            "scored_analogies": [
+                {
+                    "id": 4,
+                    "style_code": "Style 2",
+                    "analogy": "Mandelson astride a giant abacus, each bead a student's hopes and dreams",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 22
+                },
+                {
+                    "id": 5,
+                    "style_code": "Style 2",
+                    "analogy": "a Rube Goldberg machine of financial fuckery that would make even the most sadistic tax accountant weep with joy",
+                    "humor_score": 9,
+                    "originality_score": 9,
+                    "bite_score": 10,
+                    "total_score": 28
+                },
+                {
+                    "id": 6,
+                    "style_code": "Style 2",
+                    "analogy": "Mandelson as a mad scientist, standing atop a pile of student loan agreements, cackling maniacally",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 8,
+                    "total_score": 23
+                }
+            ],
+            "total_set_score": 73
+        },
+        {
+            "style_code": "Style 3",
+            "satirical_column": "Ladies and gentlemen, gather 'round for a tale of woe and wonder from the hallowed halls of academia. It seems our dear friend Peter Mandelson, that paragon of Labour Party virtue and champion of the common man, has graced us with his latest pearl of wisdom. Hold onto your mortarboards, folks, because this one's a doozy.\n\nIn a stunning display of economic acrobatics that would make even the most seasoned circus performer dizzy, Lord Mandelson has proposed the groundbreaking idea of... wait for it... raising tuition fees! Yes, you heard that right. In these trying times of skyrocketing living costs and stagnant wages, what our bright young minds really need is an even heftier bill for their education.\n\nBut fear not, dear readers, for this is no ordinary fee hike. Oh no, this is a sophisticated, inflation-linked increase that will see students paying a mere \u00a3230 more per year. Why, that's barely the cost of a textbook these days! Or, as I like to think of it, approximately 57.5 artisanal avocado toasts.\n\nNow, some naysayers might argue that increasing the financial burden on students is counterproductive. But those people clearly lack the visionary genius of Lord Mandelson. You see, by making education even more expensive, we're actually doing students a favor. Think of it as a crash course in advanced economics and debt management. Who needs a degree in finance when you can live it?\n\nBut wait, there's more! In a move that can only be described as the pinnacle of progressive thinking, Mandelson suggests a new loan repayment system. Picture this: a graduate earning just above minimum wage will now have the privilege of contributing 2% of their meager earnings to repay their loans. It's like a fun game of \"How low can you go?\" with your bank balance!\n\nAnd for those overachievers who dare to earn more, fear not! The system graciously allows you to contribute up to 8% of your income. After all, nothing says \"thanks for your hard work\" quite like a heftier loan repayment.\n\nBut let's not forget the real heroes in this story: the universities themselves. These bastions of knowledge and wisdom are apparently struggling to make ends meet with only one staff member for every 13 students. How they manage to scrape by is beyond me. Perhaps we should start a GoFundMe for Oxford and Cambridge?\n\nIn the spirit of Mandelson's innovative thinking, I'd like to propose a few additional ideas to really solve this crisis:\n\n1. Introduce a \"knowledge tax\" - charge students extra for each fact they learn. The more you know, the more you owe!\n\n2. Implement a \"library rental scheme\" - why should books be free? Charge by the page!\n\n3. Start a \"bring your own chair\" policy - those lecture hall seats don't pay for themselves, you know.\n\n4. Offer a \"premium graduation package\" - for just \u00a310,000 extra, we'll actually hand you your diploma instead of mailing it!\n\nIn conclusion, dear readers, let us raise a glass (student loan application in hand) to Lord Mandelson and his ilk. For in these dark times, they shine a light on the path forward - a path paved with student debt and lined with the broken dreams of a generation.\n\nRemember, education is a privilege, not a right. And if we have to bankrupt an entire generation to prove it, well, that's just the price of progress. Now, if you'll excuse me, I need to go take out a second mortgage to pay for my niece's university application fee.",
+            "headline": "The Ivy-Covered Money Pit: A Modest Proposal for Solving Britain's University Crisis",
+            "explanation": "The analogies in this satirical column effectively highlight the absurdity and irony of Lord Mandelson's proposal to raise tuition fees during a time of economic strain. They use humor and exaggeration to draw attention to the ridiculousness of increasing financial burdens on students. The analogies serve to mock the idea that higher education can be made more accessible through increased costs, emphasizing the disconnect between policy proposals and the realities faced by students.",
+            "analogy_1": "approximately 57.5 artisanal avocado toasts",
+            "analogy_2": "a fun game of 'How low can you go?' with your bank balance!",
+            "analogy_3": "charge students extra for each fact they learn",
+            "scored_analogies": [
+                {
+                    "id": 7,
+                    "style_code": "Style 3",
+                    "analogy": "approximately 57.5 artisanal avocado toasts",
+                    "humor_score": 6,
+                    "originality_score": 6,
+                    "bite_score": 5,
+                    "total_score": 17
+                },
+                {
+                    "id": 8,
+                    "style_code": "Style 3",
+                    "analogy": "a fun game of 'How low can you go?' with your bank balance!",
+                    "humor_score": 8,
+                    "originality_score": 7,
+                    "bite_score": 6,
+                    "total_score": 21
+                },
+                {
+                    "id": 9,
+                    "style_code": "Style 3",
+                    "analogy": "charge students extra for each fact they learn",
+                    "humor_score": 7,
+                    "originality_score": 8,
+                    "bite_score": 7,
+                    "total_score": 22
+                }
+            ],
+            "total_set_score": 60
+        }
+    ]
+}
