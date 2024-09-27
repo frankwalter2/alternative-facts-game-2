@@ -1,0 +1,1154 @@
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/package.json =====
+{
+  "name": "alternative-facts-game",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://frankwalter2.github.io/alternative-facts-game-2/",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-touch-backend": "^16.0.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "cross-env PUBLIC_URL= react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "gh-pages": "^6.1.1"
+  }
+}
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/public/index.html =====
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/public/404.html =====
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+  </head>
+  <body>
+    <h1>404 - Page Not Found</h1>
+    <p>The page you are looking for does not exist.</p>
+  </body>
+</html>
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/index.js =====
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css'; // If you have global styles
+import App from './App'; // Import the App component
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/App.test.js =====
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/setupTests.js =====
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/Game.js =====
+// src/Game.js
+
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { DndProvider } from "react-dnd";
+import { TouchBackend } from "react-dnd-touch-backend";
+
+import StartScreen from "./components/StartScreen";
+import Analogy from "./components/Analogy";
+import WordCloud from "./components/WordCloud";
+import CustomDragLayer from "./components/CustomDragLayer";
+import Timer from "./components/Timer"; // Import Timer component
+
+function Game () {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [answers, setAnswers] = useState({});
+  const [showColumn, setShowColumn] = useState(false);
+  const [triesLeft, setTriesLeft] = useState(6);
+  const [time, setTime] = useState(0);
+  const [log, setLog] = useState([]);
+  const [wordsUsed, setWordsUsed] = useState([]); // Track used words
+  const [colors, setColors] = useState({}); // Track colors for gaps
+  const [gameData, setGameData] = useState(null); // New state for game data
+
+  const handleTimeUpdate = (newTime) => {
+    setTime(newTime);
+  };
+
+  const generateGoogleNewsLink = (sixWordStory) => {
+    const query = encodeURIComponent(sixWordStory);
+    return `https://news.google.com/search?q=${query}`;
+  };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+
+    // Get the "test" parameter from the URL, if available
+    const folderName = queryParams.get("test")
+        ? queryParams.get("test") // Use the test parameter verbatim
+        : new Date().getDate(); // If no test=, use the day of the month (1-31)
+
+    // Build the path using the folderName (either from test or day of the month)
+    const dataPath = `${process.env.PUBLIC_URL}/data/${folderName}/gameData.json`;
+
+    console.log(`Trying to load data from: ${dataPath}`); // Debugging line
+
+    fetch(dataPath)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch daily game data"); // Error if daily file does not exist
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Loaded game data:", data); // Debugging line
+        setGameData(data);
+        initializeColors(data);
+      })
+      .catch((error) => {
+        console.error("Error loading daily game data:", error);
+
+        // If the daily file does not exist, fall back to the default data file
+        const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
+        console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
+
+        fetch(fallbackPath)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Loaded fallback game data:", data); // Debugging line
+            setGameData(data);
+            initializeColors(data);
+          })
+          .catch((err) => {
+            console.error("Error loading default game data:", err);
+          });
+      });
+  }, []);
+
+
+
+  const initializeColors = (data) => {
+    if (data && data.results && data.results.length > 0) {
+      const result = data.results.find(
+        (r) => r.giveaway_keywords && r.giveaway_keywords.length > 0
+      );
+
+      if (result) {
+        const initialColors = {};
+        result.giveaway_keywords.forEach((kw) => {
+          initialColors[kw.id] = "empty"; // Set initial status to 'empty' (grey)
+        });
+        setColors(initialColors);
+      }
+    }
+  };
+
+  if (!gameData) {
+    return <div>Loading game data...</div>;
+  }
+
+  const result = gameData.results.find(
+    (r) => r.giveaway_keywords && r.giveaway_keywords.length > 0
+  );
+
+  if (!result) {
+    return <div>No valid game data found with giveaway_keywords.</div>;
+  }
+
+  const {
+    processed_analogies = [],
+    giveaway_keywords = [],
+    final_alternative_keywords = [],
+    satirical_column = "",
+    headline = "",
+    six_word_story = "",
+    analogy_1,
+    analogy_2,
+    analogy_3,
+  } = result;
+
+  const highlightAnalogies = (column, analogy1, analogy2, analogy3) => {
+    let updatedColumn = column;
+    if (analogy1) {
+      updatedColumn = updatedColumn.replace(
+        analogy1,
+        `<strong>${analogy1}</strong>`
+      );
+    }
+    if (analogy2) {
+      updatedColumn = updatedColumn.replace(
+        analogy2,
+        `<strong>${analogy2}</strong>`
+      );
+    }
+    if (analogy3) {
+      updatedColumn = updatedColumn.replace(
+        analogy3,
+        `<strong>${analogy3}</strong>`
+      );
+    }
+    return updatedColumn;
+  };
+
+  const highlightedSatiricalColumn = highlightAnalogies(
+    satirical_column,
+    analogy_1,
+    analogy_2,
+    analogy_3
+  );
+
+  // Split the satirical column into paragraphs
+  const paragraphs = highlightedSatiricalColumn.split("\n\n");
+
+  const googleNewsLink = generateGoogleNewsLink(six_word_story);
+  const correctAnswers = giveaway_keywords.map((kw) => kw.answer);
+  const wrongAnswers = final_alternative_keywords.flatMap((pair) => {
+    const [keyword1, keyword2] = pair;
+    return !correctAnswers.includes(keyword1) &&
+      !correctAnswers.includes(keyword2)
+      ? [keyword1, keyword2]
+      : [];
+  });
+
+  const uniqueWrongAnswers = [...new Set(wrongAnswers)].filter(
+    (word) => !correctAnswers.includes(word)
+  );
+
+  // Update wordList to correctly remove used words
+  const wordList = [...correctAnswers, ...uniqueWrongAnswers]
+    .filter((word) => !wordsUsed.includes(word)) // Remove words already used in gaps
+    .sort();
+
+  const answerMap = giveaway_keywords.reduce((acc, kw) => {
+    acc[kw.id] = kw.answer;
+    return acc;
+  }, {});
+
+  const handleDrop = (gapId, word) => {
+    // Prevent duplicating the same word in multiple gaps
+    if (!wordsUsed.includes(word)) {
+      setAnswers((prev) => ({
+        ...prev,
+        [gapId]: word,
+      }));
+      setWordsUsed((prevUsed) => [...prevUsed, word]); // Track word as used
+      // Set the color for this gap to 'filled' when a new word is placed
+      setColors((prevColors) => ({
+        ...prevColors,
+        [gapId]: "filled",
+      }));
+    }
+  };
+
+  const handleReturnWord = (word, fromGapId) => {
+    // Prevent removing correct words
+    const isCorrect = giveaway_keywords.some(
+      (kw) => kw.id === fromGapId && kw.answer === word
+    );
+
+    if (isCorrect) {
+      // Optionally, notify the user that correct words cannot be removed
+      alert("Correct words cannot be removed from the gaps.");
+      return;
+    }
+
+    if (fromGapId != null) {
+      setAnswers((prev) => {
+        const newAnswers = { ...prev };
+        delete newAnswers[fromGapId]; // Remove the word from the gap
+        return newAnswers;
+      });
+      setWordsUsed((prevUsed) => prevUsed.filter((w) => w !== word)); // Return word to word cloud
+      // Reset the color for this gap to 'empty' when the word is removed
+      setColors((prevColors) => ({
+        ...prevColors,
+        [fromGapId]: "empty",
+      }));
+    }
+  };
+
+  const handleSubmit = () => {
+    if (triesLeft === 0) return;
+
+    const newLog = [];
+    let allCorrect = true;
+    const newColors = { ...colors };
+    const wordsToReturn = []; // Words to send back to the word cloud
+
+    giveaway_keywords.forEach((kw) => {
+      const currentAnswer = answers[kw.id];
+      if (!currentAnswer) {
+        newLog.push({ id: kw.id, word: null, status: "incorrect" });
+        newColors[kw.id] = "incorrect";
+        allCorrect = false;
+        return;
+      }
+
+      if (currentAnswer === kw.answer) {
+        newLog.push({ id: kw.id, word: currentAnswer, status: "correct" });
+        newColors[kw.id] = "correct";
+      } else if (correctAnswers.includes(currentAnswer)) {
+        newLog.push({ id: kw.id, word: currentAnswer, status: "wrong place" });
+        newColors[kw.id] = "wrong place";
+        wordsToReturn.push(currentAnswer);
+        allCorrect = false;
+      } else {
+        newLog.push({ id: kw.id, word: currentAnswer, status: "incorrect" });
+        newColors[kw.id] = "incorrect";
+        wordsToReturn.push(currentAnswer);
+        allCorrect = false;
+      }
+    });
+
+    setLog([...log, newLog]);
+    setColors(newColors);
+
+    if (wordsToReturn.length > 0) {
+      // Return words to word cloud
+      setWordsUsed((prevUsed) =>
+        prevUsed.filter((word) => !wordsToReturn.includes(word))
+      );
+
+      // Remove words from gaps and reset their colors
+      setAnswers((prevAnswers) => {
+        const updatedAnswers = { ...prevAnswers };
+        giveaway_keywords.forEach((kw) => {
+          const currentAnswer = prevAnswers[kw.id];
+          if (wordsToReturn.includes(currentAnswer)) {
+            delete updatedAnswers[kw.id]; // Remove word from the gap
+            newColors[kw.id] = "empty"; // Reset color to 'empty'
+          }
+        });
+        return updatedAnswers;
+      });
+
+      // Update colors after removing words
+      wordsToReturn.forEach((word) => {
+        const kw = giveaway_keywords.find((kw) => kw.answer === word);
+        if (kw) {
+          newColors[kw.id] = "empty";
+        }
+      });
+
+      setColors(newColors);
+    }
+
+    if (allCorrect) {
+      setShowColumn(true);
+      return;
+    }
+
+    const newTriesLeft = triesLeft - 1;
+    setTriesLeft(newTriesLeft);
+
+    if (newTriesLeft === 0) {
+      setShowColumn(true);
+      const finalAnswers = giveaway_keywords.reduce((acc, kw) => {
+        acc[kw.id] = answers[kw.id] || kw.answer;
+        return acc;
+      }, {});
+      setAnswers(finalAnswers);
+
+      // Optionally, set colors for final answers
+      const finalColors = { ...colors };
+      giveaway_keywords.forEach((kw) => {
+        if (finalAnswers[kw.id] === kw.answer) {
+          finalColors[kw.id] = "correct";
+        } else {
+          finalColors[kw.id] = "incorrect";
+        }
+      });
+      setColors(finalColors);
+    }
+  };
+
+  // Determine the status for each word based on submission
+  const getWordStatus = (word) => {
+    const latestLog = log[log.length - 1];
+    if (!latestLog) return "unused"; // Default status before any submission
+
+    const entry = latestLog.find((item) => item.word === word);
+
+    if (entry) {
+      return entry.status; // 'correct', 'wrong place', 'incorrect'
+    }
+    return "unused"; // Default status
+  };
+
+  const generateScoreEmoji = () => {
+    const emojiMap = {
+      correct: "🟢",
+      "wrong place": "🟠",
+      incorrect: "🔴",
+      unused: "⚫",
+    };
+    let score = "";
+    log.forEach((round) => {
+      round.forEach((entry) => {
+        score += emojiMap[entry.status] || "⚫";
+      });
+      score += "\n";
+    });
+    return score;
+  };
+
+  const handleShareScore = () => {
+    const score = generateScoreEmoji();
+    const currentUrl = window.location.href;
+    const message = `My 'Alternative Facts' score: \n\n${score}\nPlay here: ${currentUrl}`;
+    navigator.clipboard.writeText(message).then(() => {
+      alert("Score and link copied to clipboard!");
+    });
+  };
+
+  return (
+    <DndProvider
+      backend={TouchBackend}
+      options={{
+        enableMouseEvents: true,
+        enableTouchEvents: true,
+        scrollAngleRanges: undefined, // Allow dragging even when scrolling
+      }}
+    >
+      <div className="app">
+        <div className="game-title">Alternative Facts</div>
+        <Timer
+          isActive={gameStarted && !showColumn} // Start timer when game begins and stop when game ends
+          showTime={false} // Only show at the end
+          onTimeUpdate={handleTimeUpdate}
+        />
+
+        {!gameStarted ? (
+          <StartScreen onStart={() => setGameStarted(true)} />
+        ) : (
+          <>
+            <div className="game-container">
+              <Analogy
+                analogies={processed_analogies}
+                answers={answers}
+                onDrop={handleDrop}
+                onRemove={handleReturnWord}
+                answerMap={answerMap}
+                colors={colors}
+              />
+              <WordCloud
+                words={wordList}
+                getWordStatus={getWordStatus}
+                onWordReturn={handleReturnWord}
+              />
+            </div>
+            <div className="submit-container">
+              <div>Tries left: {triesLeft}</div>
+              <button onClick={handleSubmit} disabled={triesLeft === 0}>
+                Submit
+              </button>
+            </div>
+
+            {showColumn && (
+              <>
+                {triesLeft > 0 ? (
+                  <>
+                    <h2>Well done!</h2>
+                    <p>
+                      You completed the puzzle in {6 - triesLeft + 1} tries and{" "}
+                      {time} seconds!
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h2>Commiserations!</h2>
+                    <p>You've used all your tries. Better luck next time!</p>
+                  </>
+                )}
+
+                {/* Fake News Section */}
+                <div className="fake-news">
+                  <h3>Fake News:</h3>
+                  <a
+                    href={googleNewsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {six_word_story}
+                  </a>
+                </div>
+
+                <div className="real-news">
+                  <h3>Real News:</h3>
+                  <h2>{headline}</h2>
+                  {paragraphs.map((paragraph, idx) => (
+                    <p
+                      key={idx}
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
+                  ))}
+                </div>
+
+                <button onClick={handleShareScore}>Share your score</button>
+              </>
+            )}
+          </>
+        )}
+
+        <CustomDragLayer />
+      </div>
+    </DndProvider>
+  );
+}
+
+export default Game;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/Word.js =====
+// src/components/Word.js
+
+import React from 'react';
+import { useDrag } from 'react-dnd';
+
+const Word = ({ word, status = 'unused' }) => {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'WORD',
+    item: { word },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  // Determine background color based on status
+  const backgroundColor = isDragging
+    ? '#0056b3' // Darker blue while dragging
+    : status === 'correct'
+    ? '#28a745' // Green
+    : status === 'wrong place'
+    ? '#fd7e14' // Orange
+    : status === 'incorrect'
+    ? '#dc3545' // Red
+    : '#007bff'; // Default blue
+
+  return (
+    <span
+      ref={drag}
+      className="word"
+      style={{
+        opacity: isDragging ? 0 : 1,
+        backgroundColor: backgroundColor, // Dynamic background color
+        cursor: 'grab',
+        transform: isDragging ? 'scale(1.1)' : 'scale(1)',
+        transition: 'all 0.2s ease-in-out',
+        padding: '8px 12px',
+        borderRadius: '12px',
+        color: 'white',
+        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
+        userSelect: 'none',
+        margin: '5px',
+      }}
+    >
+      {word}
+    </span>
+  );
+};
+
+export default Word;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/ArticleSubmission.js =====
+// src/components/ArticleSubmission.js
+
+import React, { useState, useEffect } from 'react';
+
+const ArticleSubmission = () => {
+  const [article, setArticle] = useState('');
+  const [response, setResponse] = useState(null);
+  const [jobId, setJobId] = useState(null);
+
+  // New state variables
+  const [sourceFolder, setSourceFolder] = useState('');
+  const [destFolder, setDestFolder] = useState('');
+  const [password, setPassword] = useState('');
+  const [recentFolders, setRecentFolders] = useState([]);
+  const destFolders = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
+
+  // Fetch recent folders from the backend when the component mounts
+  useEffect(() => {
+    const fetchRecentFolders = async () => {
+      try {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'; // Fallback to localhost for development
+        const res = await fetch(`${backendUrl}/get-recent-folders`);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+        setRecentFolders(data.folders);
+      } catch (error) {
+        console.error('Error fetching recent folders:', error);
+        alert('Failed to fetch recent folders.');
+      }
+    };
+
+    fetchRecentFolders();
+  }, []);
+
+  const checkStatus = async (jobId) => {
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/check-status/${jobId}`);
+      const data = await res.json();
+      if (data.status === 'complete') {
+        const timestamp = data.timestamp;
+        const gameUrl = `https://frankwalter2.github.io/alternative-facts-game-2/?test=${timestamp}`;
+        setResponse({ message: 'Article processing complete', gameUrl: gameUrl });
+      } else if (data.status === 'failed') {
+        setResponse({ error: `Processing failed: ${data.error}` });
+      } else {
+        // If still pending, poll again after a delay
+        setTimeout(() => checkStatus(jobId), 5000); // Poll every 5 seconds
+      }
+    } catch (error) {
+      console.error('Error checking status:', error);
+      setResponse({ error: `Failed to check status. ${error.message}` });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/process-article`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ article }),
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text(); // Capture the error body
+        throw new Error(`HTTP error! status: ${res.status}, message: ${errorText}`);
+      }
+
+      const data = await res.json();
+      setJobId(data.job_id); // Store job ID and start polling
+      checkStatus(data.job_id); // Start polling for the result
+    } catch (error) {
+      console.error('Error submitting article:', error);
+      setResponse({ error: `Failed to process the article. ${error.message}` });
+    }
+  };
+
+  const handleMoveGameData = async () => {
+    if (!sourceFolder || !destFolder || !password) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+      const res = await fetch(`${backendUrl}/move-game-data`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sourceFolder, destFolder, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert('File moved successfully!');
+        // Optionally, refresh the recent folders list
+        setSourceFolder('');
+        setDestFolder('');
+        setPassword('');
+        // Re-fetch recent folders
+        const foldersRes = await fetch(`${backendUrl}/get-recent-folders`);
+        if (foldersRes.ok) {
+          const foldersData = await foldersRes.json();
+          setRecentFolders(foldersData.folders);
+        }
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Error moving game data:', error);
+      alert('An error occurred while moving the file.');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Submit an Article</h2>
+
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={article}
+          onChange={(e) => setArticle(e.target.value)}
+          placeholder="Paste your article here"
+          rows="10"
+          cols="50"
+        />
+        <br />
+        <button type="submit">Submit Article</button>
+      </form>
+
+      {jobId && <p>Processing... Job ID: {jobId}</p>}
+
+      {response && (
+        <div>
+          {response.gameUrl ? (
+            <>
+              <h3>Article processing complete!</h3>
+              <p>
+                Your game is ready. You can access it at:{' '}
+                <a href={response.gameUrl} target="_blank" rel="noopener noreferrer">
+                  {response.gameUrl}
+                </a>
+              </p>
+            </>
+          ) : response.error ? (
+            <>
+              <h3>Error:</h3>
+              <p>{response.error}</p>
+            </>
+          ) : null}
+        </div>
+      )}
+
+      <h2>Move GameData File</h2>
+      <div>
+        <label>
+          Source Folder:
+          <select value={sourceFolder} onChange={(e) => setSourceFolder(e.target.value)}>
+            <option value="">Select Source Folder</option>
+            {recentFolders.map((folder) => (
+              <option key={folder} value={folder}>
+                {folder}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>
+          Destination Folder:
+          <select value={destFolder} onChange={(e) => setDestFolder(e.target.value)}>
+            <option value="">Select Destination Folder</option>
+            {destFolders.map((folder) => (
+              <option key={folder} value={folder}>
+                {folder}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+          />
+        </label>
+      </div>
+      <button type="button" onClick={handleMoveGameData}>
+        Move GameData File
+      </button>
+    </div>
+  );
+};
+
+export default ArticleSubmission;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/WordCloud.js =====
+// src/components/WordCloud.js
+
+import React from 'react';
+import Word from './Word';
+import { useDrop } from 'react-dnd';
+
+const WordCloud = ({ words, getWordStatus, onWordReturn }) => {
+  const [, drop] = useDrop(() => ({
+    accept: 'WORD_IN_GAP',
+    drop: (item) => {
+      if (onWordReturn) {
+        onWordReturn(item.word, item.fromGapId);
+      }
+    },
+  }));
+
+  return (
+    <div ref={drop} className="word-cloud">
+      {words.map((word) => (
+        <Word
+          key={word} // Assuming all words are unique
+          word={word}
+          status={getWordStatus(word)} // Pass status prop
+        />
+      ))}
+    </div>
+  );
+};
+
+export default WordCloud;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/Timer.js =====
+// src/components/Timer.js
+import React, { useState, useEffect } from 'react';
+
+const Timer = ({ isActive, showTime, onTimeUpdate }) => {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const timer = setInterval(() => {
+      setTime((t) => {
+        const newTime = t + 1;
+        if (onTimeUpdate) onTimeUpdate(newTime);
+        return newTime;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isActive, onTimeUpdate]);
+
+  return showTime ? <div className="timer">Time: {time}s</div> : null;
+};
+
+export default Timer;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/Gap.js =====
+// src/components/Gap.js
+
+import React from 'react';
+import { useDrag, useDrop } from 'react-dnd';
+
+const Gap = ({ id, word, onDrop, onRemove, status }) => {
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'WORD',
+    drop: (item) => onDrop(id, item.word),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'WORD_IN_GAP',
+    item: { word, fromGapId: id },
+    canDrag: () => !!word && status !== 'correct', // Prevent dragging if status is 'correct'
+    end: (item, monitor) => {
+      if (!monitor.didDrop()) {
+        onRemove(item.word, id); // Pass word and gapId to handleReturnWord
+      }
+    },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  // Determine background color based on status
+  const backgroundColor = isOver
+    ? '#e0e0e0' // Light gray when hovered
+    : status === 'empty'
+    ? '#a9a9a9' // Grey for empty gaps
+    : status === 'filled'
+    ? '#007bff' // Blue when filled
+    : status === 'correct'
+    ? '#28a745' // Green
+    : status === 'wrong place'
+    ? '#fd7e14' // Orange
+    : status === 'incorrect'
+    ? '#dc3545' // Red
+    : '#dee1e4'; // Fallback color
+
+// src/components/Gap.js
+
+return (
+    <span
+      ref={(node) => drag(drop(node))}
+      className="gap"
+      style={{
+        minWidth: '60px', // Reduced width
+        padding: '6px 8px', // Reduced padding
+        borderRadius: '4px',
+        color: 'white',
+        display: 'inline-block',
+        textAlign: 'center',
+        margin: '0 3px', // Reduced margin
+        backgroundColor: backgroundColor,
+        cursor: status !== 'correct' ? 'pointer' : 'default',
+        transition: 'background-color 0.3s ease, transform 0.2s ease',
+        opacity: isDragging ? 0 : 1,
+        fontSize: '14px', // Match word font size
+        lineHeight: 'normal', // Ensure vertical alignment
+        verticalAlign: 'middle', // Align with text
+      }}
+    >
+      {word || '_____' /* Show blank if no word is placed */}
+    </span>
+  );
+  
+};
+
+export default Gap;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/Analogy.js =====
+// src/components/Analogy.js
+
+import React from 'react';
+import Gap from './Gap';
+
+const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) => (
+  <div className="analogies">
+    {analogies.map((analogy, idx) => {
+      const parts = analogy.split(/(\{\d+\})/g); // Split analogy text where gaps are defined
+
+      return (
+        <div key={idx} className="analogy-box">
+          {parts.map((part, index) => {
+            const match = part.match(/\{(\d+)\}/);
+            if (match) {
+              const gapId = parseInt(match[1], 10);
+              return (
+                <Gap
+                  key={`${idx}-${index}`} // Unique key combining analogy and part index
+                  id={gapId}
+                  word={answers[gapId]} // Pass the current word in this gap
+                  onDrop={onDrop} // Handle word drop
+                  onRemove={onRemove} // Handle word removal
+                  status={colors[gapId] || 'empty'} // Pass status prop (default to 'empty')
+                />
+              );
+            }
+            return <span key={`${idx}-${index}`}>{part}</span>; // Render normal text parts
+          })}
+        </div>
+      );
+      
+    })}
+  </div>
+);
+
+export default Analogy;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/CustomDragLayer.js =====
+// src/components/CustomDragLayer.js
+
+import React from 'react';
+import { useDragLayer } from 'react-dnd';
+
+const CustomDragLayer = () => {
+  const { item, isDragging, clientOffset } = useDragLayer((monitor) => ({
+    item: monitor.getItem(),
+    isDragging: monitor.isDragging(),
+    clientOffset: monitor.getClientOffset(),
+  }));
+
+  if (!isDragging || !clientOffset) {
+    return null;
+  }
+
+  const { x, y } = clientOffset;
+
+  const style = {
+    position: 'fixed',
+    pointerEvents: 'none',
+    left: x,
+    top: y,
+    transform: 'translate(-50%, -50%)', // Center the word under the cursor/finger
+    zIndex: 1000,
+  };
+
+  return (
+    <div style={style}>
+      <span
+        className="word"
+        style={{
+          backgroundColor: '#007bff',
+          color: 'white',
+          padding: '6px 8px', // Match the word styles
+          borderRadius: '12px',
+          fontSize: '14px',
+        }}
+      >
+        {item.word}
+      </span>
+    </div>
+  );
+};
+
+export default CustomDragLayer;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/components/StartScreen.js =====
+// src/components/StartScreen.js
+
+import React from 'react';
+
+const StartScreen = ({ onStart }) => (
+  <div className="start-screen">
+    <h2>Welcome to Alternative Facts!</h2>
+    <p>
+      Can you sort fact from fiction? Fill in the blanks to complete today's satirical puzzle.
+      Drag and drop the correct words into the gaps in the analogies.
+      You have 6 tries to get them all right. Good luck!
+    </p>
+    <button onClick={onStart}>Start Game</button>
+  </div>
+);
+
+export default StartScreen;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/reportWebVitals.js =====
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+
+==============================
+
+===== File: /workspaces/alternative-facts-backend/alternative-facts-game/src/App.js =====
+import React from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Game from './Game';  // Ensure this path is correct
+import ArticleSubmission from './components/ArticleSubmission';  // Ensure this path is correct
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Game />} />
+        <Route path="/submit-article" element={<ArticleSubmission />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+==============================
+
