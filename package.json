@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build -r https://github.com/frankwalter2/alternative-facts-game-2.git"
+    "deploy": "GH_TOKEN=$PAT gh-pages -d build -r https://frankwalter2:$PAT@github.com/frankwalter2/alternative-facts-game-2.git --cname alternativefactsgame.com"
   },
   "eslintConfig": {
     "extends": [
