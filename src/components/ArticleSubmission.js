@@ -41,7 +41,7 @@ const ArticleSubmission = () => {
       const data = await res.json();
       if (data.status === 'complete') {
         const timestamp = data.timestamp;
-        const gameUrl = `https://frankwalter2.github.io/alternative-facts-game-2/?test=${timestamp}`;
+        const gameUrl = `https://alternativefactsgame.com/?test=${timestamp}`;
         setResponse({ message: 'Article processing complete', gameUrl: gameUrl });
       } else if (data.status === 'failed') {
         setResponse({ error: `Processing failed: ${data.error}` });
