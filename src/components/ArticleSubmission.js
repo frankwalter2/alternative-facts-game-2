@@ -1,5 +1,3 @@
-// src/components/ArticleSubmission.js
-
 import React, { useState, useEffect } from 'react';
 
 const ArticleSubmission = () => {
@@ -14,11 +12,15 @@ const ArticleSubmission = () => {
   const [recentFolders, setRecentFolders] = useState([]);
   const destFolders = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
 
+  // Use the new server URL directly
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+
   // Fetch recent folders from the backend when the component mounts
   useEffect(() => {
     const fetchRecentFolders = async () => {
       try {
-        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000'; // Fallback to localhost for development
         const res = await fetch(`${backendUrl}/get-recent-folders`);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -32,11 +34,21 @@ const ArticleSubmission = () => {
     };
 
     fetchRecentFolders();
-  }, []);
+  }, [backendUrl]);
+
+  // Generate upcoming game links based on today's day of the month
+  const generateUpcomingGames = () => {
+    const today = new Date().getDate();
+    const upcomingGames = [];
+    for (let i = 0; i < 5; i++) {
+      const dayNumber = (today + i) > 31 ? (today + i) - 31 : (today + i); // Handle day overflow
+      upcomingGames.push(dayNumber);
+    }
+    return upcomingGames;
+  };
 
   const checkStatus = async (jobId) => {
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
       const res = await fetch(`${backendUrl}/check-status/${jobId}`);
       const data = await res.json();
       if (data.status === 'complete') {
@@ -59,7 +71,6 @@ const ArticleSubmission = () => {
     e.preventDefault();
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
       const res = await fetch(`${backendUrl}/process-article`, {
         method: 'POST',
         headers: {
@@ -89,11 +100,10 @@ const ArticleSubmission = () => {
     }
 
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-      const res = await fetch(`${backendUrl}/move-game-data`, {
+      const res = await fetch(`${backendUrl}/assign-game-data`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sourceFolder, destFolder, password }),
+        body: JSON.stringify({ sourceId: sourceFolder, dayNumber: destFolder, password }), // Pass correct keys here
       });
 
       const data = await res.json();
@@ -199,6 +209,28 @@ const ArticleSubmission = () => {
       <button type="button" onClick={handleMoveGameData}>
         Move GameData File
       </button>
+
+      <h2>Recently Generated Games</h2>
+      <ul>
+        {recentFolders.map((folder) => (
+          <li key={folder}>
+            <a href={`https://alternativefactsgame.com/?test=${folder}`} target="_blank" rel="noopener noreferrer">
+              Recently Generated Game {folder}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Upcoming Games</h2>
+      <ul>
+        {generateUpcomingGames().map((day) => (
+          <li key={day}>
+            <a href={`https://alternativefactsgame.com/?test=${day}`} target="_blank" rel="noopener noreferrer">
+              Game for Day {day}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

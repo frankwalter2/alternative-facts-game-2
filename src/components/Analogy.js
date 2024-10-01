@@ -3,7 +3,9 @@
 import React from 'react';
 import Gap from './Gap';
 
-const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) => (
+// In Analogy.js
+
+const Analogy = ({ analogies, answers, onDrop, onRemove, onSwap, answerMap, colors }) => (
   <div className="analogies">
     {analogies.map((analogy, idx) => {
       const parts = analogy.split(/(\{\d+\})/g); // Split analogy text where gaps are defined
@@ -21,6 +23,7 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
                   word={answers[gapId]} // Pass the current word in this gap
                   onDrop={onDrop} // Handle word drop
                   onRemove={onRemove} // Handle word removal
+                  onSwap={onSwap} // Handle word swapping between gaps
                   status={colors[gapId] || 'empty'} // Pass status prop (default to 'empty')
                 />
               );
@@ -29,9 +32,9 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
           })}
         </div>
       );
-      
     })}
   </div>
 );
+
 
 export default Analogy;

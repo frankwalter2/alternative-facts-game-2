@@ -10,6 +10,7 @@
     "react": "^18.3.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^8.0.3",
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
@@ -17,11 +18,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env PUBLIC_URL= react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "build": "cross-env REACT_APP_BACKEND_URL=https://alternative-facts-backend-onha54xqca-nw.a.run.app react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "GH_TOKEN=$PAT gh-pages -d build -r https://frankwalter2:$PAT@github.com/frankwalter2/alternative-facts-game-2.git --cname alternativefactsgame.com"
+    "deploy": "gh-pages -d build -r https://github.com/frankwalter2/alternative-facts-game-2.git --cname alternativefactsgame.com"
   },
   "eslintConfig": {
     "extends": [

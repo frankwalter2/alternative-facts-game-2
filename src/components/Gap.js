@@ -3,28 +3,35 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-const Gap = ({ id, word, onDrop, onRemove, status }) => {
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'WORD',
-    drop: (item) => onDrop(id, item.word),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'WORD_IN_GAP',
-    item: { word, fromGapId: id },
-    canDrag: () => !!word && status !== 'correct', // Prevent dragging if status is 'correct'
-    end: (item, monitor) => {
-      if (!monitor.didDrop()) {
-        onRemove(item.word, id); // Pass word and gapId to handleReturnWord
+const Gap = ({ id, word, onDrop, onRemove, onSwap, status }) => {
+  const [{ isOver }, drop] = useDrop({
+    accept: ['WORD', 'WORD_IN_GAP'],
+    drop: (item) => {
+      if (item.fromGapId !== undefined && item.fromGapId !== id) {
+        onSwap(item.fromGapId, id);
+      } else {
+        onDrop(id, item.word);
       }
     },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isOver: monitor.isOver(),
     }),
-  }));
+  });
+
+  const [{ isDragging }, drag] = useDrag({
+    type: 'WORD_IN_GAP',
+    item: { word, fromGapId: id },
+    canDrag: () => !!word && status !== 'correct',
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const handleClick = () => {
+    if (word && status !== 'correct') {
+      onRemove(word, id);
+    }
+  };
 
   // Determine background color based on status
   const backgroundColor = isOver
@@ -41,12 +48,11 @@ const Gap = ({ id, word, onDrop, onRemove, status }) => {
     ? '#dc3545' // Red
     : '#dee1e4'; // Fallback color
 
-// src/components/Gap.js
-
-return (
+  return (
     <span
       ref={(node) => drag(drop(node))}
       className="gap"
+      onClick={handleClick}
       style={{
         minWidth: '60px', // Reduced width
         padding: '6px 8px', // Reduced padding
@@ -67,7 +73,6 @@ return (
       {word || '_____' /* Show blank if no word is placed */}
     </span>
   );
-  
 };
 
 export default Gap;

@@ -1,9 +1,11 @@
 // src/Game.js
 
-import React, { useState, useEffect } from "react";
+
 import "./App.css";
-import { DndProvider } from "react-dnd";
-import { TouchBackend } from "react-dnd-touch-backend";
+import React, { useState, useEffect, useCallback } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
 
 import StartScreen from "./components/StartScreen";
 import Analogy from "./components/Analogy";
@@ -22,9 +24,9 @@ function Game () {
   const [colors, setColors] = useState({}); // Track colors for gaps
   const [gameData, setGameData] = useState(null); // New state for game data
 
-  const handleTimeUpdate = (newTime) => {
+  const handleTimeUpdate = useCallback((newTime) => {
     setTime(newTime);
-  };
+  }, []);
 
   const generateGoogleNewsLink = (sixWordStory) => {
     const query = encodeURIComponent(sixWordStory);
@@ -33,21 +35,32 @@ function Game () {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-
-    // Get the "test" parameter from the URL, if available
-    const folderName = queryParams.get("test")
-        ? queryParams.get("test") // Use the test parameter verbatim
-        : new Date().getDate(); // If no test=, use the day of the month (1-31)
-
-    // Build the path using the folderName (either from test or day of the month)
-    const dataPath = `${process.env.PUBLIC_URL}/data/${folderName}/gameData.json`;
-
-    console.log(`Trying to load data from: ${dataPath}`); // Debugging line
-
-    fetch(dataPath)
+    const testParam = queryParams.get("test");
+  
+    // Determine if the test parameter is a day (1-31) or a timestamp (not a number)
+    let fetchUrl;
+  
+    if (testParam) {
+      if (!isNaN(testParam) && testParam >= 1 && testParam <= 31) {
+        // If it's a number between 1 and 31, use the day-based endpoint
+        fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${testParam}`;
+      } else {
+        // If it's a string (timestamp), use the id-based endpoint
+        fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-id/${testParam}`;
+      }
+    } else {
+      // If no test parameter is provided, use the day of the month
+      const dayOfMonth = new Date().getDate();
+      fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${dayOfMonth}`;
+    }
+  
+    console.log(`Fetching data from: ${fetchUrl}`); // Debugging line
+  
+    // Fetch the data from the appropriate endpoint
+    fetch(fetchUrl)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch daily game data"); // Error if daily file does not exist
+          throw new Error("Failed to fetch daily game data");
         }
         return response.json();
       })
@@ -58,11 +71,11 @@ function Game () {
       })
       .catch((error) => {
         console.error("Error loading daily game data:", error);
-
-        // If the daily file does not exist, fall back to the default data file
+  
+        // Fallback to the default data file if no specific game data is found
         const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
         console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
-
+  
         fetch(fallbackPath)
           .then((response) => response.json())
           .then((data) => {
@@ -75,7 +88,22 @@ function Game () {
           });
       });
   }, []);
+  
 
+// In Game.js
+
+const handleSwap = (fromGapId, toGapId) => {
+  setAnswers((prevAnswers) => {
+    const newAnswers = { ...prevAnswers };
+    const fromWord = newAnswers[fromGapId];
+    const toWord = newAnswers[toGapId];
+
+    newAnswers[toGapId] = fromWord;
+    newAnswers[fromGapId] = toWord;
+
+    return newAnswers;
+  });
+};
 
 
   const initializeColors = (data) => {
@@ -153,21 +181,43 @@ function Game () {
 
   const googleNewsLink = generateGoogleNewsLink(six_word_story);
   const correctAnswers = giveaway_keywords.map((kw) => kw.answer);
-  const wrongAnswers = final_alternative_keywords.flatMap((pair) => {
-    const [keyword1, keyword2] = pair;
-    return !correctAnswers.includes(keyword1) &&
-      !correctAnswers.includes(keyword2)
-      ? [keyword1, keyword2]
-      : [];
-  });
+  const wrongAnswers = [...new Set(final_alternative_keywords)]  // Remove duplicates by converting to a Set and back to an array
+  .filter(keyword => !correctAnswers.includes(keyword));  // Filter out any correct answers
+
 
   const uniqueWrongAnswers = [...new Set(wrongAnswers)].filter(
     (word) => !correctAnswers.includes(word)
   );
 
-  // Update wordList to correctly remove used words
+  const getWordStatus = (word) => {
+    const statusPriority = {
+      "correct": 3,
+      "wrong place": 2,
+      "incorrect": 1,
+      "unused": 0,
+    };
+  
+    let highestStatus = "unused";
+  
+    log.forEach((round) => {
+      round.forEach((entry) => {
+        if (entry.word === word) {
+          const currentStatus = entry.status;
+          if (statusPriority[currentStatus] > statusPriority[highestStatus]) {
+            highestStatus = currentStatus;
+          }
+        }
+      });
+    });
+  
+    return highestStatus;
+  };
+
+  // Update wordList to exclude words marked as 'correct'
   const wordList = [...correctAnswers, ...uniqueWrongAnswers]
-    .filter((word) => !wordsUsed.includes(word)) // Remove words already used in gaps
+    .filter(
+      (word) => !wordsUsed.includes(word) && getWordStatus(word) !== "correct"
+    )
     .sort();
 
   const answerMap = giveaway_keywords.reduce((acc, kw) => {
@@ -191,32 +241,32 @@ function Game () {
     }
   };
 
-  const handleReturnWord = (word, fromGapId) => {
-    // Prevent removing correct words
-    const isCorrect = giveaway_keywords.some(
-      (kw) => kw.id === fromGapId && kw.answer === word
-    );
+// In Game.js
 
-    if (isCorrect) {
-      // Optionally, notify the user that correct words cannot be removed
-      alert("Correct words cannot be removed from the gaps.");
-      return;
-    }
+const handleReturnWord = (word, fromGapId) => {
+  // Prevent removing correct words
+  const isCorrect = colors[fromGapId] === "correct";
 
-    if (fromGapId != null) {
-      setAnswers((prev) => {
-        const newAnswers = { ...prev };
-        delete newAnswers[fromGapId]; // Remove the word from the gap
-        return newAnswers;
-      });
-      setWordsUsed((prevUsed) => prevUsed.filter((w) => w !== word)); // Return word to word cloud
-      // Reset the color for this gap to 'empty' when the word is removed
-      setColors((prevColors) => ({
-        ...prevColors,
-        [fromGapId]: "empty",
-      }));
-    }
-  };
+  if (isCorrect) {
+    alert("Correct words cannot be removed from the gaps.");
+    return;
+  }
+
+  if (fromGapId != null) {
+    setAnswers((prev) => {
+      const newAnswers = { ...prev };
+      delete newAnswers[fromGapId]; // Remove the word from the gap
+      return newAnswers;
+    });
+    setWordsUsed((prevUsed) => prevUsed.filter((w) => w !== word)); // Return word to word cloud
+    setColors((prevColors) => ({
+      ...prevColors,
+      [fromGapId]: "empty",
+    }));
+  }
+};
+
+
 
   const handleSubmit = () => {
     if (triesLeft === 0) return;
@@ -230,7 +280,9 @@ function Game () {
       const currentAnswer = answers[kw.id];
       if (!currentAnswer) {
         newLog.push({ id: kw.id, word: null, status: "incorrect" });
-        newColors[kw.id] = "incorrect";
+        if (newColors[kw.id] !== "correct") {
+          newColors[kw.id] = "incorrect";
+        }
         allCorrect = false;
         return;
       }
@@ -240,12 +292,16 @@ function Game () {
         newColors[kw.id] = "correct";
       } else if (correctAnswers.includes(currentAnswer)) {
         newLog.push({ id: kw.id, word: currentAnswer, status: "wrong place" });
-        newColors[kw.id] = "wrong place";
+        if (newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
+          newColors[kw.id] = "wrong place";
+        }
         wordsToReturn.push(currentAnswer);
         allCorrect = false;
       } else {
         newLog.push({ id: kw.id, word: currentAnswer, status: "incorrect" });
-        newColors[kw.id] = "incorrect";
+        if (newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
+          newColors[kw.id] = "incorrect";
+        }
         wordsToReturn.push(currentAnswer);
         allCorrect = false;
       }
@@ -267,7 +323,13 @@ function Game () {
           const currentAnswer = prevAnswers[kw.id];
           if (wordsToReturn.includes(currentAnswer)) {
             delete updatedAnswers[kw.id]; // Remove word from the gap
-            newColors[kw.id] = "empty"; // Reset color to 'empty'
+            // Only reset color if it wasn't previously correct or wrong place
+            if (
+              newColors[kw.id] !== "correct" &&
+              newColors[kw.id] !== "wrong place"
+            ) {
+              newColors[kw.id] = "empty"; // Reset color to 'empty'
+            }
           }
         });
         return updatedAnswers;
@@ -276,7 +338,7 @@ function Game () {
       // Update colors after removing words
       wordsToReturn.forEach((word) => {
         const kw = giveaway_keywords.find((kw) => kw.answer === word);
-        if (kw) {
+        if (kw && newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
           newColors[kw.id] = "empty";
         }
       });
@@ -313,18 +375,10 @@ function Game () {
     }
   };
 
-  // Determine the status for each word based on submission
-  const getWordStatus = (word) => {
-    const latestLog = log[log.length - 1];
-    if (!latestLog) return "unused"; // Default status before any submission
+// In Game.js
 
-    const entry = latestLog.find((item) => item.word === word);
 
-    if (entry) {
-      return entry.status; // 'correct', 'wrong place', 'incorrect'
-    }
-    return "unused"; // Default status
-  };
+
 
   const generateScoreEmoji = () => {
     const emojiMap = {
@@ -353,14 +407,7 @@ function Game () {
   };
 
   return (
-    <DndProvider
-      backend={TouchBackend}
-      options={{
-        enableMouseEvents: true,
-        enableTouchEvents: true,
-        scrollAngleRanges: undefined, // Allow dragging even when scrolling
-      }}
-    >
+    <DndProvider backend={HTML5Backend}>
       <div className="app">
         <div className="game-title">Alternative Facts</div>
         <Timer
@@ -378,6 +425,7 @@ function Game () {
                 analogies={processed_analogies}
                 answers={answers}
                 onDrop={handleDrop}
+                onSwap={handleSwap}
                 onRemove={handleReturnWord}
                 answerMap={answerMap}
                 colors={colors}
