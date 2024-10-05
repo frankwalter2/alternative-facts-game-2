@@ -32,7 +32,7 @@ const CustomDragLayer = () => {
         style={{
           backgroundColor: '#007bff',
           color: 'white',
-          padding: '6px 8px', // Match the word styles
+          padding: '3px 8px', // Match the word styles
           borderRadius: '12px',
           fontSize: '14px',
         }}

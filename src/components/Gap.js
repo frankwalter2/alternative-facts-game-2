@@ -48,31 +48,32 @@ const Gap = ({ id, word, onDrop, onRemove, onSwap, status }) => {
     ? '#dc3545' // Red
     : '#dee1e4'; // Fallback color
 
-  return (
-    <span
-      ref={(node) => drag(drop(node))}
-      className="gap"
-      onClick={handleClick}
-      style={{
-        minWidth: '60px', // Reduced width
-        padding: '6px 8px', // Reduced padding
-        borderRadius: '4px',
-        color: 'white',
-        display: 'inline-block',
-        textAlign: 'center',
-        margin: '0 3px', // Reduced margin
-        backgroundColor: backgroundColor,
-        cursor: status !== 'correct' ? 'pointer' : 'default',
-        transition: 'background-color 0.3s ease, transform 0.2s ease',
-        opacity: isDragging ? 0 : 1,
-        fontSize: '14px', // Match word font size
-        lineHeight: 'normal', // Ensure vertical alignment
-        verticalAlign: 'middle', // Align with text
-      }}
-    >
-      {word || '_____' /* Show blank if no word is placed */}
-    </span>
-  );
-};
+    return (
+      <span
+        ref={(node) => drag(drop(node))}
+        className="gap"
+        onClick={handleClick}
+        style={{
+          /* Adjusted styles */
+          minWidth: '60px',
+          padding: '3px 8px',
+          borderRadius: '4px',
+          color: 'white',
+          display: 'inline-block',
+          textAlign: 'center',
+          margin: '0 3px',
+          backgroundColor: backgroundColor,
+          cursor: status !== 'correct' ? 'pointer' : 'default',
+          transition: 'background-color 0.3s ease, transform 0.2s ease',
+          opacity: isDragging ? 0 : 1,
+          fontSize: '14px',
+          lineHeight: 'normal',
+          verticalAlign: 'middle',
+        }}
+      >
+        {word || '_____' /* Show blank if no word is placed */}
+      </span>
+    );
+  };
 
 export default Gap;

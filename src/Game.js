@@ -1,28 +1,33 @@
 // src/Game.js
 
-
 import "./App.css";
-import React, { useState, useEffect, useCallback } from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
+import { useDragDropManager } from "react-dnd";
 
 import StartScreen from "./components/StartScreen";
 import Analogy from "./components/Analogy";
 import WordCloud from "./components/WordCloud";
 import CustomDragLayer from "./components/CustomDragLayer";
 import Timer from "./components/Timer"; // Import Timer component
+// src/Game.js
+import ReactGA from "react-ga4";
 
-function Game () {
+function Game() {
   const [gameStarted, setGameStarted] = useState(false);
   const [answers, setAnswers] = useState({});
   const [showColumn, setShowColumn] = useState(false);
   const [triesLeft, setTriesLeft] = useState(6);
   const [time, setTime] = useState(0);
   const [log, setLog] = useState([]);
-  const [wordsUsed, setWordsUsed] = useState([]); // Track used words
+  const [shareButtonText, setShareButtonText] = useState("Share your score");
   const [colors, setColors] = useState({}); // Track colors for gaps
   const [gameData, setGameData] = useState(null); // New state for game data
+  const gameContainerRef = useRef(null);
+  const dragDropManager = useDragDropManager();
+  const [showRules, setShowRules] = useState(false);
+  const messageRef = useRef(null);
+
 
   const handleTimeUpdate = useCallback((newTime) => {
     setTime(newTime);
@@ -36,10 +41,10 @@ function Game () {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const testParam = queryParams.get("test");
-  
+
     // Determine if the test parameter is a day (1-31) or a timestamp (not a number)
     let fetchUrl;
-  
+
     if (testParam) {
       if (!isNaN(testParam) && testParam >= 1 && testParam <= 31) {
         // If it's a number between 1 and 31, use the day-based endpoint
@@ -53,9 +58,9 @@ function Game () {
       const dayOfMonth = new Date().getDate();
       fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${dayOfMonth}`;
     }
-  
+
     console.log(`Fetching data from: ${fetchUrl}`); // Debugging line
-  
+
     // Fetch the data from the appropriate endpoint
     fetch(fetchUrl)
       .then((response) => {
@@ -71,11 +76,11 @@ function Game () {
       })
       .catch((error) => {
         console.error("Error loading daily game data:", error);
-  
+
         // Fallback to the default data file if no specific game data is found
         const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
         console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
-  
+
         fetch(fallbackPath)
           .then((response) => response.json())
           .then((data) => {
@@ -88,23 +93,83 @@ function Game () {
           });
       });
   }, []);
+
+  // Implement Auto-Scrolling Logic using useDragDropManager
+  useEffect(() => {
+    const scrollContainer = gameContainerRef.current;
+    if (!scrollContainer) return;
+
+    const monitor = dragDropManager.getMonitor();
+
+    const unsubscribe = monitor.subscribeToOffsetChange(() => {
+      const offset = monitor.getClientOffset();
+      if (!offset) return;
+
+      const { top, bottom } = scrollContainer.getBoundingClientRect();
+
+      const scrollThreshold = 50; // Pixels from edge to start scrolling
+      const scrollSpeed = 10; // Pixels to scroll per interval
+
+      if (offset.y - top < scrollThreshold) {
+        scrollContainer.scrollTop -= scrollSpeed;
+      } else if (bottom - offset.y < scrollThreshold) {
+        scrollContainer.scrollTop += scrollSpeed;
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [dragDropManager]);
+
+  useEffect(() => {
+    if (showRules) {
+      const handleClickOutside = (event) => {
+        const rulesContent = document.querySelector(".rules-content");
+        if (rulesContent && !rulesContent.contains(event.target)) {
+          setShowRules(false); // Close the overlay
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showRules]);
+
+  useEffect(() => {
+    if (showColumn && messageRef.current) {
+      messageRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showColumn]);
+  
   
 
-// In Game.js
+  const handleSwap = (fromGapId, toGapId) => {
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
+      const fromWord = newAnswers[fromGapId];
+      const toWord = newAnswers[toGapId];
 
-const handleSwap = (fromGapId, toGapId) => {
-  setAnswers((prevAnswers) => {
-    const newAnswers = { ...prevAnswers };
-    const fromWord = newAnswers[fromGapId];
-    const toWord = newAnswers[toGapId];
+      newAnswers[toGapId] = fromWord;
+      newAnswers[fromGapId] = toWord;
 
-    newAnswers[toGapId] = fromWord;
-    newAnswers[fromGapId] = toWord;
+      return newAnswers;
+    });
 
-    return newAnswers;
-  });
-};
+    setColors((prevColors) => {
+      const newColors = { ...prevColors };
+      const fromColor = prevColors[fromGapId];
+      const toColor = prevColors[toGapId];
 
+      newColors[toGapId] = fromColor;
+      newColors[fromGapId] = toColor;
+
+      return newColors;
+    });
+  };
 
   const initializeColors = (data) => {
     if (data && data.results && data.results.length > 0) {
@@ -122,8 +187,10 @@ const handleSwap = (fromGapId, toGapId) => {
     }
   };
 
-  if (!gameData) {
-    return <div>Loading game data...</div>;
+  if (!gameStarted || !gameData) {
+    return (
+      <StartScreen onStart={() => setGameStarted(true)} isLoading={!gameData} />
+    );
   }
 
   const result = gameData.results.find(
@@ -181,9 +248,8 @@ const handleSwap = (fromGapId, toGapId) => {
 
   const googleNewsLink = generateGoogleNewsLink(six_word_story);
   const correctAnswers = giveaway_keywords.map((kw) => kw.answer);
-  const wrongAnswers = [...new Set(final_alternative_keywords)]  // Remove duplicates by converting to a Set and back to an array
-  .filter(keyword => !correctAnswers.includes(keyword));  // Filter out any correct answers
-
+  const wrongAnswers = [...new Set(final_alternative_keywords)] // Remove duplicates by converting to a Set and back to an array
+    .filter((keyword) => !correctAnswers.includes(keyword)); // Filter out any correct answers
 
   const uniqueWrongAnswers = [...new Set(wrongAnswers)].filter(
     (word) => !correctAnswers.includes(word)
@@ -191,14 +257,14 @@ const handleSwap = (fromGapId, toGapId) => {
 
   const getWordStatus = (word) => {
     const statusPriority = {
-      "correct": 3,
+      correct: 3,
       "wrong place": 2,
-      "incorrect": 1,
-      "unused": 0,
+      incorrect: 1,
+      unused: 0,
     };
-  
+
     let highestStatus = "unused";
-  
+
     log.forEach((round) => {
       round.forEach((entry) => {
         if (entry.word === word) {
@@ -209,11 +275,15 @@ const handleSwap = (fromGapId, toGapId) => {
         }
       });
     });
-  
+
     return highestStatus;
   };
 
-  // Update wordList to exclude words marked as 'correct'
+  // In Game.js
+
+  const wordsUsed = Object.values(answers);
+
+  // Update wordList to use the derived wordsUsed
   const wordList = [...correctAnswers, ...uniqueWrongAnswers]
     .filter(
       (word) => !wordsUsed.includes(word) && getWordStatus(word) !== "correct"
@@ -225,48 +295,67 @@ const handleSwap = (fromGapId, toGapId) => {
     return acc;
   }, {});
 
+  // In Game.js
+
+  // In Game.js
+
   const handleDrop = (gapId, word) => {
-    // Prevent duplicating the same word in multiple gaps
-    if (!wordsUsed.includes(word)) {
-      setAnswers((prev) => ({
-        ...prev,
-        [gapId]: word,
-      }));
-      setWordsUsed((prevUsed) => [...prevUsed, word]); // Track word as used
-      // Set the color for this gap to 'filled' when a new word is placed
-      setColors((prevColors) => ({
-        ...prevColors,
-        [gapId]: "filled",
-      }));
-    }
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
+      const existingWord = newAnswers[gapId];
+
+      // Prevent duplicating the same word in other gaps
+      const wordAlreadyUsedInOtherGap = Object.entries(prevAnswers).some(
+        ([key, value]) => value === word && parseInt(key) !== gapId
+      );
+      if (wordAlreadyUsedInOtherGap) {
+        alert("This word is already used in another gap.");
+        return prevAnswers;
+      }
+
+      // If there's an existing word, remove it (it will reappear in the word cloud)
+      if (existingWord && existingWord !== word) {
+        delete newAnswers[gapId];
+      }
+
+      // Place the new word in the gap
+      newAnswers[gapId] = word;
+
+      return newAnswers;
+    });
+
+    // Update colors
+    setColors((prevColors) => ({
+      ...prevColors,
+      [gapId]: "filled",
+    }));
   };
 
-// In Game.js
+  // In Game.js
 
-const handleReturnWord = (word, fromGapId) => {
-  // Prevent removing correct words
-  const isCorrect = colors[fromGapId] === "correct";
+  // In Game.js
 
-  if (isCorrect) {
-    alert("Correct words cannot be removed from the gaps.");
-    return;
-  }
+  const handleReturnWord = (word, fromGapId) => {
+    // Prevent removing correct words
+    const isCorrect = colors[fromGapId] === "correct";
 
-  if (fromGapId != null) {
-    setAnswers((prev) => {
-      const newAnswers = { ...prev };
+    if (isCorrect) {
+      alert("Correct words cannot be removed from the gaps.");
+      return;
+    }
+
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
       delete newAnswers[fromGapId]; // Remove the word from the gap
       return newAnswers;
     });
-    setWordsUsed((prevUsed) => prevUsed.filter((w) => w !== word)); // Return word to word cloud
+
+    // Reset the color for this gap to 'empty' when the word is removed
     setColors((prevColors) => ({
       ...prevColors,
       [fromGapId]: "empty",
     }));
-  }
-};
-
-
+  };
 
   const handleSubmit = () => {
     if (triesLeft === 0) return;
@@ -292,14 +381,20 @@ const handleReturnWord = (word, fromGapId) => {
         newColors[kw.id] = "correct";
       } else if (correctAnswers.includes(currentAnswer)) {
         newLog.push({ id: kw.id, word: currentAnswer, status: "wrong place" });
-        if (newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
+        if (
+          newColors[kw.id] !== "correct" &&
+          newColors[kw.id] !== "wrong place"
+        ) {
           newColors[kw.id] = "wrong place";
         }
         wordsToReturn.push(currentAnswer);
         allCorrect = false;
       } else {
         newLog.push({ id: kw.id, word: currentAnswer, status: "incorrect" });
-        if (newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
+        if (
+          newColors[kw.id] !== "correct" &&
+          newColors[kw.id] !== "wrong place"
+        ) {
           newColors[kw.id] = "incorrect";
         }
         wordsToReturn.push(currentAnswer);
@@ -310,44 +405,51 @@ const handleReturnWord = (word, fromGapId) => {
     setLog([...log, newLog]);
     setColors(newColors);
 
-    if (wordsToReturn.length > 0) {
-      // Return words to word cloud
-      setWordsUsed((prevUsed) =>
-        prevUsed.filter((word) => !wordsToReturn.includes(word))
-      );
-
-      // Remove words from gaps and reset their colors
-      setAnswers((prevAnswers) => {
-        const updatedAnswers = { ...prevAnswers };
-        giveaway_keywords.forEach((kw) => {
-          const currentAnswer = prevAnswers[kw.id];
-          if (wordsToReturn.includes(currentAnswer)) {
-            delete updatedAnswers[kw.id]; // Remove word from the gap
-            // Only reset color if it wasn't previously correct or wrong place
-            if (
-              newColors[kw.id] !== "correct" &&
-              newColors[kw.id] !== "wrong place"
-            ) {
-              newColors[kw.id] = "empty"; // Reset color to 'empty'
-            }
+    // Remove words from gaps and reset their colors
+    setAnswers((prevAnswers) => {
+      const updatedAnswers = { ...prevAnswers };
+      giveaway_keywords.forEach((kw) => {
+        const currentAnswer = prevAnswers[kw.id];
+        if (wordsToReturn.includes(currentAnswer)) {
+          delete updatedAnswers[kw.id]; // Remove word from the gap
+          // Only reset color if it wasn't previously correct or wrong place
+          if (
+            newColors[kw.id] !== "correct" &&
+            newColors[kw.id] !== "wrong place"
+          ) {
+            newColors[kw.id] = "empty"; // Reset color to 'empty'
           }
-        });
-        return updatedAnswers;
-      });
-
-      // Update colors after removing words
-      wordsToReturn.forEach((word) => {
-        const kw = giveaway_keywords.find((kw) => kw.answer === word);
-        if (kw && newColors[kw.id] !== "correct" && newColors[kw.id] !== "wrong place") {
-          newColors[kw.id] = "empty";
         }
       });
+      return updatedAnswers;
+    });
 
-      setColors(newColors);
-    }
+    // Update colors after removing words
+    wordsToReturn.forEach((word) => {
+      const kw = giveaway_keywords.find((kw) => kw.answer === word);
+      if (
+        kw &&
+        newColors[kw.id] !== "correct" &&
+        newColors[kw.id] !== "wrong place"
+      ) {
+        newColors[kw.id] = "empty";
+      }
+    });
+
+    setColors(newColors);
 
     if (allCorrect) {
       setShowColumn(true);
+      ReactGA.event({
+        action: "game_completed",
+        params: {
+          result: allCorrect ? "win" : "lose",
+          tries_left: triesLeft,
+          time_spent: time,
+          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+        },
+      });
+
       return;
     }
 
@@ -361,7 +463,15 @@ const handleReturnWord = (word, fromGapId) => {
         return acc;
       }, {});
       setAnswers(finalAnswers);
-
+      ReactGA.event({
+        action: "game_completed",
+        params: {
+          result: allCorrect ? "win" : "lose",
+          tries_left: triesLeft,
+          time_spent: time,
+          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+        },
+      });
       // Optionally, set colors for final answers
       const finalColors = { ...colors };
       giveaway_keywords.forEach((kw) => {
@@ -375,10 +485,7 @@ const handleReturnWord = (word, fromGapId) => {
     }
   };
 
-// In Game.js
-
-
-
+  // In Game.js
 
   const generateScoreEmoji = () => {
     const emojiMap = {
@@ -400,98 +507,141 @@ const handleReturnWord = (word, fromGapId) => {
   const handleShareScore = () => {
     const score = generateScoreEmoji();
     const currentUrl = window.location.href;
-    const message = `My 'Alternative Facts' score: \n\n${score}\nPlay here: ${currentUrl}`;
+    const message = `I completed today's 'Alternative Facts' in ${time} seconds.\n\n${score}\nPlay here: ${currentUrl}`;
     navigator.clipboard.writeText(message).then(() => {
-      alert("Score and link copied to clipboard!");
+      setShareButtonText("Copied!");
+      // Reset the button text after 3 seconds
+      setTimeout(() => setShareButtonText("Share your score"), 3000);
+    });
+    ReactGA.event({
+      action: "share_score",
     });
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="app">
+    <div className="app">
+      <div className="game-title-container">
         <div className="game-title">Alternative Facts</div>
-        <Timer
-          isActive={gameStarted && !showColumn} // Start timer when game begins and stop when game ends
-          showTime={false} // Only show at the end
-          onTimeUpdate={handleTimeUpdate}
-        />
-
-        {!gameStarted ? (
-          <StartScreen onStart={() => setGameStarted(true)} />
-        ) : (
-          <>
-            <div className="game-container">
-              <Analogy
-                analogies={processed_analogies}
-                answers={answers}
-                onDrop={handleDrop}
-                onSwap={handleSwap}
-                onRemove={handleReturnWord}
-                answerMap={answerMap}
-                colors={colors}
-              />
-              <WordCloud
-                words={wordList}
-                getWordStatus={getWordStatus}
-                onWordReturn={handleReturnWord}
-              />
-            </div>
-            <div className="submit-container">
-              <div>Tries left: {triesLeft}</div>
-              <button onClick={handleSubmit} disabled={triesLeft === 0}>
-                Submit
-              </button>
-            </div>
-
-            {showColumn && (
-              <>
-                {triesLeft > 0 ? (
-                  <>
-                    <h2>Well done!</h2>
-                    <p>
-                      You completed the puzzle in {6 - triesLeft + 1} tries and{" "}
-                      {time} seconds!
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <h2>Commiserations!</h2>
-                    <p>You've used all your tries. Better luck next time!</p>
-                  </>
-                )}
-
-                {/* Fake News Section */}
-                <div className="fake-news">
-                  <h3>Fake News:</h3>
-                  <a
-                    href={googleNewsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {six_word_story}
-                  </a>
-                </div>
-
-                <div className="real-news">
-                  <h3>Real News:</h3>
-                  <h2>{headline}</h2>
-                  {paragraphs.map((paragraph, idx) => (
-                    <p
-                      key={idx}
-                      dangerouslySetInnerHTML={{ __html: paragraph }}
-                    />
-                  ))}
-                </div>
-
-                <button onClick={handleShareScore}>Share your score</button>
-              </>
-            )}
-          </>
-        )}
-
-        <CustomDragLayer />
+        <div className="info-icon" onClick={() => setShowRules(true)}>
+  <span style={{ fontFamily: 'serif', fontStyle: 'italic', fontWeight: 'bold' }}>i</span>
+</div>
       </div>
-    </DndProvider>
+
+      <Timer
+        isActive={gameStarted && !showColumn}
+        showTime={false}
+        onTimeUpdate={handleTimeUpdate}
+      />
+
+      {!gameStarted ? (
+        <StartScreen
+          onStart={() => setGameStarted(true)}
+          isLoading={!gameData}
+        />
+      ) : (
+        <>
+          <div className="game-container" ref={gameContainerRef}>
+            <Analogy
+              analogies={processed_analogies}
+              answers={answers}
+              onDrop={handleDrop}
+              onSwap={handleSwap}
+              onRemove={handleReturnWord}
+              answerMap={answerMap}
+              colors={colors}
+            />
+            <WordCloud
+              words={wordList}
+              getWordStatus={getWordStatus}
+              onWordReturn={handleReturnWord}
+            />
+          </div>
+          <div className="submit-container">
+            <div>Tries left: {triesLeft}</div>
+            <button onClick={handleSubmit} disabled={triesLeft === 0}>
+              Submit
+            </button>
+          </div>
+
+          {showColumn && (
+        <div ref={messageRef}>
+          {triesLeft > 0 ? (
+            <>
+              <h2>Well done!</h2>
+              <p>
+                You completed today's puzzle in {6 - triesLeft + 1} tries
+                and {time} seconds!
+              </p>
+            </>
+          ) : (
+            <>
+              <h2>Commiserations!</h2>
+              <p>You've used all your tries. Better luck next time!</p>
+            </>
+          )}
+
+          {/* Display the score emojis */}
+          <div className="score-emoji">
+            {generateScoreEmoji()
+              .split("\n")
+              .map((line, idx) => (
+                <div key={idx}>{line}</div>
+              ))}
+          </div>
+
+          {/* Center the share button */}
+          <div className="share-button-container">
+            <button
+              onClick={handleShareScore}
+              className={shareButtonText === "Copied!" ? "copied" : ""}
+            >
+              {shareButtonText}
+            </button>
+          </div>
+
+          {/* Fake News Section */}
+          <div className="fake-news">
+            <h3>Fake News:</h3>
+            <a
+              href={googleNewsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {six_word_story}
+            </a>
+          </div>
+
+          {/* Real News Article */}
+          <div className="real-news">
+            <h3>Real News:</h3>
+            <h2>{headline}</h2>
+            {paragraphs.map((paragraph, idx) => (
+              <p
+                key={idx}
+                dangerouslySetInnerHTML={{ __html: paragraph }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+        </>
+      )}
+
+      <CustomDragLayer />
+      {showRules && (
+  <div className="rules-overlay">
+    <div className="rules-content">
+      <span className="close-button" onClick={() => setShowRules(false)}>×</span>
+      <p>
+        Fill in the blanks to complete today's satirical puzzle.
+        Drag and drop the correct words into the gaps in the analogies.
+        You have 6 tries to get them all right. Red means an incorrect guess, orange means the word is in the wrong place.
+      </p>
+    </div>
+  </div>
+)}
+
+    </div>
   );
 }
 

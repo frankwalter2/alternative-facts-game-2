@@ -18,7 +18,7 @@ $excludeFiles = @("package-lock.json", ".env")
 
 # Process code files in the current directory (no recursion)
 Get-ChildItem -Path $directoryPath -File | Where-Object {
-    $_.Extension -in @(".js", ".html", ".py") -or $_.Name -in @("package.json", "devcontainer.json") -and 
+    $_.Extension -in @(".js", ".html", ".py", ".css") -or $_.Name -in @("package.json", "devcontainer.json") -and 
     $_.Name -notin $excludeFiles
 } | ForEach-Object {
     Add-Content -Path $outputFile -Value "===== File: $($_.FullName) ====="
@@ -36,7 +36,7 @@ foreach ($folder in $folders) {
         Write-Host "Processing files in folder: $folder"
         
         Get-ChildItem -Path $folderPath -Recurse -File | Where-Object {
-            $_.Extension -in @(".js", ".html", ".py", ".yml") -or $_.Name -in @("package.json", "devcontainer.json") -and 
+            $_.Extension -in @(".js", ".html", ".py", ".yml", ".css") -or $_.Name -in @("package.json", "devcontainer.json") -and 
             $_.FullName -notlike "*node_modules*" -and $_.FullName -notlike "*build*"
         } | ForEach-Object {
             Add-Content -Path $outputFile -Value "===== File: $($_.FullName) ====="

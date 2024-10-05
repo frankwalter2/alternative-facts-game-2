@@ -1,9 +1,5 @@
-// src/components/Analogy.js
-
 import React from 'react';
 import Gap from './Gap';
-
-// In Analogy.js
 
 const Analogy = ({ analogies, answers, onDrop, onRemove, onSwap, answerMap, colors }) => (
   <div className="analogies">
@@ -18,7 +14,7 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, onSwap, answerMap, colo
               const gapId = parseInt(match[1], 10);
               return (
                 <Gap
-                  key={`${idx}-${index}`} // Unique key combining analogy and part index
+                key={`${idx}-${index}`}
                   id={gapId}
                   word={answers[gapId]} // Pass the current word in this gap
                   onDrop={onDrop} // Handle word drop
@@ -38,3 +34,4 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, onSwap, answerMap, colo
 
 
 export default Analogy;
+

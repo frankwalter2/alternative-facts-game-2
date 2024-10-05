@@ -23,27 +23,28 @@ const Word = ({ word, status = 'unused' }) => {
     ? '#dc3545' // Red
     : '#007bff'; // Default blue
 
-  return (
-    <span
-      ref={drag}
-      className="word"
-      style={{
-        opacity: isDragging ? 0 : 1,
-        backgroundColor: backgroundColor, // Dynamic background color
-        cursor: 'grab',
-        transform: isDragging ? 'scale(1.1)' : 'scale(1)',
-        transition: 'all 0.2s ease-in-out',
-        padding: '8px 12px',
-        borderRadius: '12px',
-        color: 'white',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-        userSelect: 'none',
-        margin: '5px',
-      }}
-    >
-      {word}
-    </span>
-  );
-};
+    return (
+      <span
+        ref={drag}
+        className="word"
+        style={{
+          /* Adjusted styles */
+          opacity: isDragging ? 0 : 1,
+          backgroundColor: backgroundColor,
+          cursor: 'grab',
+          transform: isDragging ? 'scale(1.1)' : 'scale(1)',
+          transition: 'all 0.2s ease-in-out',
+          padding: '6px 8px',
+          borderRadius: '8px',
+          color: 'white',
+          userSelect: 'none',
+          margin: '4px',
+          fontSize: '14px',
+        }}
+      >
+        {word}
+      </span>
+    );
+  };
 
 export default Word;

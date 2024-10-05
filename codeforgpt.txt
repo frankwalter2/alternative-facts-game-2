@@ -8,11 +8,14 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "rdndmb-html5-to-touch": "^8.0.3",
     "react": "^18.3.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^8.0.3",
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.3.1",
+    "react-ga4": "^2.1.0",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -71,13 +74,13 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=0.75, maximum-scale=2.0, user-scalable=yes">
     <meta name="theme-color" content="#000000" />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
 
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Play today's daily satirical quiz."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -85,19 +88,16 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/690ddc3c61773.js" data-cmp-host="a.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
+    
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    
+    <title>Alternative Facts</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Google tag (gtag.js) -->
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -120,14 +120,19 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Game from './Game';  // Ensure this path is correct
 import ArticleSubmission from './components/ArticleSubmission';  // Ensure this path is correct
 
+import { DndProvider, MultiBackend } from 'react-dnd-multi-backend';
+import { HTML5toTouch } from 'rdndmb-html5-to-touch';
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Game />} />
-        <Route path="/submit-article" element={<ArticleSubmission />} />
-      </Routes>
-    </Router>
+    <DndProvider backend={MultiBackend} options={HTML5toTouch}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Game />} />
+          <Route path="/submit-article" element={<ArticleSubmission />} />
+        </Routes>
+      </Router>
+    </DndProvider>
   );
 }
 
@@ -150,31 +155,36 @@ test('renders learn react link', () => {
 ===== File: C:\Users\frank\Desktop\Coding\Alternative-Facts\alternative-facts-game\src\Game.js =====
 // src/Game.js
 
-import React, { useState, useEffect } from "react";
 import "./App.css";
-import { DndProvider } from "react-dnd";
-import { TouchBackend } from "react-dnd-touch-backend";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+
+import { useDragDropManager } from "react-dnd";
 
 import StartScreen from "./components/StartScreen";
 import Analogy from "./components/Analogy";
 import WordCloud from "./components/WordCloud";
 import CustomDragLayer from "./components/CustomDragLayer";
 import Timer from "./components/Timer"; // Import Timer component
+// src/Game.js
+import ReactGA from "react-ga4";
 
-function Game () {
+function Game() {
   const [gameStarted, setGameStarted] = useState(false);
   const [answers, setAnswers] = useState({});
   const [showColumn, setShowColumn] = useState(false);
   const [triesLeft, setTriesLeft] = useState(6);
   const [time, setTime] = useState(0);
   const [log, setLog] = useState([]);
-  const [wordsUsed, setWordsUsed] = useState([]); // Track used words
+  const [shareButtonText, setShareButtonText] = useState("Share your score");
   const [colors, setColors] = useState({}); // Track colors for gaps
   const [gameData, setGameData] = useState(null); // New state for game data
+  const gameContainerRef = useRef(null);
+  const dragDropManager = useDragDropManager();
+  const [showRules, setShowRules] = useState(false);
 
-  const handleTimeUpdate = (newTime) => {
+  const handleTimeUpdate = useCallback((newTime) => {
     setTime(newTime);
-  };
+  }, []);
 
   const generateGoogleNewsLink = (sixWordStory) => {
     const query = encodeURIComponent(sixWordStory);
@@ -184,10 +194,10 @@ function Game () {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const testParam = queryParams.get("test");
-  
+
     // Determine if the test parameter is a day (1-31) or a timestamp (not a number)
     let fetchUrl;
-  
+
     if (testParam) {
       if (!isNaN(testParam) && testParam >= 1 && testParam <= 31) {
         // If it's a number between 1 and 31, use the day-based endpoint
@@ -201,9 +211,9 @@ function Game () {
       const dayOfMonth = new Date().getDate();
       fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${dayOfMonth}`;
     }
-  
+
     console.log(`Fetching data from: ${fetchUrl}`); // Debugging line
-  
+
     // Fetch the data from the appropriate endpoint
     fetch(fetchUrl)
       .then((response) => {
@@ -219,11 +229,11 @@ function Game () {
       })
       .catch((error) => {
         console.error("Error loading daily game data:", error);
-  
+
         // Fallback to the default data file if no specific game data is found
         const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
         console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
-  
+
         fetch(fallbackPath)
           .then((response) => response.json())
           .then((data) => {
@@ -236,9 +246,76 @@ function Game () {
           });
       });
   }, []);
+
+  // Implement Auto-Scrolling Logic using useDragDropManager
+  useEffect(() => {
+    const scrollContainer = gameContainerRef.current;
+    if (!scrollContainer) return;
+
+    const monitor = dragDropManager.getMonitor();
+
+    const unsubscribe = monitor.subscribeToOffsetChange(() => {
+      const offset = monitor.getClientOffset();
+      if (!offset) return;
+
+      const { top, bottom } = scrollContainer.getBoundingClientRect();
+
+      const scrollThreshold = 50; // Pixels from edge to start scrolling
+      const scrollSpeed = 10; // Pixels to scroll per interval
+
+      if (offset.y - top < scrollThreshold) {
+        scrollContainer.scrollTop -= scrollSpeed;
+      } else if (bottom - offset.y < scrollThreshold) {
+        scrollContainer.scrollTop += scrollSpeed;
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [dragDropManager]);
+
+  useEffect(() => {
+    if (showRules) {
+      const handleClickOutside = (event) => {
+        const rulesContent = document.querySelector(".rules-content");
+        if (rulesContent && !rulesContent.contains(event.target)) {
+          setShowRules(false); // Close the overlay
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [showRules]);
   
 
+  const handleSwap = (fromGapId, toGapId) => {
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
+      const fromWord = newAnswers[fromGapId];
+      const toWord = newAnswers[toGapId];
 
+      newAnswers[toGapId] = fromWord;
+      newAnswers[fromGapId] = toWord;
+
+      return newAnswers;
+    });
+
+    setColors((prevColors) => {
+      const newColors = { ...prevColors };
+      const fromColor = prevColors[fromGapId];
+      const toColor = prevColors[toGapId];
+
+      newColors[toGapId] = fromColor;
+      newColors[fromGapId] = toColor;
+
+      return newColors;
+    });
+  };
 
   const initializeColors = (data) => {
     if (data && data.results && data.results.length > 0) {
@@ -256,8 +333,10 @@ function Game () {
     }
   };
 
-  if (!gameData) {
-    return <div>Loading game data...</div>;
+  if (!gameStarted || !gameData) {
+    return (
+      <StartScreen onStart={() => setGameStarted(true)} isLoading={!gameData} />
+    );
   }
 
   const result = gameData.results.find(
@@ -315,17 +394,46 @@ function Game () {
 
   const googleNewsLink = generateGoogleNewsLink(six_word_story);
   const correctAnswers = giveaway_keywords.map((kw) => kw.answer);
-  const wrongAnswers = [...new Set(final_alternative_keywords)]  // Remove duplicates by converting to a Set and back to an array
-  .filter(keyword => !correctAnswers.includes(keyword));  // Filter out any correct answers
-
+  const wrongAnswers = [...new Set(final_alternative_keywords)] // Remove duplicates by converting to a Set and back to an array
+    .filter((keyword) => !correctAnswers.includes(keyword)); // Filter out any correct answers
 
   const uniqueWrongAnswers = [...new Set(wrongAnswers)].filter(
     (word) => !correctAnswers.includes(word)
   );
 
-  // Update wordList to correctly remove used words
+  const getWordStatus = (word) => {
+    const statusPriority = {
+      correct: 3,
+      "wrong place": 2,
+      incorrect: 1,
+      unused: 0,
+    };
+
+    let highestStatus = "unused";
+
+    log.forEach((round) => {
+      round.forEach((entry) => {
+        if (entry.word === word) {
+          const currentStatus = entry.status;
+          if (statusPriority[currentStatus] > statusPriority[highestStatus]) {
+            highestStatus = currentStatus;
+          }
+        }
+      });
+    });
+
+    return highestStatus;
+  };
+
+  // In Game.js
+
+  const wordsUsed = Object.values(answers);
+
+  // Update wordList to use the derived wordsUsed
   const wordList = [...correctAnswers, ...uniqueWrongAnswers]
-    .filter((word) => !wordsUsed.includes(word)) // Remove words already used in gaps
+    .filter(
+      (word) => !wordsUsed.includes(word) && getWordStatus(word) !== "correct"
+    )
     .sort();
 
   const answerMap = giveaway_keywords.reduce((acc, kw) => {
@@ -333,47 +441,66 @@ function Game () {
     return acc;
   }, {});
 
+  // In Game.js
+
+  // In Game.js
+
   const handleDrop = (gapId, word) => {
-    // Prevent duplicating the same word in multiple gaps
-    if (!wordsUsed.includes(word)) {
-      setAnswers((prev) => ({
-        ...prev,
-        [gapId]: word,
-      }));
-      setWordsUsed((prevUsed) => [...prevUsed, word]); // Track word as used
-      // Set the color for this gap to 'filled' when a new word is placed
-      setColors((prevColors) => ({
-        ...prevColors,
-        [gapId]: "filled",
-      }));
-    }
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
+      const existingWord = newAnswers[gapId];
+
+      // Prevent duplicating the same word in other gaps
+      const wordAlreadyUsedInOtherGap = Object.entries(prevAnswers).some(
+        ([key, value]) => value === word && parseInt(key) !== gapId
+      );
+      if (wordAlreadyUsedInOtherGap) {
+        alert("This word is already used in another gap.");
+        return prevAnswers;
+      }
+
+      // If there's an existing word, remove it (it will reappear in the word cloud)
+      if (existingWord && existingWord !== word) {
+        delete newAnswers[gapId];
+      }
+
+      // Place the new word in the gap
+      newAnswers[gapId] = word;
+
+      return newAnswers;
+    });
+
+    // Update colors
+    setColors((prevColors) => ({
+      ...prevColors,
+      [gapId]: "filled",
+    }));
   };
+
+  // In Game.js
+
+  // In Game.js
 
   const handleReturnWord = (word, fromGapId) => {
     // Prevent removing correct words
-    const isCorrect = giveaway_keywords.some(
-      (kw) => kw.id === fromGapId && kw.answer === word
-    );
+    const isCorrect = colors[fromGapId] === "correct";
 
     if (isCorrect) {
-      // Optionally, notify the user that correct words cannot be removed
       alert("Correct words cannot be removed from the gaps.");
       return;
     }
 
-    if (fromGapId != null) {
-      setAnswers((prev) => {
-        const newAnswers = { ...prev };
-        delete newAnswers[fromGapId]; // Remove the word from the gap
-        return newAnswers;
-      });
-      setWordsUsed((prevUsed) => prevUsed.filter((w) => w !== word)); // Return word to word cloud
-      // Reset the color for this gap to 'empty' when the word is removed
-      setColors((prevColors) => ({
-        ...prevColors,
-        [fromGapId]: "empty",
-      }));
-    }
+    setAnswers((prevAnswers) => {
+      const newAnswers = { ...prevAnswers };
+      delete newAnswers[fromGapId]; // Remove the word from the gap
+      return newAnswers;
+    });
+
+    // Reset the color for this gap to 'empty' when the word is removed
+    setColors((prevColors) => ({
+      ...prevColors,
+      [fromGapId]: "empty",
+    }));
   };
 
   const handleSubmit = () => {
@@ -388,7 +515,9 @@ function Game () {
       const currentAnswer = answers[kw.id];
       if (!currentAnswer) {
         newLog.push({ id: kw.id, word: null, status: "incorrect" });
-        newColors[kw.id] = "incorrect";
+        if (newColors[kw.id] !== "correct") {
+          newColors[kw.id] = "incorrect";
+        }
         allCorrect = false;
         return;
       }
@@ -398,12 +527,22 @@ function Game () {
         newColors[kw.id] = "correct";
       } else if (correctAnswers.includes(currentAnswer)) {
         newLog.push({ id: kw.id, word: currentAnswer, status: "wrong place" });
-        newColors[kw.id] = "wrong place";
+        if (
+          newColors[kw.id] !== "correct" &&
+          newColors[kw.id] !== "wrong place"
+        ) {
+          newColors[kw.id] = "wrong place";
+        }
         wordsToReturn.push(currentAnswer);
         allCorrect = false;
       } else {
         newLog.push({ id: kw.id, word: currentAnswer, status: "incorrect" });
-        newColors[kw.id] = "incorrect";
+        if (
+          newColors[kw.id] !== "correct" &&
+          newColors[kw.id] !== "wrong place"
+        ) {
+          newColors[kw.id] = "incorrect";
+        }
         wordsToReturn.push(currentAnswer);
         allCorrect = false;
       }
@@ -412,38 +551,51 @@ function Game () {
     setLog([...log, newLog]);
     setColors(newColors);
 
-    if (wordsToReturn.length > 0) {
-      // Return words to word cloud
-      setWordsUsed((prevUsed) =>
-        prevUsed.filter((word) => !wordsToReturn.includes(word))
-      );
-
-      // Remove words from gaps and reset their colors
-      setAnswers((prevAnswers) => {
-        const updatedAnswers = { ...prevAnswers };
-        giveaway_keywords.forEach((kw) => {
-          const currentAnswer = prevAnswers[kw.id];
-          if (wordsToReturn.includes(currentAnswer)) {
-            delete updatedAnswers[kw.id]; // Remove word from the gap
+    // Remove words from gaps and reset their colors
+    setAnswers((prevAnswers) => {
+      const updatedAnswers = { ...prevAnswers };
+      giveaway_keywords.forEach((kw) => {
+        const currentAnswer = prevAnswers[kw.id];
+        if (wordsToReturn.includes(currentAnswer)) {
+          delete updatedAnswers[kw.id]; // Remove word from the gap
+          // Only reset color if it wasn't previously correct or wrong place
+          if (
+            newColors[kw.id] !== "correct" &&
+            newColors[kw.id] !== "wrong place"
+          ) {
             newColors[kw.id] = "empty"; // Reset color to 'empty'
           }
-        });
-        return updatedAnswers;
-      });
-
-      // Update colors after removing words
-      wordsToReturn.forEach((word) => {
-        const kw = giveaway_keywords.find((kw) => kw.answer === word);
-        if (kw) {
-          newColors[kw.id] = "empty";
         }
       });
+      return updatedAnswers;
+    });
 
-      setColors(newColors);
-    }
+    // Update colors after removing words
+    wordsToReturn.forEach((word) => {
+      const kw = giveaway_keywords.find((kw) => kw.answer === word);
+      if (
+        kw &&
+        newColors[kw.id] !== "correct" &&
+        newColors[kw.id] !== "wrong place"
+      ) {
+        newColors[kw.id] = "empty";
+      }
+    });
+
+    setColors(newColors);
 
     if (allCorrect) {
       setShowColumn(true);
+      ReactGA.event({
+        action: "game_completed",
+        params: {
+          result: allCorrect ? "win" : "lose",
+          tries_left: triesLeft,
+          time_spent: time,
+          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+        },
+      });
+
       return;
     }
 
@@ -457,7 +609,15 @@ function Game () {
         return acc;
       }, {});
       setAnswers(finalAnswers);
-
+      ReactGA.event({
+        action: "game_completed",
+        params: {
+          result: allCorrect ? "win" : "lose",
+          tries_left: triesLeft,
+          time_spent: time,
+          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+        },
+      });
       // Optionally, set colors for final answers
       const finalColors = { ...colors };
       giveaway_keywords.forEach((kw) => {
@@ -471,18 +631,7 @@ function Game () {
     }
   };
 
-  // Determine the status for each word based on submission
-  const getWordStatus = (word) => {
-    const latestLog = log[log.length - 1];
-    if (!latestLog) return "unused"; // Default status before any submission
-
-    const entry = latestLog.find((item) => item.word === word);
-
-    if (entry) {
-      return entry.status; // 'correct', 'wrong place', 'incorrect'
-    }
-    return "unused"; // Default status
-  };
+  // In Game.js
 
   const generateScoreEmoji = () => {
     const emojiMap = {
@@ -504,104 +653,141 @@ function Game () {
   const handleShareScore = () => {
     const score = generateScoreEmoji();
     const currentUrl = window.location.href;
-    const message = `My 'Alternative Facts' score: \n\n${score}\nPlay here: ${currentUrl}`;
+    const message = `I completed today's 'Alternative Facts' in ${time} seconds.\n\n${score}\nPlay here: ${currentUrl}`;
     navigator.clipboard.writeText(message).then(() => {
-      alert("Score and link copied to clipboard!");
+      setShareButtonText("Copied!");
+      // Reset the button text after 3 seconds
+      setTimeout(() => setShareButtonText("Share your score"), 3000);
+    });
+    ReactGA.event({
+      action: "share_score",
     });
   };
 
   return (
-    <DndProvider
-      backend={TouchBackend}
-      options={{
-        enableMouseEvents: true,
-        enableTouchEvents: true,
-        scrollAngleRanges: undefined, // Allow dragging even when scrolling
-      }}
-    >
-      <div className="app">
+    <div className="app">
+      <div className="game-title-container">
         <div className="game-title">Alternative Facts</div>
-        <Timer
-          isActive={gameStarted && !showColumn} // Start timer when game begins and stop when game ends
-          showTime={false} // Only show at the end
-          onTimeUpdate={handleTimeUpdate}
-        />
-
-        {!gameStarted ? (
-          <StartScreen onStart={() => setGameStarted(true)} />
-        ) : (
-          <>
-            <div className="game-container">
-              <Analogy
-                analogies={processed_analogies}
-                answers={answers}
-                onDrop={handleDrop}
-                onRemove={handleReturnWord}
-                answerMap={answerMap}
-                colors={colors}
-              />
-              <WordCloud
-                words={wordList}
-                getWordStatus={getWordStatus}
-                onWordReturn={handleReturnWord}
-              />
-            </div>
-            <div className="submit-container">
-              <div>Tries left: {triesLeft}</div>
-              <button onClick={handleSubmit} disabled={triesLeft === 0}>
-                Submit
-              </button>
-            </div>
-
-            {showColumn && (
-              <>
-                {triesLeft > 0 ? (
-                  <>
-                    <h2>Well done!</h2>
-                    <p>
-                      You completed the puzzle in {6 - triesLeft + 1} tries and{" "}
-                      {time} seconds!
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <h2>Commiserations!</h2>
-                    <p>You've used all your tries. Better luck next time!</p>
-                  </>
-                )}
-
-                {/* Fake News Section */}
-                <div className="fake-news">
-                  <h3>Fake News:</h3>
-                  <a
-                    href={googleNewsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {six_word_story}
-                  </a>
-                </div>
-
-                <div className="real-news">
-                  <h3>Real News:</h3>
-                  <h2>{headline}</h2>
-                  {paragraphs.map((paragraph, idx) => (
-                    <p
-                      key={idx}
-                      dangerouslySetInnerHTML={{ __html: paragraph }}
-                    />
-                  ))}
-                </div>
-
-                <button onClick={handleShareScore}>Share your score</button>
-              </>
-            )}
-          </>
-        )}
-
-        <CustomDragLayer />
+        <div className="info-icon" onClick={() => setShowRules(true)}>
+  <span style={{ fontFamily: 'serif', fontStyle: 'italic', fontWeight: 'bold' }}>i</span>
+</div>
       </div>
-    </DndProvider>
+
+      <Timer
+        isActive={gameStarted && !showColumn}
+        showTime={false}
+        onTimeUpdate={handleTimeUpdate}
+      />
+
+      {!gameStarted ? (
+        <StartScreen
+          onStart={() => setGameStarted(true)}
+          isLoading={!gameData}
+        />
+      ) : (
+        <>
+          <div className="game-container" ref={gameContainerRef}>
+            <Analogy
+              analogies={processed_analogies}
+              answers={answers}
+              onDrop={handleDrop}
+              onSwap={handleSwap}
+              onRemove={handleReturnWord}
+              answerMap={answerMap}
+              colors={colors}
+            />
+            <WordCloud
+              words={wordList}
+              getWordStatus={getWordStatus}
+              onWordReturn={handleReturnWord}
+            />
+          </div>
+          <div className="submit-container">
+            <div>Tries left: {triesLeft}</div>
+            <button onClick={handleSubmit} disabled={triesLeft === 0}>
+              Submit
+            </button>
+          </div>
+
+          {showColumn && (
+            <>
+              {triesLeft > 0 ? (
+                <>
+                  <h2>Well done!</h2>
+                  <p>
+                    You completed today's puzzle in {6 - triesLeft + 1} tries
+                    and {time} seconds!
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2>Commiserations!</h2>
+                  <p>You've used all your tries. Better luck next time!</p>
+                </>
+              )}
+
+              {/* Display the score emojis */}
+              <div className="score-emoji">
+                {generateScoreEmoji()
+                  .split("\n")
+                  .map((line, idx) => (
+                    <div key={idx}>{line}</div>
+                  ))}
+              </div>
+
+              {/* Center the share button */}
+              <div className="share-button-container">
+                <button
+                  onClick={handleShareScore}
+                  className={shareButtonText === "Copied!" ? "copied" : ""}
+                >
+                  {shareButtonText}
+                </button>
+              </div>
+
+              {/* Fake News Section */}
+              <div className="fake-news">
+                <h3>Fake News:</h3>
+                <a
+                  href={googleNewsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {six_word_story}
+                </a>
+              </div>
+
+              {/* Real News Article */}
+              <div className="real-news">
+                <h3>Real News:</h3>
+                <h2>{headline}</h2>
+                {paragraphs.map((paragraph, idx) => (
+                  <p
+                    key={idx}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </>
+      )}
+
+      <CustomDragLayer />
+      {showRules && (
+  <div className="rules-overlay">
+    <div className="rules-content">
+      <span className="close-button" onClick={() => setShowRules(false)}>×</span>
+      <p>
+        Fill in the blanks to complete today's satirical puzzle.
+        Drag and drop the correct words into the gaps in the analogies.
+        You have 6 tries to get them all right. Red means an incorrect guess, orange means the word is in the wrong place.
+      </p>
+    </div>
+  </div>
+)}
+
+    </div>
   );
 }
 
@@ -615,6 +801,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'; // If you have global styles
 import App from './App'; // Import the App component
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-1N2JBW3KRZ');
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
@@ -647,12 +836,10 @@ import '@testing-library/jest-dom';
 ==============================
 
 ===== File: C:\Users\frank\Desktop\Coding\Alternative-Facts\alternative-facts-game\src\components\Analogy.js =====
-// src/components/Analogy.js
-
 import React from 'react';
 import Gap from './Gap';
 
-const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) => (
+const Analogy = ({ analogies, answers, onDrop, onRemove, onSwap, answerMap, colors }) => (
   <div className="analogies">
     {analogies.map((analogy, idx) => {
       const parts = analogy.split(/(\{\d+\})/g); // Split analogy text where gaps are defined
@@ -665,11 +852,12 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
               const gapId = parseInt(match[1], 10);
               return (
                 <Gap
-                  key={`${idx}-${index}`} // Unique key combining analogy and part index
+                key={`${idx}-${index}`}
                   id={gapId}
                   word={answers[gapId]} // Pass the current word in this gap
                   onDrop={onDrop} // Handle word drop
                   onRemove={onRemove} // Handle word removal
+                  onSwap={onSwap} // Handle word swapping between gaps
                   status={colors[gapId] || 'empty'} // Pass status prop (default to 'empty')
                 />
               );
@@ -678,12 +866,13 @@ const Analogy = ({ analogies, answers, onDrop, onRemove, answerMap, colors }) =>
           })}
         </div>
       );
-      
     })}
   </div>
 );
 
+
 export default Analogy;
+
 
 ==============================
 
@@ -964,7 +1153,7 @@ const CustomDragLayer = () => {
         style={{
           backgroundColor: '#007bff',
           color: 'white',
-          padding: '6px 8px', // Match the word styles
+          padding: '3px 8px', // Match the word styles
           borderRadius: '12px',
           fontSize: '14px',
         }}
@@ -985,28 +1174,35 @@ export default CustomDragLayer;
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-const Gap = ({ id, word, onDrop, onRemove, status }) => {
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: 'WORD',
-    drop: (item) => onDrop(id, item.word),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'WORD_IN_GAP',
-    item: { word, fromGapId: id },
-    canDrag: () => !!word && status !== 'correct', // Prevent dragging if status is 'correct'
-    end: (item, monitor) => {
-      if (!monitor.didDrop()) {
-        onRemove(item.word, id); // Pass word and gapId to handleReturnWord
+const Gap = ({ id, word, onDrop, onRemove, onSwap, status }) => {
+  const [{ isOver }, drop] = useDrop({
+    accept: ['WORD', 'WORD_IN_GAP'],
+    drop: (item) => {
+      if (item.fromGapId !== undefined && item.fromGapId !== id) {
+        onSwap(item.fromGapId, id);
+      } else {
+        onDrop(id, item.word);
       }
     },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isOver: monitor.isOver(),
     }),
-  }));
+  });
+
+  const [{ isDragging }, drag] = useDrag({
+    type: 'WORD_IN_GAP',
+    item: { word, fromGapId: id },
+    canDrag: () => !!word && status !== 'correct',
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const handleClick = () => {
+    if (word && status !== 'correct') {
+      onRemove(word, id);
+    }
+  };
 
   // Determine background color based on status
   const backgroundColor = isOver
@@ -1023,34 +1219,33 @@ const Gap = ({ id, word, onDrop, onRemove, status }) => {
     ? '#dc3545' // Red
     : '#dee1e4'; // Fallback color
 
-// src/components/Gap.js
-
-return (
-    <span
-      ref={(node) => drag(drop(node))}
-      className="gap"
-      style={{
-        minWidth: '60px', // Reduced width
-        padding: '6px 8px', // Reduced padding
-        borderRadius: '4px',
-        color: 'white',
-        display: 'inline-block',
-        textAlign: 'center',
-        margin: '0 3px', // Reduced margin
-        backgroundColor: backgroundColor,
-        cursor: status !== 'correct' ? 'pointer' : 'default',
-        transition: 'background-color 0.3s ease, transform 0.2s ease',
-        opacity: isDragging ? 0 : 1,
-        fontSize: '14px', // Match word font size
-        lineHeight: 'normal', // Ensure vertical alignment
-        verticalAlign: 'middle', // Align with text
-      }}
-    >
-      {word || '_____' /* Show blank if no word is placed */}
-    </span>
-  );
-  
-};
+    return (
+      <span
+        ref={(node) => drag(drop(node))}
+        className="gap"
+        onClick={handleClick}
+        style={{
+          /* Adjusted styles */
+          minWidth: '60px',
+          padding: '3px 8px',
+          borderRadius: '4px',
+          color: 'white',
+          display: 'inline-block',
+          textAlign: 'center',
+          margin: '0 3px',
+          backgroundColor: backgroundColor,
+          cursor: status !== 'correct' ? 'pointer' : 'default',
+          transition: 'background-color 0.3s ease, transform 0.2s ease',
+          opacity: isDragging ? 0 : 1,
+          fontSize: '14px',
+          lineHeight: 'normal',
+          verticalAlign: 'middle',
+        }}
+      >
+        {word || '_____' /* Show blank if no word is placed */}
+      </span>
+    );
+  };
 
 export default Gap;
 
@@ -1058,18 +1253,37 @@ export default Gap;
 
 ===== File: C:\Users\frank\Desktop\Coding\Alternative-Facts\alternative-facts-game\src\components\StartScreen.js =====
 // src/components/StartScreen.js
-
 import React from 'react';
+import ReactGA from 'react-ga4'; // Import GA
 
-const StartScreen = ({ onStart }) => (
+const StartScreen = ({ onStart, isLoading }) => (
   <div className="start-screen">
-    <h2>Welcome to Alternative Facts!</h2>
+    <h2>Welcome to Alternative Facts</h2>
     <p>
       Can you sort fact from fiction? Fill in the blanks to complete today's satirical puzzle.
       Drag and drop the correct words into the gaps in the analogies.
       You have 6 tries to get them all right. Good luck!
     </p>
-    <button onClick={onStart}>Start Game</button>
+    <button
+      onClick={() => {
+        if (!isLoading) { // Only allow start if not loading
+          // Track the game start event
+          ReactGA.event({
+            action: 'game_started',
+            params: {
+              category: 'User',
+              label: 'Game Start',
+            },
+          });
+
+          // Call the original onStart function
+          onStart();
+        }
+      }}
+      disabled={isLoading} // Disable the button if loading
+    >
+      {isLoading ? 'Loading...' : 'Start Game'}
+    </button>
   </div>
 );
 
@@ -1081,22 +1295,25 @@ export default StartScreen;
 // src/components/Timer.js
 import React, { useState, useEffect } from 'react';
 
+// Ensure that onTimeUpdate is not called during render
 const Timer = ({ isActive, showTime, onTimeUpdate }) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
     if (!isActive) return;
-
+  
     const timer = setInterval(() => {
-      setTime((t) => {
-        const newTime = t + 1;
-        if (onTimeUpdate) onTimeUpdate(newTime);
-        return newTime;
-      });
+      setTime((t) => t + 1);
     }, 1000);
-
+  
     return () => clearInterval(timer);
-  }, [isActive, onTimeUpdate]);
+  }, [isActive]); // Only depend on isActive
+  
+  useEffect(() => {
+    if (onTimeUpdate) {
+      onTimeUpdate(time);
+    }
+  }, [time, onTimeUpdate]); // Depend on time and onTimeUpdate
 
   return showTime ? <div className="timer">Time: {time}s</div> : null;
 };
@@ -1131,28 +1348,29 @@ const Word = ({ word, status = 'unused' }) => {
     ? '#dc3545' // Red
     : '#007bff'; // Default blue
 
-  return (
-    <span
-      ref={drag}
-      className="word"
-      style={{
-        opacity: isDragging ? 0 : 1,
-        backgroundColor: backgroundColor, // Dynamic background color
-        cursor: 'grab',
-        transform: isDragging ? 'scale(1.1)' : 'scale(1)',
-        transition: 'all 0.2s ease-in-out',
-        padding: '8px 12px',
-        borderRadius: '12px',
-        color: 'white',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-        userSelect: 'none',
-        margin: '5px',
-      }}
-    >
-      {word}
-    </span>
-  );
-};
+    return (
+      <span
+        ref={drag}
+        className="word"
+        style={{
+          /* Adjusted styles */
+          opacity: isDragging ? 0 : 1,
+          backgroundColor: backgroundColor,
+          cursor: 'grab',
+          transform: isDragging ? 'scale(1.1)' : 'scale(1)',
+          transition: 'all 0.2s ease-in-out',
+          padding: '6px 8px',
+          borderRadius: '8px',
+          color: 'white',
+          userSelect: 'none',
+          margin: '4px',
+          fontSize: '14px',
+        }}
+      >
+        {word}
+      </span>
+    );
+  };
 
 export default Word;
 
