@@ -16,6 +16,18 @@ const ArticleSubmission = () => {
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
+  // Add meta tag for noindex when the component mounts
+  useEffect(() => {
+    console.log('Adding noindex meta tag');
+    const metaTag = document.createElement('meta');
+    metaTag.name = 'robots';
+    metaTag.content = 'noindex';
+    document.head.appendChild(metaTag);
+  
+    return () => {
+      document.head.removeChild(metaTag);
+    };
+  }, []);
 
   // Fetch recent folders from the backend when the component mounts
   useEffect(() => {

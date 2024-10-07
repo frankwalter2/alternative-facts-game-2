@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "js-cookie": "^3.0.5",
     "rdndmb-html5-to-touch": "^8.0.3",
     "react": "^18.3.1",
     "react-dnd": "^16.0.1",
@@ -167,6 +168,7 @@ import CustomDragLayer from "./components/CustomDragLayer";
 import Timer from "./components/Timer"; // Import Timer component
 // src/Game.js
 import ReactGA from "react-ga4";
+import Cookies from "js-cookie";
 
 function Game() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -181,6 +183,16 @@ function Game() {
   const gameContainerRef = useRef(null);
   const dragDropManager = useDragDropManager();
   const [showRules, setShowRules] = useState(false);
+  const messageRef = useRef(null);
+  const [userId] = useState(() => {
+    let uid = Cookies.get("user_id");
+    if (!uid) {
+      uid = "user_" + Math.random().toString(36).substr(2, 9);
+      Cookies.set("user_id", uid, { expires: 365 });
+    }
+    return uid;
+  });
+  const [createdTimestamp, setCreatedTimestamp] = useState(null);
 
   const handleTimeUpdate = useCallback((newTime) => {
     setTime(newTime);
@@ -191,7 +203,210 @@ function Game() {
     return `https://news.google.com/search?q=${query}`;
   };
 
-  useEffect(() => {
+  const todayDate = new Date().toISOString().split("T")[0]; // Extracts YYYY-MM-DD
+
+  const calculateStatistics = () => {
+    const savedGames = JSON.parse(localStorage.getItem("gameData")) || [];
+    const isTestGame = window.location.href.includes("?test=");
+  
+    // Exclude test games for both statistics and streak calculations
+    const validGames = savedGames.filter(
+      (game) => !isTestGame && game.userId === userId
+    );
+  
+    // Calculate average time and tries
+    const totalTime = validGames.reduce(
+      (sum, game) => sum + game.timeTaken,
+      0
+    );
+  
+    const totalTries = validGames.reduce((sum, game) => {
+      // Count 6 tries for games that were lost
+      return sum + (game.didWin ? game.tries : 6);
+    }, 0);
+  
+    const averageTime = validGames.length
+      ? (totalTime / validGames.length).toFixed(2)
+      : 0;
+  
+    const averageTries = validGames.length
+      ? (totalTries / validGames.length).toFixed(2)
+      : 0;
+  
+    // Calculate streak only for games where didWin is true
+    let streak = 0;
+    let previousDate = null;
+    const datesPlayed = validGames
+      .filter((game) => game.didWin) // Only count wins for streak
+      .map((game) => game.date)
+      .sort()
+      .reverse(); // Latest first
+  
+    for (let dateStr of datesPlayed) {
+      const date = new Date(dateStr);
+      if (!previousDate) {
+        streak = 1;
+      } else {
+        const diffTime = previousDate - date;
+        const diffDays = diffTime / (1000 * 60 * 60 * 24);
+  
+        if (diffDays === 1) {
+          streak += 1;
+        } else {
+          break;
+        }
+      }
+      previousDate = date;
+    }
+  
+    return { averageTime, averageTries, streak };
+  };
+  
+
+  // Save game data to local storage when the game is completed
+  // Save game data to local storage when the game is completed
+const saveGameDataToLocalStorage = (
+  createdTimestamp,
+  didWin,
+  timeTaken,
+  tries,
+  userId,
+  log,
+  finalWordCloud,
+  correctlyGuessedWords,
+  finalAnswers,
+  colors
+) => {
+  const currentUrl = window.location.href;
+
+  const isTestGame = currentUrl.includes("?test=");
+
+  if (isTestGame) {
+    // Don't save game data for test games
+    return;
+  }
+
+  const newGameData = {
+    createdTimestamp,
+    didWin,
+    timeTaken,
+    tries,
+    userId,
+    date: todayDate,
+    log,
+    finalWordCloud,
+    correctlyGuessedWords,
+    finalAnswers,
+    colors,
+  };
+
+  // Retrieve the existing game data from local storage
+  let gameData = JSON.parse(localStorage.getItem("gameData")) || [];
+
+  // Add the new game data
+  gameData.push(newGameData);
+
+  // Save it back to local storage
+  localStorage.setItem("gameData", JSON.stringify(gameData));
+};
+
+
+  // Function to handle game completion
+  // Function to handle local completion logic
+// Function to handle local completion logic
+const handleLocalGameCompletion = (didWin) => {
+  const finalWordCloud = wordList; // Words remaining in the word cloud
+  const correctlyGuessedWords = Object.values(answers).filter((word) => {
+    return correctAnswers.includes(word);
+  });
+
+  // Save today's game data to local storage
+  saveGameDataToLocalStorage(
+    createdTimestamp,
+    didWin,
+    time,
+    7 - triesLeft, // Corrected calculation
+    userId,
+    log,
+    finalWordCloud,
+    correctlyGuessedWords,
+    answers,
+    colors
+  );
+
+  // Recalculate and show the statistics including today's game
+  const { averageTime, averageTries, streak } = calculateStatistics();
+
+  // Show the completion message with updated averages
+  setShowColumn(true);
+};
+
+
+// Function to send the game result to the server
+const handleServerGameCompletion = async (didWin) => {
+  const currentUrl = window.location.href;
+
+  // Check if the user has already submitted this game's result
+  const hasSubmitted = localStorage.getItem(
+    `progressSubmitted_${createdTimestamp}`
+  );
+  if (hasSubmitted) {
+    console.log("Progress already submitted for this game.");
+    return;
+  }
+
+  // Sending progress to the server in the background
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/save-user-progress`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: userId,
+          createdTimestamp: createdTimestamp,
+          didWin: didWin,
+          tries: 7 - triesLeft, // Corrected calculation
+          timeTaken: time,
+          date: new Date().toISOString(),
+          pageUrl: currentUrl,
+        }),
+      }
+    );
+
+    const result = await response.json();
+
+    if (response.ok) {
+      console.log(result.message);
+      // Mark that the progress has been submitted
+      localStorage.setItem(`progressSubmitted_${createdTimestamp}`, "true");
+    } else {
+      console.error("Error saving user progress:", result.error);
+    }
+  } catch (error) {
+    console.error("Error saving user progress:", error);
+  }
+};
+
+// Wrapper to handle game completion (local first, then server)
+const handleGameCompletion = (didWin) => {
+  // First, run local completion logic (updates local storage and displays results)
+  handleLocalGameCompletion(didWin);
+
+  // Then, send the data to the server asynchronously
+  handleServerGameCompletion(didWin);
+};
+
+
+  
+  
+
+  
+
+  
+  
+
+  /*useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const testParam = queryParams.get("test");
 
@@ -225,6 +440,7 @@ function Game() {
       .then((data) => {
         console.log("Loaded game data:", data); // Debugging line
         setGameData(data);
+        setCreatedTimestamp(data.created_timestamp);
         initializeColors(data);
       })
       .catch((error) => {
@@ -245,7 +461,87 @@ function Game() {
             console.error("Error loading default game data:", err);
           });
       });
-  }, []);
+  }, []);*/
+
+  useEffect(() => {
+  const queryParams = new URLSearchParams(window.location.search);
+  const testParam = queryParams.get("test");
+
+  // Determine if the test parameter is a day (1-31) or a timestamp (not a number)
+  let fetchUrl;
+
+  if (testParam) {
+    if (!isNaN(testParam) && testParam >= 1 && testParam <= 31) {
+      // If it's a number between 1 and 31, use the day-based endpoint
+      fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${testParam}`;
+    } else {
+      // If it's a string (timestamp), use the id-based endpoint
+      fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-id/${testParam}`;
+    }
+  } else {
+    // If no test parameter is provided, use the day of the month
+    const dayOfMonth = new Date().getDate();
+    fetchUrl = `${process.env.REACT_APP_BACKEND_URL}/get-json-by-day/${dayOfMonth}`;
+  }
+
+  // Fetch the data from the appropriate endpoint
+  fetch(fetchUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch daily game data");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setGameData(data);
+      setCreatedTimestamp(data.created_timestamp);
+      initializeColors(data);
+
+      // Check if the user has already played today's game
+      const savedGames = JSON.parse(localStorage.getItem("gameData")) || [];
+      const todayDate = new Date().toISOString().split("T")[0];
+      const isTestGame = window.location.href.includes("?test=");
+
+      if (!isTestGame) {
+        const gamePlayedToday = savedGames.find(
+          (game) =>
+            game.date === todayDate &&
+            game.createdTimestamp === data.created_timestamp &&
+            game.userId === userId
+        );
+
+        if (gamePlayedToday) {
+          setGameStarted(false);
+          setShowColumn(true);
+          setTime(gamePlayedToday.timeTaken);
+          setTriesLeft(7 - gamePlayedToday.tries);
+          setLog(gamePlayedToday.log || []);
+          setAnswers(gamePlayedToday.finalAnswers || {});
+          setColors(gamePlayedToday.colors || {});
+        }
+      }
+    })
+
+
+      .catch((error) => {
+        console.error("Error loading daily game data:", error);
+
+        // Fallback to the default data file if no specific game data is found
+        const fallbackPath = `${process.env.PUBLIC_URL}/data/gameData.json`;
+        console.log(`Falling back to default data from: ${fallbackPath}`); // Debugging line
+
+        fetch(fallbackPath)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Loaded fallback game data:", data); // Debugging line
+            setGameData(data);
+            initializeColors(data);
+          })
+          .catch((err) => {
+            console.error("Error loading default game data:", err);
+          });
+      });
+  }, [userId]);
 
   // Implement Auto-Scrolling Logic using useDragDropManager
   useEffect(() => {
@@ -283,15 +579,86 @@ function Game() {
           setShowRules(false); // Close the overlay
         }
       };
-  
+
       document.addEventListener("mousedown", handleClickOutside);
-      
+
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }
   }, [showRules]);
+
+  // Handle tries left on page revisit
+  useEffect(() => {
+    const savedGames = JSON.parse(localStorage.getItem("gameData")) || [];
+    const todayGame = savedGames.find(
+      (game) => game.date === todayDate && game.userId === userId
+    );
+
+    if (todayGame) {
+      setTriesLeft(6 - todayGame.tries); // Restore triesLeft from local storage for today
+      setShowColumn(true); // Show results if revisiting after completion
+    }
+  }, [createdTimestamp, userId, todayDate]);
+
+  /*useEffect(() => {
+    if (showColumn && messageRef.current) {
+      messageRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [showColumn]);
+
+  useEffect(() => {
+    if (showColumn) {
+      const today = new Date().toISOString().split('T')[0];
+
+    }
+  }, [showColumn]);
   
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    const gameCompleted = localStorage.getItem(`gameCompleted_${today}`);
+    if (gameCompleted) {
+      setGameStarted(false);
+      setShowColumn(true);
+      // Optionally, you can load the previous game state if you saved it
+    }
+  }, []);
+  useEffect(() => {
+    if (showColumn && createdTimestamp) {
+      const gameState = {
+        answers,
+        colors,
+        log,
+        triesLeft,
+        showColumn,
+        time,
+      };
+
+    }
+  }, [showColumn, createdTimestamp]);
+
+  useEffect(() => {
+    if (createdTimestamp) {
+      const gameCompleted = localStorage.getItem(`gameCompleted_${createdTimestamp}`);
+      if (gameCompleted) {
+        setGameStarted(false);
+        setShowColumn(true);
+  
+        // Load the previous game state if available
+        const savedGameState = localStorage.getItem(`gameState_${createdTimestamp}`);
+        if (savedGameState) {
+          const parsedState = JSON.parse(savedGameState);
+          // Update your state variables accordingly
+          setAnswers(parsedState.answers);
+          setColors(parsedState.colors);
+          setLog(parsedState.log);
+          setTriesLeft(parsedState.triesLeft);
+          setTime(parsedState.time);
+        }
+      }
+    }
+  }, [createdTimestamp]);
+  */
 
   const handleSwap = (fromGapId, toGapId) => {
     setAnswers((prevAnswers) => {
@@ -427,14 +794,14 @@ function Game() {
 
   // In Game.js
 
-  const wordsUsed = Object.values(answers);
+const wordsUsed = Object.values(answers);
 
-  // Update wordList to use the derived wordsUsed
-  const wordList = [...correctAnswers, ...uniqueWrongAnswers]
-    .filter(
-      (word) => !wordsUsed.includes(word) && getWordStatus(word) !== "correct"
-    )
-    .sort();
+const wordList = [...correctAnswers, ...uniqueWrongAnswers]
+  .filter(
+    (word) => !wordsUsed.includes(word) && getWordStatus(word) !== "correct"
+  )
+  .sort();
+
 
   const answerMap = giveaway_keywords.reduce((acc, kw) => {
     acc[kw.id] = kw.answer;
@@ -586,13 +953,14 @@ function Game() {
 
     if (allCorrect) {
       setShowColumn(true);
+      handleGameCompletion(true);
       ReactGA.event({
         action: "game_completed",
         params: {
           result: allCorrect ? "win" : "lose",
           tries_left: triesLeft,
           time_spent: time,
-          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+          total_tries: 6 - triesLeft,
         },
       });
 
@@ -604,6 +972,7 @@ function Game() {
 
     if (newTriesLeft === 0) {
       setShowColumn(true);
+      handleGameCompletion(false);
       const finalAnswers = giveaway_keywords.reduce((acc, kw) => {
         acc[kw.id] = answers[kw.id] || kw.answer;
         return acc;
@@ -615,7 +984,7 @@ function Game() {
           result: allCorrect ? "win" : "lose",
           tries_left: triesLeft,
           time_spent: time,
-          total_tries: 6 - triesLeft + (allCorrect ? 0 : 1),
+          total_tries: 6 - triesLeft,
         },
       });
       // Optionally, set colors for final answers
@@ -669,8 +1038,10 @@ function Game() {
       <div className="game-title-container">
         <div className="game-title">Alternative Facts</div>
         <div className="info-icon" onClick={() => setShowRules(true)}>
-  <span style={{ fontFamily: 'serif', fontStyle: 'italic', fontWeight: 'bold' }}>i</span>
-</div>
+          <span style={{ fontFamily: "serif", fontStyle: "italic", fontWeight: "bold" }}>
+            i
+          </span>
+        </div>
       </div>
 
       <Timer
@@ -683,10 +1054,12 @@ function Game() {
         <StartScreen
           onStart={() => setGameStarted(true)}
           isLoading={!gameData}
+          disabled={showColumn}
         />
       ) : (
         <>
           <div className="game-container" ref={gameContainerRef}>
+            {/* Game components */}
             <Analogy
               analogies={processed_analogies}
               answers={answers}
@@ -702,22 +1075,41 @@ function Game() {
               onWordReturn={handleReturnWord}
             />
           </div>
+
+          {/* Tries left and submit button */}
           <div className="submit-container">
-            <div>Tries left: {triesLeft}</div>
-            <button onClick={handleSubmit} disabled={triesLeft === 0}>
+          {!showColumn && (
+  <div>Tries left: {triesLeft}</div>
+)}
+            <button
+              onClick={handleSubmit}
+              disabled={triesLeft === 0 || showColumn}
+            >
               Submit
             </button>
           </div>
 
+          {/* Results section */}
           {showColumn && (
-            <>
+            <div ref={messageRef}>
               {triesLeft > 0 ? (
                 <>
                   <h2>Well done!</h2>
                   <p>
-                    You completed today's puzzle in {6 - triesLeft + 1} tries
-                    and {time} seconds!
-                  </p>
+  You completed today's puzzle in {7 - triesLeft} {7 - triesLeft === 1 ? 'try' : 'tries'} and {time} seconds!
+</p>
+
+                  {(() => {
+                    const { averageTime, averageTries, streak } = calculateStatistics();
+                    return (
+                      <>
+                        <p>Your average time: {averageTime} seconds</p>
+                        <p>Your average tries: {averageTries}</p>
+                        <p>Your current streak: {streak} {streak === 1 ? 'day' : 'days'}</p>
+
+                      </>
+                    );
+                  })()}
                 </>
               ) : (
                 <>
@@ -726,7 +1118,7 @@ function Game() {
                 </>
               )}
 
-              {/* Display the score emojis */}
+              {/* Score emojis */}
               <div className="score-emoji">
                 {generateScoreEmoji()
                   .split("\n")
@@ -735,7 +1127,7 @@ function Game() {
                   ))}
               </div>
 
-              {/* Center the share button */}
+              {/* Share button */}
               <div className="share-button-container">
                 <button
                   onClick={handleShareScore}
@@ -745,7 +1137,7 @@ function Game() {
                 </button>
               </div>
 
-              {/* Fake News Section */}
+              {/* Fake and real news sections */}
               <div className="fake-news">
                 <h3>Fake News:</h3>
                 <a
@@ -757,36 +1149,36 @@ function Game() {
                 </a>
               </div>
 
-              {/* Real News Article */}
               <div className="real-news">
                 <h3>Real News:</h3>
                 <h2>{headline}</h2>
                 {paragraphs.map((paragraph, idx) => (
-                  <p
-                    key={idx}
-                    dangerouslySetInnerHTML={{ __html: paragraph }}
-                  />
+                  <p key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
                 ))}
               </div>
-            </>
+            </div>
           )}
         </>
       )}
 
+      {/* Custom drag layer */}
       <CustomDragLayer />
-      {showRules && (
-  <div className="rules-overlay">
-    <div className="rules-content">
-      <span className="close-button" onClick={() => setShowRules(false)}>×</span>
-      <p>
-        Fill in the blanks to complete today's satirical puzzle.
-        Drag and drop the correct words into the gaps in the analogies.
-        You have 6 tries to get them all right. Red means an incorrect guess, orange means the word is in the wrong place.
-      </p>
-    </div>
-  </div>
-)}
 
+      {showRules && (
+        <div className="rules-overlay">
+          <div className="rules-content">
+            <span className="close-button" onClick={() => setShowRules(false)}>
+              ×
+            </span>
+            <p>
+              Fill in the blanks to complete today's satirical puzzle. Drag and
+              drop the correct words into the gaps in the analogies. You have 6
+              tries to get them all right. Red means an incorrect guess, orange
+              means the word is in the wrong place.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1256,7 +1648,7 @@ export default Gap;
 import React from 'react';
 import ReactGA from 'react-ga4'; // Import GA
 
-const StartScreen = ({ onStart, isLoading }) => (
+const StartScreen = ({ onStart, isLoading, disabled }) => (
   <div className="start-screen">
     <h2>Welcome to Alternative Facts</h2>
     <p>
@@ -1266,7 +1658,7 @@ const StartScreen = ({ onStart, isLoading }) => (
     </p>
     <button
       onClick={() => {
-        if (!isLoading) { // Only allow start if not loading
+        if (!isLoading && !disabled) {
           // Track the game start event
           ReactGA.event({
             action: 'game_started',
@@ -1280,12 +1672,13 @@ const StartScreen = ({ onStart, isLoading }) => (
           onStart();
         }
       }}
-      disabled={isLoading} // Disable the button if loading
+      disabled={isLoading || disabled}
     >
-      {isLoading ? 'Loading...' : 'Start Game'}
+      {isLoading ? 'Loading...' : disabled ? 'Game Completed' : 'Start Game'}
     </button>
   </div>
 );
+
 
 export default StartScreen;
 

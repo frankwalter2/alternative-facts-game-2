@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactGA from 'react-ga4'; // Import GA
 
-const StartScreen = ({ onStart, isLoading }) => (
+const StartScreen = ({ onStart, isLoading, disabled }) => (
   <div className="start-screen">
     <h2>Welcome to Alternative Facts</h2>
     <p>
@@ -12,7 +12,7 @@ const StartScreen = ({ onStart, isLoading }) => (
     </p>
     <button
       onClick={() => {
-        if (!isLoading) { // Only allow start if not loading
+        if (!isLoading && !disabled) {
           // Track the game start event
           ReactGA.event({
             action: 'game_started',
@@ -26,11 +26,12 @@ const StartScreen = ({ onStart, isLoading }) => (
           onStart();
         }
       }}
-      disabled={isLoading} // Disable the button if loading
+      disabled={isLoading || disabled}
     >
-      {isLoading ? 'Loading...' : 'Start Game'}
+      {isLoading ? 'Loading...' : disabled ? 'Game Completed' : 'Start Game'}
     </button>
   </div>
 );
+
 
 export default StartScreen;
